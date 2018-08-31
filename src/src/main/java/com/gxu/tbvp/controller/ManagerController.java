@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @Controller
+@RequestMapping("/manager")
 public class ManagerController {
     @Resource
     private ManagerService managerService;

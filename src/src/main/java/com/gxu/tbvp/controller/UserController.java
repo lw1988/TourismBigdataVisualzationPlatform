@@ -23,6 +23,7 @@ import java.util.Date;
  *
  */
 @Controller
+@RequestMapping("/user")
 public class UserController {
     @Resource
     private UserService userService;

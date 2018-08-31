@@ -1,7 +1,5 @@
 package com.gxu.tbvp.controller;
 
-import com.gxu.tbvp.domain.User;
-import com.gxu.tbvp.exception.SelfJSONResult;
 import com.gxu.tbvp.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/userJson")
 public class UserJsonController {
 
     @Resource
