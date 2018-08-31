@@ -72,7 +72,6 @@ $(function () {
 			success:function (data) {
 			    // alert(data.status);
                 sexCount = [];
-                alert(data["boy"]);
                 sexCount.push(['男性', data["boy"]]);
                 sexCount.push(['女性', data["girl"]]);
 				//设置数据

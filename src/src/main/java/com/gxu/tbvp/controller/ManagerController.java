@@ -17,6 +17,11 @@ import java.util.Date;
 public class ManagerController {
     @Resource
     private ManagerService managerService;
+
+    @RequestMapping(value="/addManager",method= RequestMethod.GET)
+    public String addUser(){
+        return "register";
+    }
     @RequestMapping(value="/addManager",method=RequestMethod.POST)
     public String addManager(HttpServletRequest request, Manager manager, Model model){
         Manager m = managerService.selectByUsername(manager.getUsername());
