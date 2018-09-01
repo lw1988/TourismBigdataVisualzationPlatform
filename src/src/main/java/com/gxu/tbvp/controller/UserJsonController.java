@@ -19,6 +19,7 @@ public class UserJsonController {
     public Map getSexJson() {
         int countGirl = userService.countSex(1);
         int countBoy = userService.countSex(0);
+        System.out.println(countBoy);
         Map sexMap = new HashMap();
         sexMap.put("boy", countBoy);
         sexMap.put("girl", countGirl);

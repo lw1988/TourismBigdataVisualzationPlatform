@@ -32,13 +32,14 @@
     GROUP BY re.id
     ORDER BY re.sort ASC
   </select>
+
   <select id="loadManagerResources" parameterType="java.util.HashMap" resultType="com.gxu.tbvp.domain.Resources">
     SELECT re.id,re.name,re.parentId,re.resUrl
     FROM resources re LEFT JOIN role_resources rr
     ON re.id = rr.resourcesId
-    LEFT JOIN user_role ur
-    ON rr.roleId =ur.roleId
-    WHERE ur.userId=#{userid}
+    LEFT JOIN manager_role mr
+    ON rr.roleId =mr.roleId
+    WHERE mr.managerId=#{managerid}
     <if test="type != null">
       AND re.type= #{type}
     </if>

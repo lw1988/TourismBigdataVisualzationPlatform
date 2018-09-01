@@ -3,7 +3,6 @@ package com.gxu.tbvp.controller;
 
 
 import com.gxu.tbvp.domain.Manager;
-import com.gxu.tbvp.domain.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -29,25 +28,7 @@ public class HomeController {
         return "login";
     }
 
-    // 以下RequestMapping临时测试前端使用
-/*    @RequestMapping(value = "/table", method = RequestMethod.GET)
-    public String table() { return "table"; }
-
-    @RequestMapping(value="/visitos",method= RequestMethod.GET)
-    public String visitos(){
-        return "visitos";
-    }
-
-    @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public String products() { return "products"; }
-
-    @RequestMapping(value = "/agent", method = RequestMethod.GET)
-    public String agent() { return "agent"; }
-
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index() { return "index"; }*/
-    //ending
-
+    //管理员登陆
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(HttpServletRequest request, Manager manager, Model model){
         if (StringUtils.isEmpty(manager.getUsername()) || StringUtils.isEmpty(manager.getPassword())) {
@@ -58,7 +39,7 @@ public class HomeController {
         UsernamePasswordToken token=new UsernamePasswordToken(manager.getUsername(),manager.getPassword());
         try {
             subject.login(token);
-            return "index";
+            return "redirect:managersPage";
         }catch (LockedAccountException lae) {
             token.clear();
             request.setAttribute("msg", "用户已经被锁定不能登录，请与管理员联系！");
@@ -70,10 +51,27 @@ public class HomeController {
         }
     }
 
-    @RequestMapping(value={"/usersPage",""})
-    public String usersPage(){
-        return "index";
+    //大数据平台首页
+    @RequestMapping(value={"/managersPage",""})
+    public String managersPage(){
+        return "manager/managers";
     }
+
+    //用户大数据
+    @RequestMapping(value = "/visitors", method = RequestMethod.GET)
+    public String visitors(){
+        return "user/visitors";
+    }
+
+    //产品大数据
+    @RequestMapping(value = "/products", method = RequestMethod.GET)
+    public String products() {
+        return "product/products";
+    }
+
+    //代理大数据
+    @RequestMapping(value = "/agent", method = RequestMethod.GET)
+    public String agent() { return "agent"; }
 
     @RequestMapping("/rolesPage")
     public String rolesPage(){

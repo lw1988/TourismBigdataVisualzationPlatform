@@ -22,6 +22,7 @@ public class ManagerController {
     public String addUser(){
         return "register";
     }
+
     @RequestMapping(value="/addManager",method=RequestMethod.POST)
     public String addManager(HttpServletRequest request, Manager manager, Model model){
         Manager m = managerService.selectByUsername(manager.getUsername());
@@ -40,4 +41,5 @@ public class ManagerController {
             return "404";
         }
     }
+
 }

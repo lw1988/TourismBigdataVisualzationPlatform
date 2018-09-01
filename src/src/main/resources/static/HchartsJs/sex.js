@@ -67,7 +67,7 @@ $(function () {
         //异步请求数据
 		$.ajax({
 			type:"GET",
-			url:'getSexJson',
+			url:'userJson/getSexJson',
             dataType:'json',
 			success:function (data) {
 			    // alert(data.status);

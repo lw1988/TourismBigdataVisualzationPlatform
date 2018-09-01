@@ -12,5 +12,7 @@ public interface ResourcesMapper extends MyMapper<Resources> {
 
     public List<Resources> loadUserResources(Map<String,Object> map);
 
+    public List<Resources> loadManagerResources(Map<String, Object> map);
+
     public List<Resources> queryResourcesListWithSelected(Integer rid);
 }

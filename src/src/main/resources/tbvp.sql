@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2018-08-31 20:14:45
+Date: 2018-09-01 21:19:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -102,7 +102,7 @@ CREATE TABLE `manager` (
   KEY `produceId` (`produceId`),
   CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressid`),
   CONSTRAINT `manager_ibfk_2` FOREIGN KEY (`produceId`) REFERENCES `produce` (`produceid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for manager_role
@@ -174,7 +174,7 @@ CREATE TABLE `resources` (
   `parentId` int(11) DEFAULT NULL COMMENT '����Դ',
   `sort` int(11) DEFAULT NULL COMMENT '����',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for role
