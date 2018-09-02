@@ -28,8 +28,7 @@
         <javaClientGenerator targetPackage="com.gxu.tbvp.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-
-        <table tableName="manager_role"></table>
+        <table tableName="buyRecord"></table>
 
     </context>
 </generatorConfiguration>

@@ -26,4 +26,7 @@
       SELECT #{item.name} as a, #{item.age} as b FROM DUAL
     </foreach>
   </insert>-->
+  <update id="autoIncrement">
+    ALTER TABLE `user` AUTO_INCREMENT 0000000;
+  </update>
 </mapper>

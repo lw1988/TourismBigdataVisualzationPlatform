@@ -15,28 +15,40 @@ public class Buyrecord implements Serializable {
     private Integer userid;
 
     /**
-     * 访问产品的id
+     * 购买的产品id
      */
-    @Column(name = "accessProduceId")
-    private Integer accessproduceid;
+    @Column(name = "buyProduceId")
+    private Integer buyproduceid;
 
     /**
-     * 访问工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
+     * 购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      */
-    @Column(name = "accessTool")
-    private Integer accesstool;
+    @Column(name = "buyTool")
+    private Integer buytool;
 
     /**
-     * 购买时间，为空表示访问时间
+     * 购买时间
      */
-    @Column(name = "accessTime")
-    private Date accesstime;
+    @Column(name = "buyTime")
+    private Date buytime;
+
+    /**
+     * 所花金额，单位元
+     */
+    @Column(name = "buy_price")
+    private Double buyPrice;
 
     /**
      * 停留时间
      */
     @Column(name = "totalTime")
     private Integer totaltime;
+
+    /**
+     * 购买数量
+     */
+    @Column(name = "buyCount")
+    private Integer buycount;
 
     /**
      * @return id
@@ -71,57 +83,75 @@ public class Buyrecord implements Serializable {
     }
 
     /**
-     * 获取访问产品的id
+     * 获取购买的产品id
      *
-     * @return accessProduceId - 访问产品的id
+     * @return buyProduceId - 购买的产品id
      */
-    public Integer getAccessproduceid() {
-        return accessproduceid;
+    public Integer getBuyproduceid() {
+        return buyproduceid;
     }
 
     /**
-     * 设置访问产品的id
+     * 设置购买的产品id
      *
-     * @param accessproduceid 访问产品的id
+     * @param buyproduceid 购买的产品id
      */
-    public void setAccessproduceid(Integer accessproduceid) {
-        this.accessproduceid = accessproduceid;
+    public void setBuyproduceid(Integer buyproduceid) {
+        this.buyproduceid = buyproduceid;
     }
 
     /**
-     * 获取访问工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
+     * 获取购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      *
-     * @return accessTool - 访问工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
+     * @return buyTool - 购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      */
-    public Integer getAccesstool() {
-        return accesstool;
+    public Integer getBuytool() {
+        return buytool;
     }
 
     /**
-     * 设置访问工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
+     * 设置购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      *
-     * @param accesstool 访问工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
+     * @param buytool 购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等
      */
-    public void setAccesstool(Integer accesstool) {
-        this.accesstool = accesstool;
+    public void setBuytool(Integer buytool) {
+        this.buytool = buytool;
     }
 
     /**
-     * 获取购买时间，为空表示访问时间
+     * 获取购买时间
      *
-     * @return accessTime - 购买时间，为空表示访问时间
+     * @return buyTime - 购买时间
      */
-    public Date getAccesstime() {
-        return accesstime;
+    public Date getBuytime() {
+        return buytime;
     }
 
     /**
-     * 设置购买时间，为空表示访问时间
+     * 设置购买时间
      *
-     * @param accesstime 购买时间，为空表示访问时间
+     * @param buytime 购买时间
      */
-    public void setAccesstime(Date accesstime) {
-        this.accesstime = accesstime;
+    public void setBuytime(Date buytime) {
+        this.buytime = buytime;
+    }
+
+    /**
+     * 获取所花金额，单位元
+     *
+     * @return buy_price - 所花金额，单位元
+     */
+    public Double getBuyPrice() {
+        return buyPrice;
+    }
+
+    /**
+     * 设置所花金额，单位元
+     *
+     * @param buyPrice 所花金额，单位元
+     */
+    public void setBuyPrice(Double buyPrice) {
+        this.buyPrice = buyPrice;
     }
 
     /**
@@ -140,5 +170,23 @@ public class Buyrecord implements Serializable {
      */
     public void setTotaltime(Integer totaltime) {
         this.totaltime = totaltime;
+    }
+
+    /**
+     * 获取购买数量
+     *
+     * @return buyCount - 购买数量
+     */
+    public Integer getBuycount() {
+        return buycount;
+    }
+
+    /**
+     * 设置购买数量
+     *
+     * @param buycount 购买数量
+     */
+    public void setBuycount(Integer buycount) {
+        this.buycount = buycount;
     }
 }
