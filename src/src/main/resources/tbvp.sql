@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2018-09-01 21:19:20
+Date: 2018-09-03 19:38:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,14 +22,12 @@ DROP TABLE IF EXISTS `accessrecord`;
 CREATE TABLE `accessrecord` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `userId` int(12) DEFAULT NULL COMMENT '为空，表示游览用户非平台注册用户',
-  `buyProduceId` int(12) DEFAULT NULL COMMENT '购买的产品id',
-  `buyTool` int(2) DEFAULT NULL COMMENT '购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等',
-  `buyTime` datetime DEFAULT NULL COMMENT '购买时间',
-  `buy_price` double(30,0) DEFAULT NULL COMMENT '所花金额，单位元',
-  `totalTime` int(3) DEFAULT NULL COMMENT '停留时间',
-  `buyCount` int(6) DEFAULT NULL COMMENT '购买数量',
+  `accessProduceId` int(12) DEFAULT NULL COMMENT '访问产品的id',
+  `accessTool` int(2) DEFAULT NULL COMMENT '访问工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等',
+  `accessTime` datetime DEFAULT NULL COMMENT '购买时间，为空表示访问时间',
+  `totalTime` int(3) DEFAULT NULL COMMENT '访问的次数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=401001 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for address
@@ -71,10 +69,12 @@ DROP TABLE IF EXISTS `buyrecord`;
 CREATE TABLE `buyrecord` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `userId` int(12) DEFAULT NULL COMMENT '为空，表示游览用户非平台注册用户',
-  `accessProduceId` int(12) DEFAULT NULL COMMENT '访问产品的id',
-  `accessTool` int(2) DEFAULT NULL COMMENT '访问工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等',
-  `accessTime` datetime DEFAULT NULL COMMENT '购买时间，为空表示访问时间',
-  `totalTime` int(3) DEFAULT NULL COMMENT '停留时间',
+  `buyProduceId` int(12) DEFAULT NULL COMMENT '购买的产品id',
+  `buyTool` int(2) DEFAULT NULL COMMENT '购买工具，0表示省油灯，1表示通过携程，2表示飞猪，3表示其它等',
+  `buyTime` datetime DEFAULT NULL COMMENT '购买时间',
+  `buy_price` double(30,0) DEFAULT NULL COMMENT '所花金额，单位元',
+  `totalTime` int(3) DEFAULT NULL COMMENT '访问的次数',
+  `buyCount` int(6) DEFAULT NULL COMMENT '购买数量',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -100,8 +100,7 @@ CREATE TABLE `manager` (
   PRIMARY KEY (`id`),
   KEY `addressId` (`addressId`),
   KEY `produceId` (`produceId`),
-  CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressid`),
-  CONSTRAINT `manager_ibfk_2` FOREIGN KEY (`produceId`) REFERENCES `produce` (`produceid`)
+  CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -138,18 +137,18 @@ CREATE TABLE `mapperdemo` (
 -- ----------------------------
 DROP TABLE IF EXISTS `produce`;
 CREATE TABLE `produce` (
-  `produceId` int(12) NOT NULL COMMENT '旅游路线id',
+  `produceId` mediumint(12) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL COMMENT '旅游路线主题名称',
-  `scenics` varchar(500) NOT NULL COMMENT '路线所包含所有景点，用“青秀山，大明山”这种格式',
-  `waySId` varchar(60) NOT NULL COMMENT '出行方式，中间用逗号隔开',
-  `totalAmount` double(255,0) NOT NULL COMMENT '路线原价，单位元',
-  `price` double(255,0) NOT NULL COMMENT '路线现价',
+  `scenics` varchar(500) DEFAULT NULL COMMENT '路线所包含所有景点，用“青秀山，大明山”这种格式',
+  `waySId` varchar(60) DEFAULT NULL COMMENT '出行方式，中间用逗号隔开',
+  `totalAmount` double(255,0) DEFAULT NULL COMMENT '路线原价，单位元',
+  `price` varchar(255) DEFAULT NULL COMMENT '路线现价',
   `Images` varchar(255) DEFAULT NULL COMMENT '路线的特色图片，多张图片用逗号隔开',
   `description` varchar(1000) DEFAULT NULL COMMENT '对路线的文字描述',
   `start_time` datetime DEFAULT NULL COMMENT '路线运营的初始时间',
   `End_time` datetime DEFAULT NULL COMMENT '路线运营的结束时间',
-  KEY `produceId` (`produceId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`produceId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1456 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for region
@@ -220,8 +219,7 @@ CREATE TABLE `super_manager` (
   PRIMARY KEY (`id`),
   KEY `addressId` (`addressId`),
   KEY `produceId` (`produceId`),
-  CONSTRAINT `super_manager_ibfk_1` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressid`),
-  CONSTRAINT `super_manager_ibfk_2` FOREIGN KEY (`produceId`) REFERENCES `produce` (`produceid`)
+  CONSTRAINT `super_manager_ibfk_1` FOREIGN KEY (`addressId`) REFERENCES `address` (`addressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -229,7 +227,7 @@ CREATE TABLE `super_manager` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(12) NOT NULL AUTO_INCREMENT COMMENT '用户旅客id',
+  `id` mediumint(12) NOT NULL AUTO_INCREMENT,
   `addressId` int(12) DEFAULT NULL,
   `username` varchar(50) NOT NULL COMMENT '用户名',
   `password` varchar(255) NOT NULL,
@@ -244,9 +242,8 @@ CREATE TABLE `user` (
   `province` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '省份',
   PRIMARY KEY (`id`),
   KEY `addressId` (`addressId`),
-  KEY `id` (`id`),
   CONSTRAINT `addressId` FOREIGN KEY (`addressId`) REFERENCES `region` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=500002 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=751011 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_role

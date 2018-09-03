@@ -90,9 +90,10 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/HchartsJs/**","anon");
         filterChainDefinitionMap.put("/bower_components/**","anon");
         filterChainDefinitionMap.put("/dist/**","anon");
-        //mock数据
+        //mock数据,生产环境中请关闭此api
         filterChainDefinitionMap.put("/mockUser","anon");
         filterChainDefinitionMap.put("/mockWays","anon");
+        filterChainDefinitionMap.put("/mockAccessRecord", "anon");
         //访问页面
         filterChainDefinitionMap.put("/manager/addManager","anon");
         filterChainDefinitionMap.put("/visitors", "anon");
