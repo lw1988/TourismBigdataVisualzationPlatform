@@ -18,7 +18,7 @@ $(function () {
                                 [0.8, '#c4463a']
                                             ],
                         min: 0,
-                        max: 50000,
+                        max: 100,
                         // minColor: 'rgb(255,255,255)',
                         // maxColor: '#d94e5d'
                                 },
