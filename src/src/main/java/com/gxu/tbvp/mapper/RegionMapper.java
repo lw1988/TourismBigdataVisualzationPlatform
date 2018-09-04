@@ -12,4 +12,6 @@ import java.util.List;
 @Component(value = "RegionMapper")
 public interface RegionMapper extends MyMapper<Region> {
     public List<Region> getProvinceMsg();
+    public int selectCountProvince(String province);
+    public int selectCountProvinceById(int id);
 }
