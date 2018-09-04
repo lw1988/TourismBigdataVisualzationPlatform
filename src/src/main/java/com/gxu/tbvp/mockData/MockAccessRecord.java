@@ -69,17 +69,11 @@ public class MockAccessRecord {
                             accessrecordList.add(accessrecord);
                         }
                         int temp = accessrecordService.bachInsert(accessrecordList);
-                        if (temp == 1){
-                            System.out.println("success");
-                        }
-                        else {
-                            System.out.println("fail");
-                        }
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-
                     countDownLatch.countDown();
+                    System.out.println(countDownLatch);
                 }
             });
 

@@ -76,13 +76,12 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
     }
 
     @Override
-    @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
     public int insertBach(List<User> userList) {
         try {
             userMapper.insertList(userList);
-//            userMapper.insert(userList.get(0));
             return 1;
         } catch (Exception e) {
+            e.printStackTrace();
             return 0;
         }
     }

@@ -1,5 +1,6 @@
 package com.gxu.tbvp.mockData;
 
+import com.gxu.tbvp.domain.Accessrecord;
 import com.gxu.tbvp.domain.Region;
 import com.gxu.tbvp.domain.User;
 import com.gxu.tbvp.exception.SelfJSONResult;
@@ -11,12 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class MockUser {
+    private static int corePoolSize = Runtime.getRuntime().availableProcessors();
+    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<Runnable>(1000));
 
     @Resource
     private UserService userService;
@@ -29,7 +35,7 @@ public class MockUser {
     public static String letter = "qazwsxedcrfvtgbyhnujmik,ol.";
     public static String number = "783205961";
     public static final String[] province = "北京,天津,河北,山西,内蒙,辽宁,吉林,黑龙江,上海,江苏,浙江,安徽,福建,江西,山东,河南,湖北,湖南,广东,广西,海南,重庆,四川,贵州,云南,西藏,陕西,甘肃,青海,宁夏,新疆,台湾,香港,澳门,海外".split(",");
-    public static final int[] provinceId = {110000,120000,130000,140000,150000,210000,220000,230000,310000,320000,330000,340000,350000,360000,370000,410000,420000,430000,440000,450000,460000,500000,510000,520000,530000,540000,610000,620000,630000,640000,650000,710000,810000,820000,990000};//100000海外
+    public static final int[] provinceId = {110000,120000,130000,140000,150000,210000,220000,230000,310000,320000,330000,340000,350000,360000,370000,410000,420000,430000,440000,450000,460000,500000,510000,520000,530000,540000,610000,620000,630000,640000,650000,710000,810000,820000,990000};
     public static int temp;
     //随机生成start-end之间的数
     public static int getNum(int start, int end) {
@@ -114,39 +120,54 @@ public class MockUser {
     }
 
     @RequestMapping("/mockUser")
-    public SelfJSONResult insetBach() throws ParseException {
-//        userService.autoIncrement();
+    public SelfJSONResult insetBach() throws ParseException, InterruptedException {
+        //线程数量
+        final CountDownLatch countDownLatch = new CountDownLatch(50);
         MockDate mockDate = new MockDate();
         PasswordHelper passwordHelper = new PasswordHelper();
-        int flag = 0;
-        for (int i = 0; i < 10000; i++) {
+
+        int i = 0;
+        for (i = 0; i < 50; i++) {
             List<User> userList = new ArrayList<>();
-            for (int j = 0; j < 10; j++) {
-                User user = new User();
-                String name = getChineseName();
-                user.setUsername(name);
-                user.setAddressid(provinceid);
-                user.setPassword(getPassword(10));
-                user.setName(name);
-                user.setPhone(getTel());
-                user.setRegisterTime(mockDate.RondomDate());
-                user.setSex(temp);
-                user.setAge(getAge());
-                user.setEnable(1);
-                user.setProvince(getAddress());
-                passwordHelper.encryptPassword(user);
-                userList.add(user);
-            }
-            flag = userService.insertBach(userList);
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        for (int j = 0; j < 10; j++) {
+                            int index = getNum(0, provinceId.length-1);
+                            User user = new User();
+                            String name = getChineseName();
+
+                            user.setUsername(name);
+                            user.setAddressid(provinceId[index]);
+                            user.setPassword(getPassword(10));
+                            user.setName(name);
+                            user.setPhone(getTel());
+                            user.setRegisterTime(mockDate.RondomDate());
+                            user.setSex(temp);
+                            user.setAge(getAge());
+                            user.setEnable(1);
+                            user.setProvince(province[index]);
+                            passwordHelper.encryptPassword(user);
+                            userList.add(user);
+                        }
+                        int temp = userService.insertBach(userList);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    countDownLatch.countDown();
+                    System.out.println(countDownLatch);
+                }
+            });
+
         }
-        if (flag == 1){
-            return SelfJSONResult.ok("success");
-        } else {
-            return SelfJSONResult.errorException("插入失败");
-        }
+        countDownLatch.await();
+        return SelfJSONResult.ok("success");
     }
 
     public static void main(String args[]) throws ParseException {
+        System.out.println(province.length);
+        System.out.println(provinceId.length);
     }
 
 }
