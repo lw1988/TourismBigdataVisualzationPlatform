@@ -34,4 +34,15 @@ public class RegionServiceImpl extends BaseService<Region> implements RegionServ
             return null;
         }
     }
+
+    @Override
+    public int selectCountProvince(String province){
+        int count = regionMapper.selectCountProvince(province);
+        return count;
+    }
+    @Override
+    public int selectCountProvinceById(int id){
+        int count = regionMapper.selectCountProvinceById(id);
+        return count;
+    }
 }
