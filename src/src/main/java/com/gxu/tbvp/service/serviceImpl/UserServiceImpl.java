@@ -76,7 +76,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
     }
 
     @Override
-//    @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
+    @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
     public int insertBach(List<User> userList) {
         try {
             userMapper.insertList(userList);
@@ -94,5 +94,10 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         criteria.andEqualTo("sex",userSex);
         int count = userMapper.selectCountByExample(example);
         return count;
+    }
+
+    @Override
+    public void autoIncrement() {
+        userMapper.autoIncrement();
     }
 }
