@@ -41,7 +41,7 @@ public class MockAccessRecord {
     public SelfJSONResult mockAccessRecord() throws ParseException {
         MockDate mockDate = new MockDate();
         List<Accessrecord> accessrecordList = new ArrayList<>();
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 50000; i++) {
             Accessrecord accessrecord = new Accessrecord();
             accessrecord.setAccessproduceid(getProduceId());
             accessrecord.setUserid(getUserId());
