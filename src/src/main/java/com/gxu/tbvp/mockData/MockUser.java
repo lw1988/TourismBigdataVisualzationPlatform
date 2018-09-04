@@ -1,7 +1,9 @@
 package com.gxu.tbvp.mockData;
 
+import com.gxu.tbvp.domain.Region;
 import com.gxu.tbvp.domain.User;
 import com.gxu.tbvp.exception.SelfJSONResult;
+import com.gxu.tbvp.service.RegionService;
 import com.gxu.tbvp.service.UserService;
 import com.gxu.tbvp.utils.PasswordHelper;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +28,8 @@ public class MockUser {
     public static final String[] email_suffix = "@gmail.com,@yahoo.com,@msn.com,@hotmail.com,@aol.com,@ask.com,@live.com,@qq.com,@0355.net,@163.com,@163.net,@263.net,@3721.net,@yeah.net,@googlemail.com,@126.com,@sina.com,@sohu.com,@yahoo.com.cn".split(",");
     public static String letter = "qazwsxedcrfvtgbyhnujmik,ol.";
     public static String number = "783205961";
-    public static final String[] province = "北京,天津,河北,北京,天津,河北,北京,天津,河北,山西,内蒙,辽宁,吉林,黑龙江,上海,江苏,浙江,上海,江苏,浙江,安徽,福建,江西,山东,河南,湖北,湖南,广东,广西,广东,广西,湖南,广东,广西,湖南,广东,广西,海南,重庆,四川,贵州,云南,贵州,云南,贵州,云南,西藏,陕西,甘肃,青海,宁夏,新疆,台湾,香港,澳门,海外".split(",");
-    public static final int[] provinceId = {110000,120000,130000,110000,120000,130000,110000,120000,130000,140000,150000,210000,220000,230000,310000,320000,330000,310000,320000,330000,340000,350000,360000,370000,410000,420000,430000,440000,450000,440000,450000,460000,440000,450000,460000,440000,450000,500000,510000,520000,530000,540000,530000,540000,530000,540000,610000,620000,630000,640000,650000,710000,810000,820000,990000,100000};//100000海外
+    public static final String[] province = "北京,天津,河北,山西,内蒙,辽宁,吉林,黑龙江,上海,江苏,浙江,安徽,福建,江西,山东,河南,湖北,湖南,广东,广西,海南,重庆,四川,贵州,云南,西藏,陕西,甘肃,青海,宁夏,新疆,台湾,香港,澳门,海外".split(",");
+    public static final int[] provinceId = {110000,120000,130000,140000,150000,210000,220000,230000,310000,320000,330000,340000,350000,360000,370000,410000,420000,430000,440000,450000,460000,500000,510000,520000,530000,540000,610000,620000,630000,640000,650000,710000,810000,820000,990000};//100000海外
     public static int temp;
     //随机生成start-end之间的数
     public static int getNum(int start, int end) {
@@ -117,7 +119,7 @@ public class MockUser {
         MockDate mockDate = new MockDate();
         PasswordHelper passwordHelper = new PasswordHelper();
         int flag = 0;
-        for (int i = 0; i < 35000; i++) {
+        for (int i = 0; i < 10000; i++) {
             List<User> userList = new ArrayList<>();
             for (int j = 0; j < 10; j++) {
                 User user = new User();
@@ -140,12 +142,11 @@ public class MockUser {
         if (flag == 1){
             return SelfJSONResult.ok("success");
         } else {
-            return SelfJSONResult.errorException("插入失败，再次刷新即可");
+            return SelfJSONResult.errorException("插入失败");
         }
     }
 
     public static void main(String args[]) throws ParseException {
-
     }
 
 }
