@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2018-09-03 19:38:06
+Date: 2018-09-04 20:34:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `accessrecord` (
   `accessTime` datetime DEFAULT NULL COMMENT '购买时间，为空表示访问时间',
   `totalTime` int(3) DEFAULT NULL COMMENT '访问的次数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=401001 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1101001 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for address
@@ -241,9 +241,8 @@ CREATE TABLE `user` (
   `enable` int(1) DEFAULT '0' COMMENT '账户是否能用',
   `province` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '省份',
   PRIMARY KEY (`id`),
-  KEY `addressId` (`addressId`),
-  CONSTRAINT `addressId` FOREIGN KEY (`addressId`) REFERENCES `region` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=751011 DEFAULT CHARSET=utf8;
+  KEY `addressId` (`addressId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1503329 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_role
@@ -268,4 +267,4 @@ CREATE TABLE `ways` (
   `amount` double(255,0) NOT NULL,
   `way` int(1) NOT NULL COMMENT '0飞机，1火车，2汽车，3自驾，4其它',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=519831 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1000001 DEFAULT CHARSET=utf8;
