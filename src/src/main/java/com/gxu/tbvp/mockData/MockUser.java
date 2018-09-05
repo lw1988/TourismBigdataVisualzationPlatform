@@ -35,7 +35,7 @@ public class MockUser {
     public static final String[] email_suffix = "@gmail.com,@yahoo.com,@msn.com,@hotmail.com,@aol.com,@ask.com,@live.com,@qq.com,@0355.net,@163.com,@163.net,@263.net,@3721.net,@yeah.net,@googlemail.com,@126.com,@sina.com,@sohu.com,@yahoo.com.cn".split(",");
     public static String letter = "qazwsxedcrfvtgbyhnujmik,ol.";
     public static String number = "783205961";
-    public static final String[] province = "北京,天津,河北,山西,内蒙,辽宁,吉林,黑龙江,上海,江苏,浙江,安徽,福建,江西,山东,河南,湖北,湖南,广东,广西,海南,重庆,四川,贵州,云南,西藏,陕西,甘肃,青海,宁夏,新疆,台湾,香港,澳门,海外".split(",");
+    public static final String[] province = "北京,天津,河北,山西,内蒙古,辽宁,吉林,黑龙江,上海,江苏,浙江,安徽,福建,江西,山东,河南,湖北,湖南,广东,广西,海南,重庆,四川,贵州,云南,西藏,陕西,甘肃,青海,宁夏,新疆,台湾,香港,澳门,海外".split(",");
     public static final int[] provinceId = {110000,120000,130000,140000,150000,210000,220000,230000,310000,320000,330000,340000,350000,360000,370000,410000,420000,430000,440000,450000,460000,500000,510000,520000,530000,540000,610000,620000,630000,640000,650000,710000,810000,820000,990000};
     public static int temp;
 
@@ -131,7 +131,9 @@ public class MockUser {
     */
     private static int provinceid;
     private static String getAddress() {
-        int index = getNum(0, province.length-1);
+        CreateDate c = new CreateDate();
+        int index = c.createRandom();
+//        int index = getNum(0, province.length-1);
         provinceid = provinceId[index];
         return province[index];
     }
@@ -142,7 +144,7 @@ public class MockUser {
         final CountDownLatch countDownLatch = new CountDownLatch(50);
         MockDate mockDate = new MockDate();
         PasswordHelper passwordHelper = new PasswordHelper();
-
+        CreateDate c = new CreateDate();
         int i = 0;
         for (i = 0; i < 50; i++) {
             List<User> userList = new ArrayList<>();
@@ -150,13 +152,13 @@ public class MockUser {
                 @Override
                 public void run() {
                     try {
-                        for (int j = 0; j < 10; j++) {
+                        for (int j = 0; j < 20000; j++) {
                             int index = getNum(0, provinceId.length-1);
                             User user = new User();
                             String name = getChineseName();
-
+                            int index1 = c.createRandom();
                             user.setUsername(name);
-                            user.setAddressid(provinceId[index]);
+                            user.setAddressid(provinceId[index1]);
                             user.setPassword(getPassword(10));
                             user.setName(name);
                             user.setPhone(getTel());
@@ -164,7 +166,7 @@ public class MockUser {
                             user.setSex(temp);
                             user.setAge(getAge());
                             user.setEnable(1);
-                            user.setProvince(province[index]);
+                            user.setProvince(province[index1]);
                             passwordHelper.encryptPassword(user);
                             userList.add(user);
                         }
