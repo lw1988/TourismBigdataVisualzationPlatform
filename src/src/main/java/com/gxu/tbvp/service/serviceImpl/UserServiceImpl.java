@@ -99,4 +99,10 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
     public void autoIncrement() {
         userMapper.autoIncrement();
     }
+
+    @Override
+    public int countAge(Map<String, Object> ageMap) {
+        int count = userMapper.countAge(ageMap);
+        return count;
+    }
 }

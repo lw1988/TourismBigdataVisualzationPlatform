@@ -113,7 +113,7 @@ public class MockUser {
 //        double[] appWaysWeiths = {2, 5, 8, 7, 10}; = 32
         double temp = getDoubleNum(0,32);
         if (temp < 2) {
-            return getNum(0, 11);//12岁一下
+            return getNum(3, 11);//12岁一下
         } else if (temp >= 2 & temp < 7){
             return getNum(12,18);//12-18岁
         } else if (temp >= 7 & temp <15) {
