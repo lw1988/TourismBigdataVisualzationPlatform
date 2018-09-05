@@ -11,4 +11,13 @@
     <result column="amount" jdbcType="DOUBLE" property="amount" />
     <result column="way" jdbcType="INTEGER" property="way" />
   </resultMap>
+  <select id="selectWaysById" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+      	SELECT count(*)
+		FROM ways
+		where way = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectWaysCount" resultType="java.lang.Integer" >
+      	SELECT count(*)
+		FROM ways
+  </select>
 </mapper>

@@ -83,6 +83,7 @@ public class UserJsonController {
                         e.printStackTrace();
                     }
                     countDownLatch.countDown();
+                    System.out.println(countDownLatch);
                 }
             });
         }

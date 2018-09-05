@@ -23,4 +23,12 @@ public class WaysServiceImpl implements WaysService {
             return 0;
         }
     }
+    @Override
+    public int selectWaysById(int id){
+        return waysMapper.selectWaysById(id);
+    }
+    @Override
+    public int selectWaysCount(){
+        return waysMapper.selectWaysCount();
+    }
 }

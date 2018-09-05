@@ -7,4 +7,6 @@ import java.util.List;
 public interface WaysService {
 
     int insertBach(List<Ways> waysList);
+    int selectWaysById (int id);
+    int selectWaysCount();
 }
