@@ -4,4 +4,6 @@ import com.gxu.tbvp.domain.Ways;
 import com.gxu.tbvp.utils.MyMapper;
 
 public interface WaysMapper extends MyMapper<Ways> {
+    public int selectWaysById(int id);
+    public int selectWaysCount();
 }
