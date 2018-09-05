@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
@@ -37,9 +38,15 @@ public class MockUser {
     public static final String[] province = "北京,天津,河北,山西,内蒙,辽宁,吉林,黑龙江,上海,江苏,浙江,安徽,福建,江西,山东,河南,湖北,湖南,广东,广西,海南,重庆,四川,贵州,云南,西藏,陕西,甘肃,青海,宁夏,新疆,台湾,香港,澳门,海外".split(",");
     public static final int[] provinceId = {110000,120000,130000,140000,150000,210000,220000,230000,310000,320000,330000,340000,350000,360000,370000,410000,420000,430000,440000,450000,460000,500000,510000,520000,530000,540000,610000,620000,630000,640000,650000,710000,810000,820000,990000};
     public static int temp;
+
     //随机生成start-end之间的数
     public static int getNum(int start, int end) {
         return (int)(Math.random()*(end - start +1)+start);
+    }
+    public static double getDoubleNum(int start, int end) {
+        double f = (double)(Math.random()*(end - start +1)+start);
+        BigDecimal b = new BigDecimal(f);
+        return b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
     /*
@@ -103,10 +110,20 @@ public class MockUser {
     返回年龄
     */
     private static int getAge(){
-        if (temp == 0){
-            return getNum(45,65);
+//        double[] appWaysWeiths = {2, 5, 8, 7, 10}; = 32
+        double temp = getDoubleNum(0,32);
+        if (temp < 2) {
+            return getNum(0, 11);//12岁一下
+        } else if (temp >= 2 & temp < 7){
+            return getNum(12,18);//12-18岁
+        } else if (temp >= 7 & temp <15) {
+            return getNum(19,30);
+        } else if (temp >= 15 & temp < 22){
+            return getNum(31, 60);
+        } else if (temp >= 22 & temp <32){
+            return getNum(60,80);
         }
-        return getNum(3,80);
+        return 61;
     }
 
     /*
