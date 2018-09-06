@@ -83,7 +83,7 @@ public class UserJsonController {
                         e.printStackTrace();
                     }
                     countDownLatch.countDown();
-                    System.out.println(countDownLatch);
+//                    System.out.println(countDownLatch);
                 }
             });
         }
@@ -134,9 +134,9 @@ public class UserJsonController {
             });
         }
         countDownLatch.await();
-        for (int i = 0; i < 5; i++) {
-            System.out.println(mapArrayList.get(i));
-        }
+//        for (int i = 0; i < 5; i++) {
+//            System.out.println(mapArrayList.get(i));
+//        }
         return mapArrayList;
     }
 

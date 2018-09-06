@@ -3,7 +3,9 @@ package com.gxu.tbvp.service;
 import com.gxu.tbvp.domain.Buyrecord;
 import com.gxu.tbvp.domain.Produce;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface BuyrecordService extends IService<Buyrecord> {
     int insertList(List<Buyrecord> buyrecordList);
@@ -13,4 +15,6 @@ public interface BuyrecordService extends IService<Buyrecord> {
     double selectProducePrice(int produceId);
 
     int updatePrice(List<Produce> produceList);
+
+    int countPeopleByPrice(Map<String, Object> map);
 }

@@ -14,4 +14,8 @@
     <result column="totalTime" property="totaltime" jdbcType="INTEGER" />
     <result column="buyCount" property="buycount" jdbcType="INTEGER" />
   </resultMap>
+
+  <select id="countPeopleByPrice" resultType="int" parameterType="java.util.Map">
+    SELECT COUNT(buyCount) FROM buyrecord WHERE buy_price BETWEEN #{firstPrice} AND #{lastPrice};
+  </select>
 </mapper>

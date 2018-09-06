@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements BuyrecordService {
@@ -52,5 +53,11 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
             e.printStackTrace();
             return 0;
         }
+    }
+
+    @Override
+    public int countPeopleByPrice(Map<String, Object> map) {
+        int temp = buyrecordMapper.countPeopleByPrice(map);
+        return temp;
     }
 }
