@@ -46,6 +46,6 @@ var chart = Highcharts.chart('consumption',{
 	},
 	series: [{
 		name: '人数(千)',
-		data: [2, 3, null, 4, 0, 5, 1, 4, 6, 3,10,2],
+
 	}]
 });
