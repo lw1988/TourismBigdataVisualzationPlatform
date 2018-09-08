@@ -1,13 +1,10 @@
 package com.gxu.tbvp.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-public class Produce implements Serializable {
-    /**
-     * 旅游路线id
-     */
+public class Produce {
+    @Id
     @Column(name = "produceId")
     private Integer produceid;
 
@@ -62,18 +59,14 @@ public class Produce implements Serializable {
     private Date endTime;
 
     /**
-     * 获取旅游路线id
-     *
-     * @return produceId - 旅游路线id
+     * @return produceId
      */
     public Integer getProduceid() {
         return produceid;
     }
 
     /**
-     * 设置旅游路线id
-     *
-     * @param produceid 旅游路线id
+     * @param produceid
      */
     public void setProduceid(Integer produceid) {
         this.produceid = produceid;

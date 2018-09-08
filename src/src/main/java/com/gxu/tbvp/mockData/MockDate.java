@@ -7,7 +7,7 @@ import java.util.Date;
 public class MockDate {
 
     public Date RondomDate() throws ParseException{
-        Date date = randomDate("2018-06-01", "2018-09-01");
+        Date date = randomDate("2016-06-01", "2018-09-05");
         String str = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(date);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
         return sdf.parse(str);
