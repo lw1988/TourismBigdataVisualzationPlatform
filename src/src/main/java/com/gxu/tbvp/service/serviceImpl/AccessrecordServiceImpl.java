@@ -23,4 +23,8 @@ public class AccessrecordServiceImpl extends BaseService<Accessrecord> implement
             return 0;
         }
     }
+    @Override
+    public int selectAccessCountByTime(String startTime,String endTime){
+        return accessrecordMapper.selectAccessCountByTime(startTime,endTime);
+    }
 }

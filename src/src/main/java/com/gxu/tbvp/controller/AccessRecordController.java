@@ -39,20 +39,20 @@ public class AccessRecordController {
             for (String month : months){
                 String startTime = year+"-"+month+"-"+"01"+" 00:00:00";
                 String endTime = year+"-"+month+"-"+maps.get(month)+" 23:59:59";
-                int count = accessrecordService.selectAccessCountByTime(startTime,endTime);
-                countList.add(count);
-//                executor.execute(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            int count = accessrecordService.selectAccessCountByTime(startTime,endTime);
-//                            countList.add(count);
-//                        } catch (Exception e){
-//                            e.printStackTrace();
-//                        }
-//                        countDownLatch.countDown();
-//                    }
-//                });
+//                int count = accessrecordService.selectAccessCountByTime(startTime,endTime);
+//                countList.add(count);
+                executor.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            int count = accessrecordService.selectAccessCountByTime(startTime,endTime);
+                            countList.add(count);
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        countDownLatch.countDown();
+                    }
+                });
             }
             arrayList.add(countList);
 

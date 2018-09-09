@@ -12,4 +12,9 @@
     <result column="accessTime" property="accesstime" jdbcType="TIMESTAMP" />
     <result column="totalTime" property="totaltime" jdbcType="INTEGER" />
   </resultMap>
+  <select id="selectAccessCountByTime" resultType="int" parameterType="java.lang.String">
+      	SELECT sum(totalTime)
+		FROM accessrecord
+		where accessTime between  #{startTime,jdbcType=BIGINT} and #{endTime,jdbcType=BIGINT}
+  </select>
 </mapper>
