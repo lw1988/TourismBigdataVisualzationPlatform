@@ -28,7 +28,7 @@ public class AccessRecordController {
 
     @RequestMapping("/getAccessCount")
     public ArrayList<ArrayList> getAccessCount()throws ParseException, InterruptedException{
-        CountDownLatch countDownLatch = new CountDownLatch(12);
+        CountDownLatch countDownLatch = new CountDownLatch(36);
         ArrayList arrayList = new ArrayList();
         Map maps = new HashMap();
         for (int i=0; i<12;i++){
@@ -57,7 +57,7 @@ public class AccessRecordController {
             arrayList.add(countList);
 
         }
-
+        countDownLatch.await();
         return arrayList;
     }
 
