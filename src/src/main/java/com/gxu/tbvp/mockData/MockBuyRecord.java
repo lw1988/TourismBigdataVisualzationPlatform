@@ -71,17 +71,17 @@ public class MockBuyRecord {
 
     @RequestMapping("/MockBuyRecord")
     public SelfJSONResult mockBuyRecord() throws InterruptedException {
-        final CountDownLatch countDownLatch = new CountDownLatch(20);
+        final CountDownLatch countDownLatch = new CountDownLatch(100);
         MockDate mockDate = new MockDate();
 
         int i = 0;
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 100; i++) {
             List<Buyrecord> buyrecordList = new ArrayList<>();
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        for (int j = 0; j < 1000; j++) {
+                        for (int j = 0; j < 10000; j++) {
                             Buyrecord buyrecord = new Buyrecord();
                             buyrecord.setUserid(getNum(0, 700000));
                             int index = getNum(1, 1455);

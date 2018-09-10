@@ -34,16 +34,19 @@ public class BuyRecordController {
             intMap.put(String.valueOf(consumptions[i]),put);
         }
         intMap.put("5000", new int[]{5000, 10000});
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+
+        ArrayList<Map> arrayMapList = new ArrayList<>();
         for (int consumption : consumptions){
             executor.execute(new Runnable() {
+                Map tempMap = new HashMap();
                 @Override
                 public void run() {
                     try {
                         Map<String, Object> map = new HashedMap();
                         map.put("firstPrice",(int)intMap.get(String.valueOf(consumption))[0]);
                         map.put("lastPrice",(int)intMap.get(String.valueOf(consumption))[1]);
-                        arrayList.add(buyrecordService.countPeopleByPrice(map));
+                        tempMap.put(String.valueOf(consumption), buyrecordService.countPeopleByPrice(map));
+                        arrayMapList.add(tempMap);
                     } catch (Exception e){
                         e.printStackTrace();
                     }
@@ -52,6 +55,15 @@ public class BuyRecordController {
             });
         }
         countDownLatch.await();
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        for (Integer consumption: consumptions){
+            for (Map map:arrayMapList){
+                if(map.containsKey(String.valueOf(consumption))){
+                    arrayList.add((Integer) map.get(String.valueOf(consumption)));
+                }
+            }
+        }
         return arrayList;
     }
 }

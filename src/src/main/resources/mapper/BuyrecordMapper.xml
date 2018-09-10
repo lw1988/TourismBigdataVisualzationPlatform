@@ -16,6 +16,6 @@
   </resultMap>
 
   <select id="countPeopleByPrice" resultType="int" parameterType="java.util.Map">
-    SELECT COUNT(buyCount) FROM buyrecord WHERE buy_price BETWEEN #{firstPrice} AND #{lastPrice};
+    SELECT SUM(buyCount) FROM buyrecord WHERE buy_price BETWEEN #{firstPrice} AND #{lastPrice};
   </select>
 </mapper>
