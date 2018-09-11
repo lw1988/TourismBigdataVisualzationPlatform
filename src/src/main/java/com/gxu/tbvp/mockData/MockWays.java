@@ -52,8 +52,8 @@ public class MockWays {
     @RequestMapping("/mockWays")
     public SelfJSONResult mockWays() throws InterruptedException {
         //线程数量
-        final CountDownLatch countDownLatch = new CountDownLatch(100);
-        for (int j = 0; j < 100; j++) {
+        final CountDownLatch countDownLatch = new CountDownLatch(10);
+        for (int j = 0; j < (int)countDownLatch.getCount(); j++) {
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
