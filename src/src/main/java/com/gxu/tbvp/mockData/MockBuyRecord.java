@@ -71,11 +71,11 @@ public class MockBuyRecord {
 
     @RequestMapping("/MockBuyRecord")
     public SelfJSONResult mockBuyRecord() throws InterruptedException {
-        final CountDownLatch countDownLatch = new CountDownLatch(100);
+        final CountDownLatch countDownLatch = new CountDownLatch(10);
         MockDate mockDate = new MockDate();
 
         int i = 0;
-        for (i = 0; i < 100; i++) {
+        for (i = 0; i < (int)countDownLatch.getCount(); i++) {
             List<Buyrecord> buyrecordList = new ArrayList<>();
             executor.execute(new Runnable() {
                 @Override
@@ -111,7 +111,7 @@ public class MockBuyRecord {
 
         }
         countDownLatch.await();
-        if (i == 20){
+        if (i == (int)countDownLatch.getCount()){
             return SelfJSONResult.ok("success");
         }else {
             return SelfJSONResult.errorMsg("插入失败");

@@ -141,18 +141,18 @@ public class MockUser {
     @RequestMapping("/mockUser")
     public SelfJSONResult insetBach() throws ParseException, InterruptedException {
         //线程数量
-        final CountDownLatch countDownLatch = new CountDownLatch(50);
+        final CountDownLatch countDownLatch = new CountDownLatch(10);
         MockDate mockDate = new MockDate();
         PasswordHelper passwordHelper = new PasswordHelper();
         CreateDate c = new CreateDate();
         int i = 0;
-        for (i = 0; i < 50; i++) {
+        for (i = 0; i < (int)countDownLatch.getCount(); i++) {
             List<User> userList = new ArrayList<>();
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        for (int j = 0; j < 20000; j++) {
+                        for (int j = 0; j < 10000; j++) {
                             int index = getNum(0, provinceId.length-1);
                             User user = new User();
                             String name = getChineseName();

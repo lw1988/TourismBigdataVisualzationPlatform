@@ -45,17 +45,18 @@ public class MockAccessRecord {
 
     @RequestMapping("/mockAccessRecord")
     public SelfJSONResult mockAccessRecord() throws ParseException, InterruptedException {
+        //设置线程数量
         final CountDownLatch countDownLatch = new CountDownLatch(10);
         MockDate mockDate = new MockDate();
 
         int i = 0;
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < (int)countDownLatch.getCount(); i++) {
             List<Accessrecord> accessrecordList = new ArrayList<>();
             executor.execute(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        for (int j = 0; j < 50000; j++) {
+                        for (int j = 0; j < 10000; j++) {
                             Accessrecord accessrecord = new Accessrecord();
                             accessrecord.setAccessproduceid(getProduceId());
                             accessrecord.setUserid(getUserId());
@@ -79,7 +80,7 @@ public class MockAccessRecord {
 
         }
         countDownLatch.await();
-        if (i == 10){
+        if (i == (int)countDownLatch.getCount()){
             return SelfJSONResult.ok("success");
         }else {
             return SelfJSONResult.errorMsg("插入失败");
