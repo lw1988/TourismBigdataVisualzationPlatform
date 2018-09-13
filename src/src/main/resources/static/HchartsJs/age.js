@@ -5,6 +5,7 @@ $(function () {
 			url:'userJson/getUserAge',
 			dateType:'json',
 			success:function (data) {
+                var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
                 var chart = Highcharts.chart('age', {
                     chart: {
                         type: 'pie',
@@ -15,6 +16,34 @@ $(function () {
                     },
                     title: {
                         text: null
+                    },
+                    exporting: {
+                        buttons: {
+                            contextButton: {
+                                // 自定义导出菜单项目及顺序
+                                menuItems: [
+                                    dafaultMenuItem[0],
+                                    dafaultMenuItem[1],
+                                    dafaultMenuItem[3],
+                                    dafaultMenuItem[5],
+                                    {
+                                        text: '下载 PDF 文件',
+                                        onclick: function() {
+                                            this.exportChart({
+                                                type: 'application/pdf'
+                                            });
+                                        }
+                                    },
+                                    {
+                                        text: '导出excel',
+                                        onclick: function() {
+                                            window.location.href= '/exportUserAge';
+                                        }
+                                    },
+
+                                ]
+                            }
+                        }
                     },
                     subtitle: {
                         // text: 'Highcharts 中的3D环形图'

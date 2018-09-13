@@ -60,6 +60,7 @@ $(function () {
             url:'ways/getWay',
             dataType:'json',
             success:function (data) {
+                var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
                 var chart = Highcharts.chart('travelMode', {
                     chart: {
                         type: 'pie',
@@ -73,6 +74,34 @@ $(function () {
                         '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
                     title: {
                         text: '游客出行方式统计'
+                    },
+                    exporting: {
+                        buttons: {
+                            contextButton: {
+                                // 自定义导出菜单项目及顺序
+                                menuItems: [
+                                    dafaultMenuItem[0],
+                                    dafaultMenuItem[1],
+                                    dafaultMenuItem[3],
+                                    dafaultMenuItem[5],
+                                    {
+                                        text: '下载 PDF 文件',
+                                        onclick: function() {
+                                            this.exportChart({
+                                                type: 'application/pdf'
+                                            });
+                                        }
+                                    },
+                                    {
+                                        text: '导出excel',
+                                        onclick: function() {
+                                            window.location.href= '/exportWays';
+                                        }
+                                    },
+
+                                ]
+                            }
+                        }
                     },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

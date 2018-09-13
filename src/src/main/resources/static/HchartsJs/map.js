@@ -6,9 +6,38 @@ $(function () {
             url:'userJson/getProvince',
             dataType:'json',
             success:function (data) {
+                var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
                 var map = new Highcharts.Map('map', {
                     title: {
                     text: '全国客源地热力图'
+                    },
+                    exporting: {
+                        buttons: {
+                            contextButton: {
+                                // 自定义导出菜单项目及顺序
+                                menuItems: [
+                                    dafaultMenuItem[0],
+                                    dafaultMenuItem[1],
+                                    dafaultMenuItem[3],
+                                    dafaultMenuItem[5],
+                                    {
+                                        text: '下载 PDF 文件',
+                                        onclick: function() {
+                                            this.exportChart({
+                                                type: 'application/pdf'
+                                            });
+                                        }
+                                    },
+                                    {
+                                        text: '导出excel',
+                                        onclick: function() {
+                                            window.location.href= '/exportProvince';
+                                        }
+                                    },
+
+                                ]
+                            }
+                        }
                     },
                     colorAxis: {
                         stops: [
@@ -28,6 +57,11 @@ $(function () {
                         mapData: Highcharts.maps['cn/china'],
                         joinBy: 'name' // 根据 name 属性进行关联
                         }],
+                    navigation: {
+                        buttonOptions: {
+                            align: 'right'
+                        }
+                    },
                 credits: {
                 enabled:false
         }
