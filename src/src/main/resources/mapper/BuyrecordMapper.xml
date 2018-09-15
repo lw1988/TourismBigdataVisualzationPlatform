@@ -18,4 +18,8 @@
   <select id="countPeopleByPrice" resultType="int" parameterType="java.util.Map">
     SELECT SUM(buyCount) FROM buyrecord WHERE buy_price BETWEEN #{firstPrice} AND #{lastPrice};
   </select>
+
+  <select id="getUserScenicBuyrecord" parameterType="int" resultType="com.gxu.tbvp.domain.Produce">
+    select * from buyRecord where buyproduceid = #{id} and userid = #{userId}
+  </select>
 </mapper>

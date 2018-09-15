@@ -17,4 +17,8 @@ public interface BuyrecordService extends IService<Buyrecord> {
     int updatePrice(List<Produce> produceList);
 
     int countPeopleByPrice(Map<String, Object> map);
+
+    List<Buyrecord> selectByscenicId(int scenicId);
+
+    List<Buyrecord> getUserScenicBuyrecord(int id, int userId);
 }

@@ -28,7 +28,7 @@
         <javaClientGenerator targetPackage="com.gxu.tbvp.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="produce"></table>
+        <table tableName="scenic_buyrecord"></table>
 
     </context>
 </generatorConfiguration>

@@ -20,4 +20,14 @@
   <select id="selectProducePrice" parameterType="int" resultType="double">
     select price from produce where produceId = #{produceId}
   </select>
+
+  <select id="selectByProdeceName" parameterType="java.util.HashMap" resultType="com.gxu.tbvp.domain.Produce">
+    select *
+    from produce
+    where title LIKE #{scenic}
+  </select>
+
+  <select id="selectAllScenicsId" resultType="int" >
+    select produceId from produce
+  </select>
 </mapper>

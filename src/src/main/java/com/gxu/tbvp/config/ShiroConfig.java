@@ -96,7 +96,9 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/mockAccessRecord", "anon");
         filterChainDefinitionMap.put("/changeProducePrice", "anon");
         filterChainDefinitionMap.put("/MockBuyRecord", "anon");
+        filterChainDefinitionMap.put("/mockScenicBuyRecord", "anon");
         //访问页面
+//        filterChainDefinitionMap.put("/recommendScenics", "anon");
         filterChainDefinitionMap.put("/test", "anon");
         filterChainDefinitionMap.put("/manager/addManager","anon");
         filterChainDefinitionMap.put("/visitors", "anon");

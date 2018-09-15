@@ -1,11 +1,13 @@
 package com.gxu.tbvp.service.serviceImpl;
 
+import com.github.pagehelper.util.StringUtil;
 import com.gxu.tbvp.domain.Buyrecord;
 import com.gxu.tbvp.domain.Produce;
 import com.gxu.tbvp.mapper.BuyrecordMapper;
 import com.gxu.tbvp.mapper.ProduceMapper;
 import com.gxu.tbvp.service.BuyrecordService;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -59,5 +61,25 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
     public int countPeopleByPrice(Map<String, Object> map) {
         int temp = buyrecordMapper.countPeopleByPrice(map);
         return temp;
+    }
+
+    @Override
+    public List<Buyrecord> selectByscenicId(int scenicId) {
+        Example example = new Example(Buyrecord.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("buyproduceid", scenicId);
+        List<Buyrecord> buyrecordList = buyrecordMapper.selectByExample(example);
+        return buyrecordList;
+    }
+
+    @Override
+    public List<Buyrecord> getUserScenicBuyrecord(int id, int userId) {
+        try {
+            List<Buyrecord> buyrecordList = buyrecordMapper.getUserScenicBuyrecord(id, userId);
+            return buyrecordList;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }
