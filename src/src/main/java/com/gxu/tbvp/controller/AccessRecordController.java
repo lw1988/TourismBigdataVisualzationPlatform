@@ -36,6 +36,7 @@ public class AccessRecordController {
         }
         for (String year : years ){
             ArrayList countList = new ArrayList();
+            Map map = new HashMap();
             for (String month : months){
                 String startTime = year+"-"+month+"-"+"01"+" 00:00:00";
                 String endTime = year+"-"+month+"-"+maps.get(month)+" 23:59:59";
@@ -47,6 +48,7 @@ public class AccessRecordController {
                         try {
                             int count = accessrecordService.selectAccessCountByTime(startTime,endTime);
                             countList.add(count);
+                            map.put(year+month,count);
                         } catch (Exception e){
                             e.printStackTrace();
                         }
@@ -54,6 +56,7 @@ public class AccessRecordController {
                     }
                 });
             }
+
             arrayList.add(countList);
 
         }

@@ -86,12 +86,41 @@
                 url:'accessRecord/getAccessCount',
                 dataType:'json',
                 success:function (data) {
+                    var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
                     var chart = Highcharts.chart('monthlyVisits', {
                         chart: {
                             type: 'line'
                         },
                         title: {
                             // text: '每月访问量'
+                        },
+                        exporting: {
+                            buttons: {
+                                contextButton: {
+                                    // 自定义导出菜单项目及顺序
+                                    menuItems: [
+                                        dafaultMenuItem[0],
+                                        dafaultMenuItem[1],
+                                        dafaultMenuItem[3],
+                                        dafaultMenuItem[5],
+                                        {
+                                            text: '下载 PDF 文件',
+                                            onclick: function() {
+                                                this.exportChart({
+                                                    type: 'application/pdf'
+                                                });
+                                            }
+                                        },
+                                        {
+                                            text: '导出excel',
+                                            onclick: function() {
+                                                window.location.href= '/exportAccessRecord';
+                                            }
+                                        },
+
+                                    ]
+                                }
+                            }
                         },
                         subtitle: {
                             // text: '数据来源: gxu.edu.cn'
