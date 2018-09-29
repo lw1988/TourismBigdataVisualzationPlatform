@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/buyRecord")
 public class BuyRecordController {
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
-    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(5, corePoolSize+1, 10l,
-                TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(1000));
+    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l,
+            TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(1000));
 
     @Resource
     private BuyrecordService buyrecordService;
@@ -59,7 +59,7 @@ public class BuyRecordController {
 
         for (Integer consumption: consumptions){
             for (Map map:arrayMapList){
-                if(map.containsKey(String.valueOf(consumption))){
+                if (map.get(consumption)!=null && map.containsKey(String.valueOf(consumption))){
                     arrayList.add((Integer) map.get(String.valueOf(consumption)));
                 }
             }

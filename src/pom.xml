@@ -114,9 +114,9 @@
 
         <!--&lt;!&ndash; spring-boot-devtools 实现热部署 &ndash;&gt;-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-devtools</artifactId>-->
-            <!--<optional>true</optional>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-devtools</artifactId>-->
+        <!--<optional>true</optional>-->
         <!--</dependency>-->
 
         <!-- shiro spring. -->
@@ -157,6 +157,11 @@
                     <groupId>org.apache.shiro</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
         </dependency>
     </dependencies>
 

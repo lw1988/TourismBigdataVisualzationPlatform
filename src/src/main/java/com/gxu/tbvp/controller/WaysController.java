@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/ways")
 public class WaysController {
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
-    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(5, corePoolSize+1, 101, TimeUnit.SECONDS,
+    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 101, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>(1000));
     LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue<Runnable>) executor.getQueue();
 
