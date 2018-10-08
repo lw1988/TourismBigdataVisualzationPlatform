@@ -73,7 +73,7 @@ public class MockScenicBuyRecord {
     @RequestMapping("/mockScenicBuyRecord")
     public SelfJSONResult mockBuyRecord() throws InterruptedException {
         //设置线程数量
-        final int threadSize = 10;
+        final int threadSize = 1;
         final CountDownLatch countDownLatch = new CountDownLatch(threadSize);
         MockDate mockDate = new MockDate();
 
@@ -83,7 +83,7 @@ public class MockScenicBuyRecord {
                 @Override
                 public void run() {
                     try {
-                        for (int j = 0; j < 1000; j++) {
+                        for (int j = 0; j < 10000; j++) {
                             ScenicBuyrecord scenicBuyrecord = new ScenicBuyrecord();
                             scenicBuyrecord.setUserid(getNum(0, 1000));
                             int index = getNum(0, 99);
