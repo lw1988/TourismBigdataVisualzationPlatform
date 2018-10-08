@@ -97,9 +97,6 @@ public class MockScenicBuyRecord {
                             scenicBuyrecordList.add(scenicBuyrecord);
                         }
                         int temp = scenicBuyrecordService.insertList(scenicBuyrecordList);
-                        /*if (temp == 1){
-                            System.out.println(countDownLatch);
-                        }*/
                     }catch (Exception e){
                         e.printStackTrace();
                     }
