@@ -9,24 +9,22 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 @RestController
-@RequestMapping("/buyRecord")
+@RequestMapping("buyRecord")
 public class BuyRecordController {
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
-    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l,
-            TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(1000));
+    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize + 1, 101, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<Runnable>(1000));
+    LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue<Runnable>) executor.getQueue();
 
     @Resource
     private BuyrecordService buyrecordService;
 
     @RequestMapping("/getConsumption")
     public ArrayList<Integer> getConsumption() throws InterruptedException {
-        CountDownLatch countDownLatch = new CountDownLatch(10);
+        final CountDownLatch countDownLatch = new CountDownLatch(10);
         int[] consumptions = {0,200,300,500,800,1000,2000,3000,4000,5000};
         Map<String, int[]> intMap = new HashMap<>();
         for (int i = 0; i < consumptions.length-1 ; i++) {
@@ -46,6 +44,7 @@ public class BuyRecordController {
                         map.put("firstPrice",(int)intMap.get(String.valueOf(consumption))[0]);
                         map.put("lastPrice",(int)intMap.get(String.valueOf(consumption))[1]);
                         tempMap.put(String.valueOf(consumption), buyrecordService.countPeopleByPrice(map));
+                        System.out.println(tempMap);
                         arrayMapList.add(tempMap);
                     } catch (Exception e){
                         e.printStackTrace();
@@ -59,8 +58,8 @@ public class BuyRecordController {
 
         for (Integer consumption: consumptions){
             for (Map map:arrayMapList){
-                if (map.get(consumption)!=null && map.containsKey(String.valueOf(consumption))){
-                    arrayList.add((Integer) map.get(String.valueOf(consumption)));
+                if (map.containsKey(String.valueOf(consumption))){//map.get(consumption)!=null &&
+                    arrayList.add((Integer)map.get(String.valueOf(consumption)));
                 }
             }
         }

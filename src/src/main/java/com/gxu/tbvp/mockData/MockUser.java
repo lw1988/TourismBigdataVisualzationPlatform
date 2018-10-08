@@ -22,8 +22,9 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class MockUser {
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
-    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l, TimeUnit.SECONDS,
+    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize + 1, 101, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>(1000));
+    LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue<Runnable>) executor.getQueue();
 
     @Resource
     private UserService userService;
@@ -140,8 +141,9 @@ public class MockUser {
 
     @RequestMapping("/mockUser")
     public SelfJSONResult insetBach() throws ParseException, InterruptedException {
-        //线程数量
-        final CountDownLatch countDownLatch = new CountDownLatch(10);
+        //设置线程数量
+        final int threadSize = 10;
+        final CountDownLatch countDownLatch = new CountDownLatch(threadSize);
         MockDate mockDate = new MockDate();
         PasswordHelper passwordHelper = new PasswordHelper();
         CreateDate c = new CreateDate();
@@ -181,7 +183,11 @@ public class MockUser {
 
         }
         countDownLatch.await();
-        return SelfJSONResult.ok("success");
+        if (0 == (int)countDownLatch.getCount()){
+            return SelfJSONResult.ok("success");
+        }else {
+            return SelfJSONResult.errorMsg("插入失败");
+        }
     }
 
     public static void main(String args[]) throws ParseException {

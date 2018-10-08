@@ -15,8 +15,9 @@ import java.util.concurrent.*;
 @RestController
 public class MockWays {
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
-    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize +1,
-            10l, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(1000));
+    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize + 1, 101, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<Runnable>(1000));
+    LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue<Runnable>) executor.getQueue();
 
     @Resource
     private WaysService waysService;
@@ -52,7 +53,8 @@ public class MockWays {
     @RequestMapping("/mockWays")
     public SelfJSONResult mockWays() throws InterruptedException {
         //线程数量
-        final CountDownLatch countDownLatch = new CountDownLatch(10);
+        final int threadSize = 10;
+        final CountDownLatch countDownLatch = new CountDownLatch(threadSize);
         for (int j = 0; j < (int)countDownLatch.getCount(); j++) {
             executor.execute(new Runnable() {
                 @Override
@@ -88,6 +90,10 @@ public class MockWays {
             });
         }
         countDownLatch.await();
-        return SelfJSONResult.ok("success");
+        if (0 == (int)countDownLatch.getCount()){
+            return SelfJSONResult.ok("success");
+        }else {
+            return SelfJSONResult.errorMsg("插入失败");
+        }
     }
 }

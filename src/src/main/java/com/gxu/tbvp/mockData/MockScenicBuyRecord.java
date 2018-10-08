@@ -21,8 +21,9 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class MockScenicBuyRecord {
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
-    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l, TimeUnit.SECONDS,
+    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize + 1, 101, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>(1000));
+    LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue<Runnable>) executor.getQueue();
 
     @Resource
     private ScenicBuyrecordService scenicBuyrecordService;
@@ -71,7 +72,9 @@ public class MockScenicBuyRecord {
 
     @RequestMapping("/mockScenicBuyRecord")
     public SelfJSONResult mockBuyRecord() throws InterruptedException {
-        final CountDownLatch countDownLatch = new CountDownLatch(10);
+        //设置线程数量
+        final int threadSize = 10;
+        final CountDownLatch countDownLatch = new CountDownLatch(threadSize);
         MockDate mockDate = new MockDate();
 
         for (int i = 0; i < (int)countDownLatch.getCount(); i++) {
@@ -80,7 +83,7 @@ public class MockScenicBuyRecord {
                 @Override
                 public void run() {
                     try {
-                        for (int j = 0; j < 1000; j++) {
+                        for (int j = 0; j < 10000; j++) {
                             ScenicBuyrecord scenicBuyrecord = new ScenicBuyrecord();
                             scenicBuyrecord.setUserid(getNum(0, 1000));
                             int index = getNum(0, 99);
@@ -106,6 +109,10 @@ public class MockScenicBuyRecord {
 
         }
         countDownLatch.await();
-        return SelfJSONResult.ok("success");
+        if (0 == (int)countDownLatch.getCount()){
+            return SelfJSONResult.ok("success");
+        }else {
+            return SelfJSONResult.errorMsg("插入失败");
+        }
     }
 }

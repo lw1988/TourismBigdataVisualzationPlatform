@@ -2,7 +2,7 @@ $(function () {
 	$(document).ready(function () {
 		$.ajax({
 			type:'POST',
-			url:'/buyRecord/getConsumption',
+			url:'buyRecord/getConsumption',
 			dataType:'json',
 			success:function (data) {
                 var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
