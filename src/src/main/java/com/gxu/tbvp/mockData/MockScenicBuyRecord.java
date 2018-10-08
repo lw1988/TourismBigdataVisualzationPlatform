@@ -83,7 +83,7 @@ public class MockScenicBuyRecord {
                 @Override
                 public void run() {
                     try {
-                        for (int j = 0; j < 10000; j++) {
+                        for (int j = 0; j < 1000; j++) {
                             ScenicBuyrecord scenicBuyrecord = new ScenicBuyrecord();
                             scenicBuyrecord.setUserid(getNum(0, 1000));
                             int index = getNum(0, 99);
