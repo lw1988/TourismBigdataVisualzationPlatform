@@ -160,7 +160,7 @@ public class MockUser {
                             String name = getChineseName();
                             int index1 = c.createRandom();
                             user.setUsername(name);
-                            user.setAddressid(provinceId[index1]);
+                            user.setAddressid(getNum(0,34));
                             user.setPassword(getPassword(10));
                             user.setName(name);
                             user.setPhone(getTel());
@@ -169,6 +169,7 @@ public class MockUser {
                             user.setAge(getAge());
                             user.setEnable(1);
                             user.setProvince(province[index1]);
+                            user.setOccupation(getNum(0,20));
                             passwordHelper.encryptPassword(user);
                             userList.add(user);
                         }

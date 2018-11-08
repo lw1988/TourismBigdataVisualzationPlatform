@@ -1,6 +1,7 @@
 package com.gxu.tbvp.service;
 
 import com.github.pagehelper.PageInfo;
+import com.gxu.tbvp.domain.Ratings;
 import com.gxu.tbvp.domain.User;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface UserService extends IService<User>{
     void autoIncrement();
 
     int countAge(Map<String, Object> ageMap);
+
+    void insertBachRatings(List<Ratings> ratingsList);
 }
