@@ -3,8 +3,10 @@ package com.gxu.tbvp.service.serviceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.util.StringUtil;
+import com.gxu.tbvp.domain.Ratings;
 import com.gxu.tbvp.domain.User;
 import com.gxu.tbvp.domain.UserRole;
+import com.gxu.tbvp.mapper.RatingsMapper;
 import com.gxu.tbvp.mapper.UserMapper;
 import com.gxu.tbvp.mapper.UserRoleMapper;
 import com.gxu.tbvp.service.UserService;
@@ -25,6 +27,9 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
     @Resource
     private UserRoleMapper userRoleMapper;
+
+    @Resource
+    private RatingsMapper ratingsMapper;
 
     @Override
     public PageInfo<User> selectByPage(User user, int start, int length) {
@@ -104,5 +109,10 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
     public int countAge(Map<String, Object> ageMap) {
         int count = userMapper.countAge(ageMap);
         return count;
+    }
+
+    @Override
+    public void insertBachRatings(List<Ratings> ratingsList) {
+        ratingsMapper.insertList(ratingsList);
     }
 }

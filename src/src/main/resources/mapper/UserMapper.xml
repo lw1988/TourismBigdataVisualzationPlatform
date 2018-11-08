@@ -18,8 +18,8 @@
     <result column="idCard" jdbcType="VARCHAR" property="idcard" />
     <result column="enable" jdbcType="INTEGER" property="enable" />
     <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="occupation" jdbcType="INTEGER" property="occupation" />
   </resultMap>
-
   <!--<insert id="insertBatch" parameterType="List">
     INSERT INTO TStudent(name,age)
     <foreach collection="list" item="item" index="index" open="(" close=")" separator="union all">
@@ -30,7 +30,7 @@
     ALTER TABLE `user` AUTO_INCREMENT 0000000;
   </update>
 
-  <select id="countAge" resultType="int" parameterType="java.util.HashMap">
+  <select id="countAge" parameterType="java.util.HashMap" resultType="int">
     SELECT SUM(age) FROM `user` where age between #{firstAge} and #{lastAge};
   </select>
 
