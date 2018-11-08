@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | 登录</title>
+  <title>旅游大数据可视化 | 登录</title>
   <!-- 告诉浏览器该页面是自适应布局 -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
+  <!-- Bootstrap 3.3.7  -->
   <link rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
   <!-- Font Awesome -->
   <link rel="stylesheet" th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
@@ -17,6 +17,15 @@
   <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}">
   <!-- iCheck -->
   <link rel="stylesheet" th:href="@{/plugins/iCheck/square/blue.css}">
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" th:href="@{/dist/css/reset.css}">
+  <link rel="stylesheet" th:href="@{/dist/css/supersized.css}">
+  <link rel="stylesheet" th:href="@{/dist/css/style.css}">
+
+
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- 警告：Respond.js 不支持 file:// 方式查看（即本地方式查看）-->
@@ -28,56 +37,78 @@
   <!-- Google Font -->
   <!--<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic}">-->
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page page-container background_img">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="../../index2.html" style="color:#fff"><b style="color:#fff">Login </b>| GUX</a>
   </div>
   <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">帐户登录</p>
+  <div class="login-box-body" >
+    <!--  <p class="login-box-msg" style="color:#fff">帐户登录</p>   -->
     <span th:text="${msg}" style="color: #9f191f"></span>
     <form th:action="@{/login}" method="post">
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" name="Username" placeholder="用户名">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      <div class="form-group has-feedback" >
+        <input type="text"  name="Username" placeholder="用户名" style="font-size: 14px;color: #fff;text-shadow: 0 1px 2px rgba(0,0,0,.1);">
+        <!--邮箱图标
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>    -->
       </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control"  name="password" placeholder="密码">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      <div class="form-group has-feedback" >
+        <input type="password" name="password" placeholder="密码">
+        <!--锁图标
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>      -->
       </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> 记住我
+        <div class="col-xs-4">
+          <div class="checkbox icheck "style="left:20%;">
+            <input type="checkbox" ><!--    -->
+            <label style="color:#fff;" ><!--   -->
+              记住我
             </label>
           </div>
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+        <div >
+          <button type="submit" >登录</button>
         </div>
         <!-- /.col -->
       </div>
+
+
+
+
     </form>
 
-    <div class="social-auth-links text-center">
-      <p>- 或者 -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> 使用
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> 使用
-        Google+</a>
+
+
+    <div class="connect">
+      <p style="color:#fff">————或者————</p>
+      <p>
+        <a th:href="@{#}" class="facebook" href=""></a>
+        <a th:href="@{#}" class="twitter" href=""></a>
+      </p>
     </div>
+
+
+
+
     <!-- /.social-auth-links -->
 
-    <a href="#">忘记密码？</a><br>
-    <a th:href="@{/manager/addManager}" class="text-center" >注册新会员</a>
+    <a th:href="@{#}" style="color:#fff">忘记密码？</a><br>
+    <a th:href="@{/manager/addManager}" class="text-center" style="color:#fff">注册新会员</a>
 
   </div>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
+<!-- Javascript -->
+<script th:src="@{/dist/js/jquery-1.8.2.min.js}"></script>
+<script th:src="@{/dist/js/supersized.3.2.7.min.js}"></script>
+<script th:src="@{/dist/js/supersized-init.js}"></script>
+<script th:src="@{/dist/js/scripts.js}"></script>
+
+
+
 
 <!-- jQuery 3 -->
 <script th:src="@{/bower_components/jquery/dist/jquery.js}"></script>
@@ -86,13 +117,13 @@
 <!-- iCheck -->
 <script th:src="@{/plugins/iCheck/icheck.min.js}"></script>
 <script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+        });
     });
-  });
 </script>
 </body>
 </html>

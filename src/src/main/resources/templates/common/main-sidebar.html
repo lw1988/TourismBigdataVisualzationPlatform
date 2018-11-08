@@ -1,4 +1,4 @@
-<div th:fragment="main-sidebar">
+<div th:fragment="main-sidebar" xmlns:th="http://www.w3.org/1999/xhtml">
     <aside class="main-sidebar">
 
         <!-- sidebar: style can be found in sidebar.less -->
@@ -43,7 +43,7 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">关键词推荐</a></li>
+                        <li><a th:href="@{/keywords}">关键词推荐</a></li>
                         <li><a href="#">链接2</a></li>
                     </ul>
                 </li>

@@ -57,6 +57,25 @@ public class HomeController {
         return "manager/managers";
     }
 
+    //更多信息（多个列表）
+    @RequestMapping(value={"/list"})
+    public String list(){
+        return "list";
+    }
+
+    //更多信息（单个列表）
+    @RequestMapping(value={"/morelist"})
+    public String morelist(){
+        return "morelist";
+    }
+
+    //关键词分析
+    @RequestMapping(value="/keywords", method = RequestMethod.GET)
+    public String keywords(){
+        return "keywords";
+    }
+
+
     //用户大数据
     @RequestMapping(value = "/visitors", method = RequestMethod.GET)
     public String visitors(){
