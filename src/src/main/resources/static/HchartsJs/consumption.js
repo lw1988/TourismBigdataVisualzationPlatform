@@ -1,10 +1,10 @@
 $(function () {
-	$(document).ready(function () {
-		$.ajax({
-			type:'POST',
-			url:'buyRecord/getConsumption',
-			dataType:'json',
-			success:function (data) {
+    $(document).ready(function () {
+        $.ajax({
+            type:'POST',
+            url:'buyRecord/getConsumption',
+            dataType:'json',
+            success:function (data) {
                 var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
                 var chart = Highcharts.chart('consumption',{
                     chart: {
@@ -83,13 +83,13 @@ $(function () {
                     series: [{
                         name: '人数(千)',
                         data: data
-							// [2, 3, null, 4, 0, 5, 1, 4, 6, 3,10,2],
+                        // [2, 3, null, 4, 0, 5, 1, 4, 6, 3,10,2],
                     }]
                 });
             },
-			error:function(e){
-				// alert(e);
-			}
-		});
+            error:function(e){
+                // alert(e);
+            }
+        });
     })
 })

@@ -9,7 +9,7 @@ $(function () {
                 var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
                 var map = new Highcharts.Map('map', {
                     title: {
-                    text: '全国客源地热力图'
+                        text: '全国客源地热力图'
                     },
                     exporting: {
                         buttons: {
@@ -45,27 +45,27 @@ $(function () {
                             [0.1, '#fffbbc'],
                             [0.3, '#c46732'],
                             [0.5, '#c4463a']
-                                            ],
+                        ],
                         min: 0,
                         max: 100000,
                         // minColor: 'rgb(255,255,255)',
                         // maxColor: '#d94e5d'
-                                },
+                    },
                     series: [{
                         data: data,
                         name: '游客人数',
                         mapData: Highcharts.maps['cn/china'],
                         joinBy: 'name' // 根据 name 属性进行关联
-                        }],
+                    }],
                     navigation: {
                         buttonOptions: {
                             align: 'right'
                         }
                     },
-                credits: {
-                enabled:false
-        }
-        });
+                    credits: {
+                        enabled:false
+                    }
+                });
             },
             error:function(e){
                 // alert(e);

@@ -1,10 +1,10 @@
 $(function () {
-	$(document).ready(function () {
+    $(document).ready(function () {
         $.ajax({
-			type:'GET',
-			url:'userJson/getUserAge',
-			dateType:'json',
-			success:function (data) {
+            type:'GET',
+            url:'userJson/getUserAge',
+            dateType:'json',
+            success:function (data) {
                 var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
                 var chart = Highcharts.chart('age', {
                     chart: {
@@ -114,9 +114,9 @@ $(function () {
                     }
                 });
             },
-			error:function (e) {
-				// alert(e);
+            error:function (e) {
+                // alert(e);
             }
-		});
+        });
     })
 })
