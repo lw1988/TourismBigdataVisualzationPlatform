@@ -75,6 +75,11 @@ public class HomeController {
         return "keywords";
     }
 
+    //搜索结果分析
+    @RequestMapping(value="/searchResult", method = RequestMethod.GET)
+    public String searchResult(){
+        return "searchResult";
+    }
 
     //用户大数据
     @RequestMapping(value = "/visitors", method = RequestMethod.GET)
