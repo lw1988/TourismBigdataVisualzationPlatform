@@ -4,7 +4,7 @@ var myChart = echarts.init($('#relationship').get(0));
 //myChart.showLoading();
 //myChart.showLoading();
 //myChart.showLoading();
-$.getJSON('HchartsJS/data/npmdepgraph.min10.json', function (json) {
+$.getJSON('HchartsJs/data/npmdepgraph.min10.json', function (json) {
     myChart.hideLoading();
     myChart.setOption(option = {
         title: {
