@@ -25,6 +25,9 @@ var chart = Highcharts.chart('weekVisits', {
 			}
 		}
 	},
+    title: {
+        text: null
+    },
 	title: {
 		text: '实时访问量'
 	},

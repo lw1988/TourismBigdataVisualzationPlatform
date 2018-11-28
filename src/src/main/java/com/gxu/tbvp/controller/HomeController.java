@@ -75,6 +75,18 @@ public class HomeController {
         return "keywords";
     }
 
+    //组合路线推荐
+    @RequestMapping("/allroutes")
+    public String allRoutes(){
+        return "combine_route/allroutes";
+    }
+
+    //组合路线推荐内景点分析
+    @RequestMapping("/routeScenic")
+    public String routeScenic(){
+        return "combine_route/routeScenic";
+    }
+
     //搜索结果分析
     @RequestMapping(value="/searchResult", method = RequestMethod.GET)
     public String searchResult(){
@@ -112,4 +124,9 @@ public class HomeController {
         return "403";
     }
 
+    //旅游指数
+    @RequestMapping(value="/zhishu", method = RequestMethod.GET)
+    public String zhishu(){
+        return "zhishu";
+    }
 }
