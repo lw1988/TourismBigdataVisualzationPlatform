@@ -128,5 +128,6 @@ public class HomeController {
     @RequestMapping(value="/zhishu", method = RequestMethod.GET)
     public String zhishu(){
         return "zhishu";
+        
     }
 }
