@@ -18,7 +18,7 @@ var chart = Highcharts.chart('weekVisits', {
 				activeLastPointToolip(chart);
 				setInterval(function () {
 					var x = (new Date()).getTime(), // 当前时间
-						y = Math.random();          // 随机值
+						y = parseInt(Math.ceil(Math.random()*100) +7);          // 随机值
 					series.addPoint([x, y], true, true);
 					activeLastPointToolip(chart);
 				}, 1000);
@@ -51,7 +51,7 @@ var chart = Highcharts.chart('weekVisits', {
 		enabled: false
 	},
 	series: [{
-		name: '随机数据',
+		name: '访问人数',
 		data: (function () {
 			// 生成随机值
 			var data = [],
@@ -60,7 +60,7 @@ var chart = Highcharts.chart('weekVisits', {
 			for (i = -19; i <= 0; i += 1) {
 				data.push({
 					x: time + i * 1000,
-					y: Math.random()
+					y: parseInt(Math.ceil(Math.random()*100) +7)
 				});
 			}
 			return data;

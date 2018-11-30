@@ -125,9 +125,9 @@ public class HomeController {
     }
 
     //旅游指数
-    @RequestMapping(value="/zhishu", method = RequestMethod.GET)
+    @RequestMapping(value="/tourismIndex", method = RequestMethod.GET)
     public String zhishu(){
-        return "zhishu";
-
+        return "tourismIndex";
     }
+
 }

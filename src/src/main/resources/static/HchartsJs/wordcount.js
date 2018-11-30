@@ -23,6 +23,9 @@ $(function () {
         title: {
             text: null
         },
+        credits: {
+            enabled:false
+        },
         series: [{
             type: 'wordcloud',
             data: data,
