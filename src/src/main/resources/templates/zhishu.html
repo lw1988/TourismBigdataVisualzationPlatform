@@ -31,7 +31,6 @@
 
     <!--style.css-->
     <link rel="stylesheet" href="commitSystem/assets/css/style.css" />
-    <link rel="stylesheet" href="selfCSS/ie10-viewport-bug-workaround.cs" />
 
     <!-- HTML5 Shim and Respond.js} IE8 support of HTML5 elements and media queries -->
     <!-- 警告：Respond.js} 不支持 file:// 方式查看（即本地方式查看）-->
@@ -44,6 +43,26 @@
     引用顺序是在功能模块之前。 -->
 
 </head>
+<!--
+BODY 标签选项：
+=================
+使用下面一个或多个类来
+获得所需效果
+|---------------------------------------------------------|
+| 皮 肤         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|布局选项       | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -224,26 +243,16 @@
 <script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
 <!-- AdminLTE App -->
 <script th:src="@{/dist/js/adminlte.min.js}"></script>
-<!-- jQuery 3 -->
-<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
-<!-- AdminLTE App -->
-<script th:src="@{/dist/js/adminlte.min.js}"></script>
+
 
 <script th:src="@{/bower_components/Highcharts-6.1.1/code/highcharts.js}"></script>
-<!-- Highmaps 引入 -->
-<script th:src="@{/bower_components/Highmaps-6.1.1/code/modules/map.js}"></script>
-<!-- 中国地图 -->
-<script th:src="@{https://data.jianshukeji.com/geochina/china.js}"></script>
 <!-- 3D -->
 <script th:src="@{/bower_components/Highcharts-6.1.1/code/highcharts-3d.js}"></script>
 <!-- 启用导出功能 -->
 <script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/exporting.js}"></script>
 <!-- 向下钻功能 -->
-<script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/drilldown.js}"></script>
 <script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/oldie.js}"></script>
-<script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/wordcloud.js}"></script>s
+<script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/wordcloud.js}"></script>
 <!-- 汉化 -->
 <script th:src="@{https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js}"></script>
 <script th:src="@{https://code.highcharts.com/modules/data.js}"></script>
