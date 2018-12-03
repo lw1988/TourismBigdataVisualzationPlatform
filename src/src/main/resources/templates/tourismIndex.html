@@ -30,8 +30,10 @@
     <!--<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />-->
 
     <!--style.css-->
-    <link rel="stylesheet" href="commitSystem/assets/css/style.css" />
-    <link rel="stylesheet" href="selfCSS/ie10-viewport-bug-workaround.css">
+    <link rel="stylesheet" th:href="@{/commitSystem/assets/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/selfCSS/ie10-viewport-bug-workaround.css}">
+    <link rel="stylesheet" th:href="@{/selfCSS/toplist.css}">
+
 
     <!-- HTML5 Shim and Respond.js} IE8 support of HTML5 elements and media queries -->
     <!-- 警告：Respond.js} 不支持 file:// 方式查看（即本地方式查看）-->
@@ -106,16 +108,44 @@ BODY 标签选项：
         <section class="content container-fluid">
             <div class="header clearfix" style="padding-bottom: 10px;">
                 <nav>
-                    <ul class="nav nav-pills pull-right">
-                        <li role="presentation"><a href="#">趋势研究</a></li>
-                        <li role="presentation" class="active"><a href="#">需求图谱</a></li>
-                        <li role="presentation"><a href="#">人群画像</a></li>
+                    <ul class="nav nav-pills pull-right listIndex">
+                        <li role="presentation"><a >趋势研究</a></li>
+                        <li role="presentation" class="active"><a >需求图谱</a></li>
+                        <li role="presentation"><a>人群画像</a></li>
                     </ul>
                 </nav>
                 <h3 class="text-muted">旅游指数</h3>
             </div>
-            <!-- 客源分析 -->
-            <div class="row">
+
+
+            <!-- 趋势研究 -->
+            <div class="row listDiv" style="display: none;">
+                <div class="col-md-12">
+                    <div class="box box-info">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">趋势研究</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12 center-block">
+                                    <div id="searchIndex" style=" min-height: 500px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-6 -->
+            </div>
+
+            <!-- 需求图谱 -->
+            <div class="row listDiv" style="display: block;">
                 <div class="col-md-12">
                     <div class="box box-info">
 
@@ -139,9 +169,89 @@ BODY 标签选项：
                         <!-- ./box-body -->
                     </div>
                 </div>
-
                 <!-- ./col-md-6 -->
             </div>
+
+            <!-- 人群画像 -->
+            <div class="row listDiv" style="display: none;">
+                <div class="col-md-12">
+                    <div class="box box-info">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">人群画像</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div id="map" style=" min-height: 500px; margin: 0 auto"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="fl mr20 MDrowLi">
+
+                                        <div class="TMainhead mb10"><h3 style="float: right">top10</h3>
+                                            <!-- <a href="http://rank.chinaz.com/v3.bootcss.com" target="_blank" class="TMainhead-more fr mt5">查看更多&gt;</a> -->
+                                        </div>
+                                        <div class="MdkeysWrap">
+
+                                            <ul>
+                                                <li class="ListHead"><span class="Lnone">省份</span><span>指数</span><span>排名</span></li>
+                                                <li><span class="Lnone">黑龙江</span><span>1.06万</span><span>1</span></li>
+                                                <li><span class="Lnone">广东</span><span>992</span><span>2</span></li>
+                                                <li><span class="Lnone">广西</span><span>568</span><span>3</span></li>
+                                                <li><span class="Lnone">云南</span><span>356</span><span>4</span></li>
+                                                <li><span class="Lnone">浙江</span><span>223</span><span>5</span></li>
+                                                <li><span class="Lnone">上海</span><span>119</span><span>6</span></li>
+                                                <li><span class="Lnone">江西</span><span>80</span><span>7</span></li>
+                                                <li><span class="Lnone">甘肃</span><span>45</span><span>8</span></li>
+                                                <li><span class="Lnone">河南</span><span>31</span><span>9</span></li>
+                                                <li><span class="Lnone">云南</span><span>11</span><span>10</span></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-12 -->
+
+                <div class="col-md-12">
+                    <div class="box box-warning">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">人群画像</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div id="sex" style=" min-height: 400px; margin: 0 auto"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="worker" style=" min-height: 400px; margin: 0 auto"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="age" style=" min-height: 400px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-12 -->
+            </div>
+
         </section>
 
     </div>
@@ -240,11 +350,17 @@ BODY 标签选项：
 
 <!-- jQuery 3 -->
 <script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/bower_components/Highstok-6.1.1/code/highstock.js}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
 <!-- AdminLTE App -->
 <script th:src="@{/dist/js/adminlte.min.js}"></script>
 
+
+<!-- Highmaps 引入 -->
+<script th:src="@{/bower_components/Highmaps-6.1.1/code/modules/map.js}"></script>
+<!-- 中国地图 -->
+<script th:src="@{https://data.jianshukeji.com/geochina/china.js}"></script>
 
 <script th:src="@{/bower_components/Highcharts-6.1.1/code/highcharts.js}"></script>
 <!-- 3D -->
@@ -254,11 +370,31 @@ BODY 标签选项：
 <!-- 向下钻功能 -->
 <script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/oldie.js}"></script>
 <script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/wordcloud.js}"></script>
+
+<!--stock-->
+<script th:src="@{/bower_components/Highstok-6.1.1/highstock.js}"></script>
+
 <!-- 汉化 -->
 <script th:src="@{https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js}"></script>
 <script th:src="@{https://code.highcharts.com/modules/data.js}"></script>
 
+<!-- Hchart 图表 -->
+<script th:src="@{HchartsJs/sex.js}"></script>
+<script th:src="@{HchartsJs/age.js}"></script>
+<script th:src="@{HchartsJs/worker.js}"></script>
 <script th:src="@{/HchartsJs/wordcount.js}"></script>
+<script th:src="@{/HchartsJs/searchIndex.js}"></script>
+<script th:src="@{/HchartsJs/map.js}"></script>
+
+<script type="text/javascript">
+    $("ul.listIndex li").click(function(){
+        $("ul.listIndex li").removeClass("active");
+        $(this).addClass("active");
+        $("div.listDiv").css("display","none");
+        $("div.listDiv").eq($(this).index()).css("display","block");
+    })
+</script>
+
 
 </body>
 </html>
