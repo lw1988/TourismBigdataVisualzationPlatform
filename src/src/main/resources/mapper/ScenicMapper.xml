@@ -7,7 +7,7 @@
     -->
     <result column="id" property="id" jdbcType="INTEGER" />
     <result column="scenic" property="scenic" jdbcType="VARCHAR" />
-    <result column="provice" property="provice" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
   </resultMap>
 
   <select id="selectAllScenicsId" resultType="int" >

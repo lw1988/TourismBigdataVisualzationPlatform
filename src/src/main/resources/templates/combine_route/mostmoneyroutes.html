@@ -31,6 +31,7 @@
 
     <!--style.css-->
     <link rel="stylesheet" href="commitSystem/assets/css/style.css" />
+    <link rel="stylesheet" href="selfCSS/ie10-viewport-bug-workaround.css">
 
     <!-- HTML5 Shim and Respond.js} IE8 support of HTML5 elements and media queries -->
     <!-- 警告：Respond.js} 不支持 file:// 方式查看（即本地方式查看）-->
@@ -39,6 +40,17 @@
     <script th:src="@{https://oss.maxcdn.com/respond/1.4.2/respond.min.js}"></script>
     <![endif]-->
 
+    <style>.highcharts-axis-resizer {
+        stroke: #eee;
+    }
+    .highcharts-axis-resizer:hover {
+        stroke: #ccc;
+    }</style>
+    <script src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+    <script src="https://img.hcharts.cn/highstock/highstock.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/drag-panes.js"></script>
     <!-- HighCharts引入 唯一需要注意的是保证 highcharts.js} 的
     引用顺序是在功能模块之前。 -->
 
@@ -78,7 +90,7 @@ BODY 标签选项：
             <div class="container">
                 <div class="subscribe-title text-center">
                     <h2>
-                        竭诚为您提供最精确的推荐
+                        组合路线推荐
                     </h2>
                     <p>
                         旅行从这里开始
@@ -100,110 +112,120 @@ BODY 标签选项：
             </div>
 
         </section>
-        <section id="gallery" class="gallery">
-            <div class="container">
-                <div class="gallery-details">
-                    <div class="gallary-header text-center">
-                        <h2>
-                            为您推荐
-                        </h2>
-                        <p>
-                            根据您的喜好为您提供
-                        </p>
-                    </div><!--/.gallery-header-->
-                    <div class="gallery-box">
-                        <div class="gallery-content">
-                            <div class="filtr-container">
-                                <div class="row">
 
-                                    <div class="col-md-6">
-                                        <div class="filtr-item">
-                                            <img src="commitSystem/assets/images/gallary/g1.jpg"
-                                                 alt="portfolio image">
-                                            <div class="item-title">
-                                                <a href="#">
-                                                    china
-                                                </a>
-                                                <p><span>20 tours</span><span>15 places</span></p>
-                                            </div><!-- /.item-title -->
-                                        </div><!-- /.filtr-item -->
-                                    </div><!-- /.col -->
+        <!--指数分析-->
+        <section class="content container-fluid">
+            <div class="header clearfix" style="padding-bottom: 10px;">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation"><a th:href="@{/allroutes}">热门路线组合</a></li>
+                        <li role="presentation" class="active"><a href="#">盈利路线组合</a></li>
 
-                                    <div class="col-md-6">
-                                        <div class="filtr-item">
-                                            <img src="commitSystem/assets/images/gallary/g2.jpg"
-                                                 alt="portfolio image">
-                                            <div class="item-title">
-                                                <a href="#">
-                                                    venuzuala
-                                                </a>
-                                                <p><span>12 tours</span><span>9 places</span></p>
-                                            </div> <!-- /.item-title-->
-                                        </div><!-- /.filtr-item -->
-                                    </div><!-- /.col -->
+                    </ul>
+                </nav>
+                <h3 class="text-muted">盈利路线组合</h3>
+            </div>
+            <!-- 客源分析 -->
 
-                                    <div class="col-md-4">
-                                        <div class="filtr-item">
-                                            <img src="commitSystem/assets/images/gallary/g3.jpg"
-                                                 alt="portfolio image">
-                                            <div class="item-title">
-                                                <a href="#">
-                                                    brazil
-                                                </a>
-                                                <p><span>25 tours</span><span>10 places</span></p>
-                                            </div><!-- /.item-title -->
-                                        </div><!-- /.filtr-item -->
-                                    </div><!-- /.col -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-info">
 
-                                    <div class="col-md-4">
-                                        <div class="filtr-item">
-                                            <img src="commitSystem/assets/images/gallary/g4.jpg"
-                                                 alt="portfolio image">
-                                            <div class="item-title">
-                                                <a href="#">
-                                                    australia
-                                                </a>
-                                                <p><span>18 tours</span><span>9 places</span></p>
-                                            </div> <!-- /.item-title-->
-                                        </div><!-- /.filtr-item -->
-                                    </div><!-- /.col -->
+                        <div class="box-header with-border">
+                            <h3 class="box-title">【大别山--大堰湖--大足石刻--峨眉山--中华洞天--天意谷】</h3>
 
-                                    <div class="col-md-4">
-                                        <div class="filtr-item">
-                                            <img src="commitSystem/assets/images/gallary/g5.jpg"
-                                                 alt="portfolio image">
-                                            <div class="item-title">
-                                                <a href="#">
-                                                    netharlands
-                                                </a>
-                                                <p><span>14 tours</span><span>12 places</span></p>
-                                            </div> <!-- /.item-title-->
-                                        </div><!-- /.filtr-item -->
-                                    </div><!-- /.col -->
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8 center-block">
+                                    <div id="container_1" style="min-width:400px;height:400px">图表加载中...</div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-info">
 
-                                    <div class="col-md-8">
-                                        <div class="filtr-item">
-                                            <img src="commitSystem/assets/images/gallary/g6.jpg"
-                                                 alt="portfolio image">
-                                            <div class="item-title">
-                                                <a href="#">
-                                                    turkey
-                                                </a>
-                                                <p><span>14 tours</span><span>6 places</span></p>
-                                            </div> <!-- /.item-title-->
-                                        </div><!-- /.filtr-item -->
-                                    </div><!-- /.col -->
+                        <div class="box-header with-border">
+                            <h3 class="box-title">【黄鹤楼--青海--天安门--武当山--神医架--长江】</h3>
 
-                                </div><!-- /.row -->
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8 center-block">
+                                    <div id="container_2" style="min-width:400px;height:400px">图表加载中...</div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-6 -->
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-info">
 
-                            </div><!-- /.filtr-container-->
-                        </div><!-- /.gallery-content -->
-                    </div><!--/.galley-box-->
-                </div><!--/.gallery-details-->
-            </div><!--/.container-->
+                        <div class="box-header with-border">
+                            <h3 class="box-title">【西湖--大堰湖--长江--三峡--青海--天安门】</h3>
 
-        </section><!--subscribe end-->
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8 center-block">
+                                    <div id="container_3" style="min-width:400px;height:400px">图表加载中...</div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-info">
 
+                        <div class="box-header with-border">
+                            <h3 class="box-title">【灵隐寺--千湖岛--长江--杭州--青海--故宫】</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8 center-block">
+                                    <div id="container" style="min-width:400px;height:400px">图表加载中...</div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-6 -->
+            </div>
+        </section>
 
     </div>
     <!-- /.content-wrapper -->
@@ -215,7 +237,7 @@ BODY 标签选项：
             任何你想要的
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2018 <a href="#">jsj</a>.</strong> All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
@@ -305,6 +327,21 @@ BODY 标签选项：
 <script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
 <!-- AdminLTE App -->
 <script th:src="@{/dist/js/adminlte.min.js}"></script>
+
+
+<script th:src="@{/bower_components/Highcharts-6.1.1/code/highcharts.js}"></script>
+<!-- 3D -->
+<script th:src="@{/bower_components/Highcharts-6.1.1/code/highcharts-3d.js}"></script>
+<!-- 启用导出功能 -->
+<script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/exporting.js}"></script>
+<!-- 向下钻功能 -->
+<script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/oldie.js}"></script>
+<script th:src="@{/bower_components/Highcharts-6.1.1/code/modules/wordcloud.js}"></script>
+<!-- 汉化 -->
+<script th:src="@{https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js}"></script>
+<script th:src="@{https://code.highcharts.com/modules/data.js}"></script>
+
+<script th:src="@{/HchartsJs/mostMoneyRoutes.js}"></script>
 
 </body>
 </html>
