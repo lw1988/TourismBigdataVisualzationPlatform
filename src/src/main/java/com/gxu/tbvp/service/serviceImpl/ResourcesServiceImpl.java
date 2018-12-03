@@ -26,8 +26,8 @@ public class ResourcesServiceImpl extends BaseService<Resources> implements Reso
         Example example = new Example(Resources.class);
         //分页查询
         PageHelper.startPage(page, length);
-        List<Resources> userList = selectByExample(example);
-        return new PageInfo<>(userList);
+        List<Resources> resourceList = selectByExample(example);
+        return new PageInfo<>(resourceList);
     }
 
     @Override

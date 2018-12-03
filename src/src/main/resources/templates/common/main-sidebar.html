@@ -10,7 +10,7 @@
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="用户图像">
                 </div>
                 <div class="pull-left info">
-                    <p>jsj</p>
+                    <p>Alexander Pierce</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
                 </div>
@@ -39,23 +39,61 @@
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>专家系统</span>
                         <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a th:href="@{/keywords}">个性化推荐</a></li>
-                        <li><a th:href="@{/allroutes}">路线组合推荐</a></li>
-                        <li><a th:href="@{/tourismIndex}">旅游指数</a></li>
-                        <li><a th:href="@{/list}">产品实时指数</a></li>
+                        <li><a th:href="@{/keywords}">关键词推荐</a></li>
+                        <li><a th:href="@{/allroutes}">组合路线推荐</a></li>
                     </ul>
                 </li>
                 <li class="header">标签</li>
                 <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>重要</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>警告</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>信息</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>信息</span></a></li><br>
+
+                <!--管理员系统-->
+                <li class="treeview ">
+                    <a href="#"><i class="fa fa-link"></i> <span>管理员系统</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul id="menu" class="treeview-menu">
+                        <!-- <li><a href="usersPage"><i class="icon icon-home"></i> <span>用户管理</span></a> </li>
+                             <li><a href="rolesPage"><i class="icon icon-signal"></i> <span>角色管理</span></a> </li>
+                             <li><a href="resourcesPage"><i class="icon icon-inbox"></i> <span>资源管理</span></a> </li>-->
+                    </ul>
+                </li>
             </ul>
-            <!-- /.sidebar-menu -->
+
+
         </section>
         <!-- /.sidebar -->
     </aside>
+    <script type="text/javascript" th:src="@{/adminSystem/js/jquery-1.11.2.min.js}"></script>
+    <script type="text/javascript">
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url:'resources/loadMenu.do',
+            dataType:"json",
+            success: function(data) {
+                var html="";
+                for(var i=0;i<data.length;i++){
+                    html+="<li><a href='"+data[i].resurl+"'><i class='icon icon-home'></i> <span>"+data[i].name+"</span></a> </li>"
+                }
+                $("#menu").append(html);
+                //改变当前菜单样式
+                $("#menu li a").each(function(){
+                    $this = $(this);
+                    if($this[0].href==String(window.location)){
+                        $this.attr("href","javascript:;");
+                        $this.parent().addClass("active");
+                    }
+                });
+            }
+        });
+    </script>
+
 </div>
