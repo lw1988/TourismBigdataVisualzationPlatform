@@ -8,7 +8,7 @@ public class Scenic implements Serializable {
 
     private String scenic;
 
-    private String provice;
+    private String province;
 
     /**
      * @return id
@@ -41,14 +41,14 @@ public class Scenic implements Serializable {
     /**
      * @return provice
      */
-    public String getProvice() {
-        return provice;
+    public String getProvince() {
+        return province;
     }
 
     /**
-     * @param provice
+     * @param province
      */
-    public void setProvice(String provice) {
-        this.provice = provice;
+    public void setProvince(String province) {
+        this.province = province;
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <!--
 这是起始页面，你可以使用此页面开始你的项目。
@@ -23,8 +23,16 @@
           您可以选择其他皮肤。皮肤样式写在 body 标签中，
           以便使之生效。 -->
     <link rel="stylesheet" th:href="@{/dist/css/skins/skin-blue.min.css}">
-    <!--<link rel="stylesheet" th:href="@{/dist/css/style0.css}">
-    -->
+
+    <!--<&lt;!&ndash;font-family&ndash;&gt;-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet" />-->
+
+    <!--<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />-->
+
+    <!--style.css-->
+    <link rel="stylesheet" href="commitSystem/assets/css/style.css" />
+    <link rel="stylesheet" href="selfCSS/ie10-viewport-bug-workaround.css">
+
     <!-- HTML5 Shim and Respond.js} IE8 support of HTML5 elements and media queries -->
     <!-- 警告：Respond.js} 不支持 file:// 方式查看（即本地方式查看）-->
     <!--[if lt IE 9]>
@@ -34,11 +42,6 @@
 
     <!-- HighCharts引入 唯一需要注意的是保证 highcharts.js} 的
     引用顺序是在功能模块之前。 -->
-
-
-    <!--&lt;!&ndash; Google Font &ndash;&gt;-->
-    <!--<link rel="stylesheet"-->
-    <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
 
 </head>
 <!--
@@ -71,46 +74,61 @@ BODY 标签选项：
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (页眉) -->
-        <!-- <section class="content-header">
-          <h1>
-            页眉
-            <small>可选说明</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> 层级</a></li>
-            <li class="active">这里</li>
-          </ol>
-        </section> -->
 
+        <section id="subs" class="subscribe">
+            <div class="container">
+                <div class="subscribe-title text-center">
+                    <h2>
+                        组合路线推荐
+                    </h2>
+                    <p>
+                        旅行从这里开始
+                    </p>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            <div class="custom-input-group">
+                                <input type="text" class="form-control" placeholder="输入您想查询的关键字">
+                                <button class="appsLand-btn subscribe-btn"><a th:href="@{/searchResult}">开始探索</a></button>
+                                <div class="clearfix"></div>
+                                <i class="icon ion-stats-bars"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
         <!-- Main content -->
         <section class="content container-fluid">
 
             <!--------------------------
               | Your Page Content Here 数据图表展示页面 |
               -------------------------->
-
+            <div class="header clearfix" style="padding-bottom: 10px;">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation" class="active"><a href="#">热门路线组合</a></li>
+                        <li role="presentation"><a th:href="@{/mostmoneyroutes}">盈利路线组合</a></li>
+                    </ul>
+                </nav>
+                <h3 class="text-muted">热门路线组合</h3>
+            </div>
             <!-- 当前平台总访问量与游客年龄统计 -->
             <div class="row">
                 <div class="col-md-6">
                     <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">西湖--大堰湖--长江--三峡--青海--天安门</h3>
+                            <h3 class="box-title"><a th:href="@{/routeScenic}">西湖--大堰湖--长江--三峡--青海--天安门</a></h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                         class="fa fa-minus"></i>
                                 </button>
-                                <!-- <div class="btn-group">
-                                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-wrench"></i></button>
-                                  <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">操作</a></li>
-                                    <li><a href="#">另一个操作</a></li>
-                                  </ul>
-                                </div>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
+
                             </div>
                         </div>
                         <!-- /.box-header -->
@@ -121,37 +139,18 @@ BODY 标签选项：
                                     <div class="accordion-group">
                                         <div id="accordion-element-1" class="accordion-body collapse in"
                                              style="padding: 20px;background-image: url(dist/img/bg-img/2.jpg); color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}" style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                西湖</a>
+                                               text-transform: capitalize;font-family: 'Poppins', sans-serif;">
+                                            <div class="accordion-inner">西湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                大堰湖</a>
+                                            <div class="accordion-inner">大堰湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                长江</a>
+                                            <div class="accordion-inner">长江
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                三峡</a>
+                                            <div class="accordion-inner">三峡
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                青海</a>
+                                            <div class="accordion-inner">青海
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                天安门</a>
+                                            <div class="accordion-inner">天安门
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +166,7 @@ BODY 标签选项：
                     <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">西湖--大堰湖--长江--三峡--青海--天安门</h3>
+                            <h3 class="box-title"><a th:href="@{/routeScenic}">西湖--大堰湖--长江--三峡--青海--天安门</a></h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -195,35 +194,17 @@ BODY 标签选项：
     font-size:16px;
     text-transform: capitalize;
     font-family: 'Poppins', sans-serif;">
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                西湖</a>
+                                            <div class="accordion-inner">西湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                大堰湖</a>
+                                            <div class="accordion-inner">大堰湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                长江</a>
+                                            <div class="accordion-inner">长江
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                三峡</a>
+                                            <div class="accordion-inner">三峡
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                青海</a>
+                                            <div class="accordion-inner">青海
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                天安门</a>
+                                            <div class="accordion-inner">天安门
                                             </div>
                                         </div>
                                     </div>
@@ -245,7 +226,7 @@ BODY 标签选项：
                     <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">西湖--大堰湖--长江--三峡--青海--天安门</h3>
+                            <h3 class="box-title"><a th:href="@{/routeScenic}">西湖--大堰湖--长江--三峡--青海--天安门</a></h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -272,35 +253,17 @@ BODY 标签选项：
     font-size:16px;
     text-transform: capitalize;
     font-family: 'Poppins', sans-serif;">
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                西湖</a>
+                                            <div class="accordion-inner">西湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                大堰湖</a>
+                                            <div class="accordion-inner">大堰湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                长江</a>
+                                            <div class="accordion-inner">长江
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                三峡</a>
+                                            <div class="accordion-inner">三峡
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                青海</a>
+                                            <div class="accordion-inner">青海
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                天安门</a>
+                                            <div class="accordion-inner">天安门
                                             </div>
                                         </div>
                                     </div>
@@ -316,7 +279,7 @@ BODY 标签选项：
                     <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">西湖--大堰湖--长江--三峡--青海--天安门</h3>
+                            <h3 class="box-title"><a th:href="@{/routeScenic}">西湖--大堰湖--长江--三峡--青海--天安门</a></h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -344,35 +307,17 @@ BODY 标签选项：
     font-size:16px;
     text-transform: capitalize;
     font-family: 'Poppins', sans-serif;">
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                西湖</a>
+                                            <div class="accordion-inner">西湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                大堰湖</a>
+                                            <div class="accordion-inner">大堰湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                长江</a>
+                                            <div class="accordion-inner">长江
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                三峡</a>
+                                            <div class="accordion-inner">三峡
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                青海</a>
+                                            <div class="accordion-inner">青海
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                天安门</a>
+                                            <div class="accordion-inner">天安门
                                             </div>
                                         </div>
                                     </div>
@@ -392,7 +337,7 @@ BODY 标签选项：
                     <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">西湖--大堰湖--长江--三峡--青海--天安门</h3>
+                            <h3 class="box-title"><a th:href="@{/routeScenic}">西湖--大堰湖--长江--三峡--青海--天安门</a></h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -420,35 +365,17 @@ BODY 标签选项：
     font-size:16px;
     text-transform: capitalize;
     font-family: 'Poppins', sans-serif;">
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                西湖</a>
+                                            <div class="accordion-inner">西湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                大堰湖</a>
+                                            <div class="accordion-inner">大堰湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                长江</a>
+                                            <div class="accordion-inner">长江
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                三峡</a>
+                                            <div class="accordion-inner">三峡
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                青海</a>
+                                            <div class="accordion-inner">青海
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                天安门</a>
+                                            <div class="accordion-inner">天安门
                                             </div>
                                         </div>
                                     </div>
@@ -464,7 +391,7 @@ BODY 标签选项：
                     <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">西湖--大堰湖--长江--三峡--青海--天安门</h3>
+                            <h3 class="box-title"><a th:href="@{/routeScenic}">西湖--大堰湖--长江--三峡--青海--天安门</a></h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -492,35 +419,17 @@ BODY 标签选项：
     font-size:16px;
     text-transform: capitalize;
     font-family: 'Poppins', sans-serif;">
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                西湖</a>
+                                            <div class="accordion-inner">西湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                大堰湖</a>
+                                            <div class="accordion-inner">大堰湖
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                长江</a>
+                                            <div class="accordion-inner">长江
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                三峡</a>
+                                            <div class="accordion-inner">三峡
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                青海</a>
+                                            <div class="accordion-inner">青海
                                             </div>
-                                            <div class="accordion-inner"><a th:href="@{/routeScenic}"style="color:#fff; font-size:16px;
-                                               text-transform: capitalize;
-    font-family: 'Poppins', sans-serif;">
-                                                天安门</a>
+                                            <div class="accordion-inner">天安门
                                             </div>
                                         </div>
                                     </div>
@@ -632,11 +541,11 @@ BODY 标签选项：
 
     $(document).ready(function (){
         $('.accordion-inner').css({
-        "font-color":"#fff",
-        "font-size":"16px",
-        "text-transform": "capitalize",
-        "font-family": "'Poppins', sans-serif"
-    } );});
+            "font-color":"#fff",
+            "font-size":"16px",
+            "text-transform": "capitalize",
+            "font-family": "'Poppins', sans-serif"
+        } );});
 
 </script>
 <!-- REQUIRED JS SCRIPTS -->

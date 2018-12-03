@@ -1,5 +1,7 @@
 package com.gxu.tbvp.service.serviceImpl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.util.StringUtil;
 import com.gxu.tbvp.domain.Scenic;
 import com.gxu.tbvp.mapper.ScenicMapper;
@@ -10,8 +12,9 @@ import tk.mybatis.mapper.entity.Example;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service
+@Service("secnicService")
 public class ScenicServiceImpl extends BaseService<Scenic> implements ScenicService {
+
 
     @Resource
     private ScenicMapper scenicMapper;
@@ -39,5 +42,20 @@ public class ScenicServiceImpl extends BaseService<Scenic> implements ScenicServ
     @Override
     public String selectScenicByKey(Integer key) {
         return scenicMapper.selectScenicByKey(key);
+    }
+
+    @Override
+    public PageInfo<Scenic> selectByPage(Scenic scenic, int start, int length) {
+        int page = start/length+1;
+        Example example = new Example(Scenic.class);
+        //分页查询
+        PageHelper.startPage(page, length);
+        List<Scenic> scenicList = selectByExample(example);
+        return new PageInfo<>(scenicList);
+    }
+
+    @Override
+    public void delScenic(Integer scenicid) {
+        mapper.deleteByPrimaryKey(scenicid);
     }
 }

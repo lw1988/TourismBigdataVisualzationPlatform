@@ -81,6 +81,12 @@ public class HomeController {
         return "combine_route/allroutes";
     }
 
+    //最赚钱路线组合
+    @RequestMapping(value="/mostmoneyroutes", method = RequestMethod.GET)
+    public String mostMoneyRoutes(){
+        return "combine_route/mostmoneyroutes";
+    }
+
     //组合路线推荐内景点分析
     @RequestMapping("/routeScenic")
     public String routeScenic(){
@@ -128,6 +134,30 @@ public class HomeController {
     @RequestMapping(value="/tourismIndex", method = RequestMethod.GET)
     public String zhishu(){
         return "tourismIndex";
+    }
+
+
+
+    /*-----管理界面-----*/
+    //景点管理
+    @RequestMapping("/scenicsManagement")
+    public String scenicsManagement(){
+        return "admin/scenic";
+    }
+    //管理员操作管理
+    @RequestMapping("/resourcesManagement")
+    public String resourcesManagement(){
+        return "admin/resources";
+    }
+    //管理员管理
+    @RequestMapping("/managersManagement")
+    public String managersManagement(){
+        return "admin/managers";
+    }
+    //角色管理
+    @RequestMapping(value = "/rolesManagement",method = RequestMethod.GET)
+    public String rolesManagement(){
+        return "admin/roles";
     }
 
 }
