@@ -104,7 +104,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/manager/addManager","anon");
         filterChainDefinitionMap.put("/visitors", "anon");
         filterChainDefinitionMap.put("/products", "anon");
-        filterChainDefinitionMap.put("/rolesManagement", "anon");
+
+        //filterChainDefinitionMap.put("/rolesManagement", "anon");
         //filterChainDefinitionMap.put("/products", "anon");
         //filterChainDefinitionMap.put("/products", "anon");
 

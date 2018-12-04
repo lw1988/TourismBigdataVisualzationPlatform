@@ -3,12 +3,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/jquery.dataTables.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/matrix-style.css}" />
-    <link rel="stylesheet" th:href="@{/css/matrix-media.css}" />
-    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
-    <title>用户管理</title>
+    <link rel="stylesheet" th:href="@{/adminSystem/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/adminSystem/css/jquery.dataTables.min.css}" />
+    <link rel="stylesheet" th:href="@{/adminSystem/css/matrix-style.css}" />
+    <link rel="stylesheet" th:href="@{/adminSystem/css/matrix-media.css}" />
+    <link th:href="@{/adminSystem/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+    <title>资源管理</title>
 </head>
 <body>
 
@@ -19,9 +19,8 @@
 <!--close-Header-part-->
 
 <!--top-Header-menu-->
-<div th:include="common/main-header :: main-header"></div>
-<!-- Left side column. contains the logo and sidebar -->
-<div th:include="common/main-sidebar :: main-sidebar"></div>
+<div th:include="common/top :: top"></div>
+<div th:include="common/menu :: menu"></div>
 
 <div id="content">
     <div id="content-header">
@@ -143,10 +142,10 @@
     <div id="footer" class="span12"> 2017 &copy; yqj <a href="http://themedesigner.in/">Themedesigner.in</a> </div>
 </div>
 <!--end-Footer-part-->
-<script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}" th:sr></script>
-<script th:src="@{/js/jquery.dataTables.min.js}"></script>
-<script th:src="@{/js/layer.js}"></script>
+<script type="text/javascript" th:src="@{/adminSystem/js/jquery-1.11.2.min.js}"></script>
+<script th:src="@{/adminSystem/js/bootstrap.min.js}" th:sr></script>
+<script th:src="@{/adminSystem/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/adminSystem/js/layer.js}"></script>
 <script type="text/javascript">
     $(".checkall").click(function () {
         var check = $(this).prop("checked");

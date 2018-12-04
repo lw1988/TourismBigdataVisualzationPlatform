@@ -84,8 +84,8 @@ public class MyShiroRealm extends AuthorizingRealm {
      * 根据userId 清除当前session存在的用户的权限缓存
      * @param userIds 已经修改了权限的userId
      */
-    public void clearUserAuthByUserId(List<Integer> userIds){
-        if(null == userIds || userIds.size() == 0)	return ;
+    public void clearUserAuthByUserId(List<Integer> managerIds){
+        if(null == managerIds || managerIds.size() == 0)	return ;
         //获取所有session
         Collection<Session> sessions = redisSessionDAO.getActiveSessions();
         //定义返回
@@ -98,11 +98,11 @@ public class MyShiroRealm extends AuthorizingRealm {
                 SimplePrincipalCollection spc = (SimplePrincipalCollection)obj;
                 //判断用户，匹配用户ID。
                 obj = spc.getPrimaryPrincipal();
-                if(null != obj && obj instanceof User){
-                    User user = (User) obj;
-                    System.out.println("user:"+user);
+                if(null != obj && obj instanceof Manager){
+                    Manager manager = (Manager) obj;
+                    System.out.println("manager:"+manager);
                     //比较用户ID，符合即加入集合
-                    if(null != user && userIds.contains(user.getId())){
+                    if(null != manager && managerIds.contains(manager.getId())){
                         list.add(spc);
                     }
                 }
