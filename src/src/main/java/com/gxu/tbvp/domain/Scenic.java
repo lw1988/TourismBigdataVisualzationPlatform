@@ -1,9 +1,12 @@
 package com.gxu.tbvp.domain;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 public class Scenic implements Serializable {
+
+    @Id
     private Integer id;
 
     private String scenic;

@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/adminSystem/css/matrix-style.css}" />
     <link rel="stylesheet" th:href="@{/adminSystem/css/matrix-media.css}" />
     <link th:href="@{/adminSystem/font-awesome/css/font-awesome.css}" rel="stylesheet" />
-    <title>资源管理</title>
+    <title>景点管理</title>
 </head>
 <body>
 
@@ -36,11 +36,8 @@
                         <h5>景点列表</h5>
                     </div>
                     <form class="form-inline">
-
                         <button type="button" shiro:hasPermission="/scenic/add" onclick="$('#resourcesModal').modal();" class="btn btn-info" style="float: right; margin-right: 1px;">新增</button>
-
                         <button type="button" shiro:hasPermission="/scenic/delete" onclick="delById();" class="btn btn-info" style="float: right; margin-right: 1px;">删除</button>
-
                     </form>
                     <table class="table table-bordered data-table" id="datatable" >
                         <thead>
@@ -59,17 +56,18 @@
         </div>
     </div>
 </div>
+
+<!--Footer-part-->
 <div class="row-fluid">
     <div id="footer" class="span12"> 2017 &copy; yqj <a href="http://themedesigner.in/">Themedesigner.in</a> </div>
 </div>
-
 <!--添加弹框-->
 <div class="modal fade" id="resourcesModal" tabindex="-1" role="dialog" aria-labelledby="addroleLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="addroleLabel">添加景点</h4>
+                <h4 class="modal-title" id="addroleLabel">添加资源</h4>
             </div>
             <div class="modal-body">
                 <form id="resourcesForm">
@@ -85,14 +83,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" onclick="addScenic();" class="btn btn-primary">Save</button>
+                <button type="button" onclick="addResources();" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
 </div>
-<!--/添加弹框-->
-
 <!--end-Footer-part-->
+
 <script type="text/javascript" th:src="@{/adminSystem/js/jquery-1.11.2.min.js}"></script>
 <script th:src="@{/adminSystem/js/bootstrap.min.js}" th:sr></script>
 <script th:src="@{/adminSystem/js/jquery.dataTables.min.js}"></script>
@@ -135,11 +132,13 @@
 
         } );
 
+
+
     } );
 
 
     //添加用户
-    function addScenic() {
+    function addResources() {
         var scenic = $("#scenic").val();
         var province = $("#province").val();
 

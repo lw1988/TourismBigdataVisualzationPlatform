@@ -7,12 +7,14 @@ import com.gxu.tbvp.domain.Scenic;
 import com.gxu.tbvp.mapper.ScenicMapper;
 import com.gxu.tbvp.service.ScenicService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service("secnicService")
+@Service("scenicService")
 public class ScenicServiceImpl extends BaseService<Scenic> implements ScenicService {
 
 
@@ -54,8 +56,4 @@ public class ScenicServiceImpl extends BaseService<Scenic> implements ScenicServ
         return new PageInfo<>(scenicList);
     }
 
-    @Override
-    public void delScenic(Integer scenicid) {
-        mapper.deleteByPrimaryKey(scenicid);
-    }
 }

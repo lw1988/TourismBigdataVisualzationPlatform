@@ -33,7 +33,7 @@ public class ScenicController {
     @RequestMapping(value = "/delete")
     public String delete(Integer id){
         try{
-            scenicService.delScenic(id);
+            scenicService.delete(id);
             return "success";
         }catch (Exception e){
             e.printStackTrace();

@@ -12,5 +12,4 @@ public interface ScenicService extends IService<Scenic>  {
 
     PageInfo<Scenic> selectByPage(Scenic scenic, int start, int length);
 
-    void delScenic(Integer scenicid);
 }
