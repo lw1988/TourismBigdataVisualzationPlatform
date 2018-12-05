@@ -3,6 +3,7 @@ package com.gxu.tbvp.service.serviceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.gxu.tbvp.domain.Manager;
+import com.gxu.tbvp.domain.ManagerRole;
 import com.gxu.tbvp.mapper.ManagerMapper;
 import com.gxu.tbvp.mapper.ManagerRoleMapper;
 import com.gxu.tbvp.service.ManagerService;
@@ -45,10 +46,10 @@ public class ManagerServiceImpl extends BaseService<Manager> implements ManagerS
     }
 
     @Override
-    public Manager selectByUsername(String username) {
+    public Manager selectByUsername(String namagername) {
         Example example = new Example(Manager.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("username",username);
+        criteria.andEqualTo("username",namagername);
         List<Manager> managerList = selectByExample(example);
         if(managerList.size()>0){
             return managerList.get(0);
@@ -58,13 +59,13 @@ public class ManagerServiceImpl extends BaseService<Manager> implements ManagerS
 
     @Override
     @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
-    public void delUser(Integer userid) {
+    public void delUser(Integer managerid) {
         //删除用户表
-        mapper.deleteByPrimaryKey(userid);
+        mapper.deleteByPrimaryKey(managerid);
         //删除用户角色表
-//        Example example = new Example(ManagerRole.class);
-//        Example.Criteria criteria = example.createCriteria();
-//        criteria.andEqualTo("userid",userid);
-//        managerRoleMapper.deleteByExample(example);
+        Example example = new Example(ManagerRole.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("managerid",managerid);
+        managerRoleMapper.deleteByExample(example);
     }
 }

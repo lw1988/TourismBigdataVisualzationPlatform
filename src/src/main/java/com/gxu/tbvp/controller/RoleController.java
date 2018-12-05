@@ -2,8 +2,10 @@ package com.gxu.tbvp.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.gxu.tbvp.domain.Role;
+import com.gxu.tbvp.domain.RoleResources;
 import com.gxu.tbvp.service.RoleResourcesService;
 import com.gxu.tbvp.service.RoleService;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,19 +42,21 @@ public class RoleController {
         return roleService.queryRoleListWithSelected(uid);
     }
 
+
     //分配角色
-//    @RequestMapping("/saveRoleResources")
-//    public String saveRoleResources(RoleResources roleResources){
-//        if(StringUtils.isEmpty(roleResources.getRoleid()))
-//            return "error";
-//        try {
-//            roleResourcesService.addRoleResources(roleResources);
-//            return "success";
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return "fail";
-//        }
-//    }
+    @RequestMapping("/saveRoleResources")
+    public String saveRoleResources(RoleResources roleResources){
+        if(StringUtils.isEmpty(roleResources.getRoleid()))
+            return "error";
+        try {
+            System.out.println(roleResources.getRoleid()+"++++++++++++++"+roleResources.getResourcesid());
+            roleResourcesService.addRoleResources(roleResources);
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "fail";
+        }
+    }
 
     @RequestMapping(value = "/add")
     public String add(Role role) {
