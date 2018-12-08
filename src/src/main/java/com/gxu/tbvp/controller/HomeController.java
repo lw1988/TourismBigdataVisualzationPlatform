@@ -28,7 +28,7 @@ public class HomeController {
         return "login";
     }
 
-    //管理员登陆
+    //用户登陆
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(HttpServletRequest request, Manager manager, Model model){
         if (StringUtils.isEmpty(manager.getUsername()) || StringUtils.isEmpty(manager.getPassword())) {
@@ -137,8 +137,38 @@ public class HomeController {
     }
 
 
-
     /*-----管理界面-----*/
+    //管理员登录
+    @RequestMapping("/adminLogin")
+    public String adminLogin(){
+        return "admin/adminLogin";
+    }
+
+    //用户登陆
+    @RequestMapping(value="/adminLogin",method=RequestMethod.POST)
+    public String adminLogin(HttpServletRequest request, Manager manager, Model model){
+        if (StringUtils.isEmpty(manager.getUsername()) || StringUtils.isEmpty(manager.getPassword())) {
+            request.setAttribute("msg", "用户名或密码不能为空！");
+            return "login";
+        }
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token=new UsernamePasswordToken(manager.getUsername(),manager.getPassword());
+        try {
+            subject.login(token);
+            return "redirect:managersManagement";
+        }catch (LockedAccountException lae) {
+            token.clear();
+            request.setAttribute("msg", "用户已经被锁定不能登录，请与管理员联系！");
+            return "admin/adminLogin";
+        } catch (AuthenticationException e) {
+            token.clear();
+            request.setAttribute("msg", "用户或密码不正确！");
+            return "admin/adminLogin";
+        }
+    }
+
+
+
     //景点管理
     @RequestMapping("/scenicsManagement")
     public String scenicsManagement(){

@@ -45,17 +45,14 @@
   <!-- /.login-logo -->
   <div class="login-box-body" >
     <!--  <p class="login-box-msg" style="color:#fff">帐户登录</p>   -->
+    <a th:href="@{/adminLogin}"  class="text-center" style="color:#fff">管理员登陆</a>
     <span th:text="${msg}" style="color: #9f191f"></span>
     <form th:action="@{/login}" method="post">
       <div class="form-group has-feedback" >
         <input type="text"  name="Username" placeholder="用户名" style="font-size: 14px;color: #fff;text-shadow: 0 1px 2px rgba(0,0,0,.1);">
-        <!--邮箱图标
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>    -->
       </div>
       <div class="form-group has-feedback" >
         <input type="password" name="password" placeholder="密码">
-        <!--锁图标
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>      -->
       </div>
       <div class="row">
         <div class="col-xs-4">
@@ -72,16 +69,12 @@
         </div>
         <!-- /.col -->
       </div>
-
-
-
-
     </form>
 
 
 
     <div class="connect">
-      <p style="color:#fff">————或者————</p>
+      <p style="color:#fff">————或者————</p><br>
       <p>
         <a th:href="@{#}" class="facebook" href=""></a>
         <a th:href="@{#}" class="twitter" href=""></a>
@@ -93,14 +86,20 @@
 
     <!-- /.social-auth-links -->
 
-    <a th:href="@{#}" style="color:#fff">忘记密码？</a><br>
+    <a th:href="@{#}" style="color:#fff">忘记密码？</a><br><br>
     <a th:href="@{/manager/addManager}" class="text-center" style="color:#fff">注册新会员</a>
 
   </div>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-
+<style type="text/css">
+  <!--
+  a:hover {
+    text-decoration: underline;
+  }
+  -->
+</style>
 <!-- Javascript -->
 <script th:src="@{/dist/js/jquery-1.8.2.min.js}"></script>
 <script th:src="@{/dist/js/supersized.3.2.7.min.js}"></script>
