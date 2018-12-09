@@ -180,8 +180,8 @@ BODY 标签选项：
                                 <div class="col-md-4">
                                     <div id="sex" style=" min-height: 400px; margin: 0 auto"></div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div id="map" style=" min-height: 400px; margin: 0 auto"></div>
+                                <div class="col-md-4" style="margin-left: -30px">
+                                    <div id="guangximap" style=" min-height: 400px; margin: 0 auto"></div>
                                 </div>
                                 <div class="col-md-4">
                                     <div id="travelMode" style=" min-height: 400px; margin: 0 auto"></div>
@@ -423,10 +423,14 @@ BODY 标签选项：
 <!-- Hchart 图表 -->
 <script th:src="@{/HchartsJs/monthlyVisits.js}"></script>
 <script th:src="@{/HchartsJs/sex.js}"></script>
-<script th:src="@{/HchartsJs/map.js}"></script>
+<!--<script th:src="@{/HchartsJs/map.js}"></script>-->
 <script th:src="@{/HchartsJs/travelMode.js}"></script>
 <script th:src="@{/HchartsJs/age.js}"></script>
 <script th:src="@{/HchartsJs/weekVisits.js}"></script>
 <script th:src="@{/HchartsJs/consumption.js}"></script>
+
+<script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
+<script src="https://data.jianshukeji.com/geochina/guangxi.js"></script>
+<script th:src="@{/HchartsJs/guangximap.js}"></script>
 </body>
 </html>
