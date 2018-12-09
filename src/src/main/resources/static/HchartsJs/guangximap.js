@@ -19,7 +19,7 @@ var map = new Highcharts.Map('guangximap', {
 
 var map = new Highcharts.Map('guangxitourmap', {
     title: {
-        text: '广西客源地热力图'
+        text: ''
     },
     colorAxis: {
         min: 0,
