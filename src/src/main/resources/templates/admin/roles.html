@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/adminSystem/css/jquery.dataTables.min.css}" />
     <link rel="stylesheet" th:href="@{/adminSystem/css/matrix-style.css}" />
     <link rel="stylesheet" th:href="@{/adminSystem/css/matrix-media.css}" />
+    <link rel="stylesheet" th:href="@{/adminSystem/css/metroStyle.css}" type="text/css"/>
     <link th:href="@{/adminSystem/font-awesome/css/font-awesome.css}" rel="stylesheet" />
     <title>资源管理</title>
 </head>
@@ -26,7 +27,6 @@
     <div id="content-header">
         <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div>
     </div>
-
     <div class="container-fluid">
         <hr>
         <div class="row-fluid">
@@ -60,10 +60,29 @@
     </div>
 </div>
 
-<!--end-Footer-part-->
-<div class="row-fluid">
-    <div id="footer" class="span12"> 2017 &copy; yqj <a href="http://themedesigner.in/">Themedesigner.in</a> </div>
+<%--弹框--%>
+<div class="modal fade bs-example-modal-sm"  id="selectResources" tabindex="-1" role="dialog" aria-labelledby="selectRoleLabel">
+    <div class="modal-dialog modal-sm" role="document" style="height: 600px; "  >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="selectRoleLabel">分配权限</h4>
+            </div>
+            <div class="modal-body">
+                <form id="boxRoleForm" >
+                    <ul id="treeDemo" class="ztree"></ul>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" onclick="saveRoleResources();" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
 </div>
+<%----/弹框--%>
+
+
 <!--添加弹框-->
 <div class="modal fade" id="addRole" tabindex="-1" role="dialog" aria-labelledby="addroleLabel">
     <div class="modal-dialog" role="document">
@@ -90,7 +109,7 @@
 <!--/添加弹框-->
 
 <script type="text/javascript" th:src="@{/adminSystem/js/jquery-1.11.2.min.js}"></script>
-<script th:src="@{/adminSystem/js/bootstrap.min.js}"></script>
+<script th:src="@{/adminSystem/js/bootstrap.min.js}" th:sr></script>
 <script th:src="@{/adminSystem/js/jquery.dataTables.min.js}"></script>
 <script th:src="@{/adminSystem/js/layer.js}"></script>
 <script type="text/javascript" th:src="@{/adminSystem/js/jquery.ztree.core.js}"></script>
@@ -136,6 +155,54 @@
 
     } );
 
+    function search(){
+        table.ajax.reload();
+    }
+    //弹出选择角色的框
+    var roleId;
+    function allotResources(){
+        var rid = $(".checkchild:checked").val();
+        if ($(".checkchild:checked").length < 1)
+        {
+            layer.msg('请选择一条数据');
+            return;
+        }
+        if ($(".checkchild:checked").length > 1)
+        {
+            layer.msg('一次只能修改一条数据');
+            return;
+        }
+        roleId = rid;
+        var setting = {
+            check: {
+                enable: true,
+                chkboxType:  { "Y" : "p", "N" : "s" }
+            },
+            data: {
+                simpleData: {
+                    enable: true,
+                    idKey: "id",
+                    pIdKey: "parentid",
+                }
+            }
+        };
+
+        $.ajax({
+            async:false,
+            type : "POST",
+            data:{rid:rid},
+            url: "resources/resourcesWithSelected",
+            dataType:'json',
+            success: function(data){
+
+                $.fn.zTree.init($("#treeDemo"), setting, data);
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                zTree.expandAll(true);
+                $('#selectResources').modal();
+            }
+        });
+
+    }
 
     //保存权限的选择
     function saveRoleResources() {

@@ -22,7 +22,7 @@ public class ManagerRoleServiceImpl extends BaseService<ManagerRole> implements 
     @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
     public void addUserRole(ManagerRole managerRole) {
         //删除
-        Example example = new Example(UserRole.class);
+        Example example = new Example(ManagerRole.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("managerid",managerRole.getManagerid());
         mapper.deleteByExample(example);

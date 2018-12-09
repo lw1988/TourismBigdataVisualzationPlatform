@@ -264,7 +264,7 @@
             dataType:'json',
             success: function(data){
                 $("#boxRoleForm").empty();
-                var htm = "<input type='hidden' name='userid' value='"+id+"'>";
+                var htm = "<input type='hidden' name='managerid' value='"+id+"'>";
                 for(var i=0;i<data.length;i++){
                     htm += "<div class='checkbox'><label><input type='checkbox' name='roleid' value='"+data[i].id+"'";
                     if(data[i].selected==1){

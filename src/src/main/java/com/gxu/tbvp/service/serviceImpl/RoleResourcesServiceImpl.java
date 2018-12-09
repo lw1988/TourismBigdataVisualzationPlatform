@@ -1,6 +1,7 @@
 package com.gxu.tbvp.service.serviceImpl;
 
 import com.gxu.tbvp.domain.RoleResources;
+import com.gxu.tbvp.mapper.ManagerRoleMapper;
 import com.gxu.tbvp.mapper.UserRoleMapper;
 import com.gxu.tbvp.service.RoleResourcesService;
 import com.gxu.tbvp.shiro.MyShiroRealm;
@@ -20,7 +21,7 @@ import java.util.List;
 @Service("roleResourcesService")
 public class RoleResourcesServiceImpl extends BaseService<RoleResources> implements RoleResourcesService {
     @Resource
-    private UserRoleMapper userRoleMapper;
+    private ManagerRoleMapper managerRoleMapper;
     /*@Resource
     private ShiroService shiroService;*/
     @Autowired
@@ -38,18 +39,18 @@ public class RoleResourcesServiceImpl extends BaseService<RoleResources> impleme
         mapper.deleteByExample(example);
         //添加
         if(!StringUtils.isEmpty(roleResources.getResourcesid())){
-            String[] resourcesArr = Integer.toString(roleResources.getResourcesid()).split(",");
+            String[] resourcesArr = roleResources.getResourcesid().split(",");
             for(String resourcesId:resourcesArr ){
                 RoleResources r = new RoleResources();
                 r.setRoleid(roleResources.getRoleid());
-                r.setResourcesid(Integer.parseInt(resourcesId));
+                r.setResourcesid(resourcesId);
                 mapper.insert(r);
             }
         }
 
-        List<Integer> userIds= userRoleMapper.findUserIdByRoleId(roleResources.getRoleid());
+        List<Integer> managerIds= managerRoleMapper.findUserIdByRoleId(roleResources.getRoleid());
         //更新当前登录的用户的权限缓存
-        myShiroRealm.clearUserAuthByUserId(userIds);
+        myShiroRealm.clearUserAuthByUserId(managerIds);
 
 
     }
