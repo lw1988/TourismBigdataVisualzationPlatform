@@ -13,6 +13,15 @@ public class RoleResources implements Serializable {
     @Column(name = "resourcesId")
     private String resourcesid;
 
+    public RoleResources(Integer i, String s) {
+        this.roleid = i;
+        this.resourcesid = s;
+    }
+
+    public RoleResources(){
+
+    }
+
     /**
      * @return roleId
      */

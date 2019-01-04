@@ -40,7 +40,7 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 
     @Override
     @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
-    public void delRole(Integer roleid) {
+    public Role delRole(Integer roleid) {
         //删除角色
         mapper.deleteByPrimaryKey(roleid);
         //删除角色资源
@@ -49,5 +49,6 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
         criteria.andEqualTo("roleid",roleid);
         roleResourcesMapper.deleteByExample(example);
 
+        return null;
     }
 }
