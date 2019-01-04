@@ -190,4 +190,11 @@ public class HomeController {
         return "admin/roles";
     }
 
+
+    //模型评估效果
+    @RequestMapping(value={"/important"})
+    public String important(){
+        return "important";
+    }
+
 }
