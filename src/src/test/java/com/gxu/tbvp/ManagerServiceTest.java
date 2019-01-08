@@ -23,4 +23,10 @@ import static org.hamcrest.CoreMatchers.is;
         Assert.assertThat(manager.getUsername(),is("admin"));
     }
 
+    @Test
+    public void getUsernameTest2(){
+        Manager manager=managerService.selectByUsername("admin");
+        Assert.assertEquals("123",manager.getUsername());
+    }
+
 }
