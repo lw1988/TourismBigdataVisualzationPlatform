@@ -2,7 +2,6 @@ package com.gxu.tbvp.service;
 
 import com.gxu.tbvp.domain.Buyrecord;
 import com.gxu.tbvp.domain.Produce;
-import org.junit.Test;
 
 import java.util.List;
 
