@@ -7,6 +7,7 @@ import com.gxu.tbvp.domain.ManagerRole;
 import com.gxu.tbvp.service.ManagerRoleService;
 import com.gxu.tbvp.service.ManagerService;
 import com.gxu.tbvp.utils.PasswordHelper;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +21,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
+@Controller
 @RequestMapping("/managers")
 public class ManagerController {
     @Resource

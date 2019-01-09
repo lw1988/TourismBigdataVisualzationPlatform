@@ -101,7 +101,7 @@ public class ShiroConfig {
         //访问页面
 //        filterChainDefinitionMap.put("/recommendScenics", "anon");
         filterChainDefinitionMap.put("/test", "anon");
-        filterChainDefinitionMap.put("/manager/addManager","anon");
+        filterChainDefinitionMap.put("/managers/addManager","anon");
         filterChainDefinitionMap.put("/visitors", "anon");
         filterChainDefinitionMap.put("/products", "anon");
 
