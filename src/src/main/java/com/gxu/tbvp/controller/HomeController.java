@@ -28,6 +28,11 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping(value="/managers/addManager",method= RequestMethod.GET)
+    public String addUser(){
+        return "register";
+    }
+
     //用户登陆
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(HttpServletRequest request, Manager manager, Model model){
