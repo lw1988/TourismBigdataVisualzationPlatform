@@ -1,5 +1,7 @@
 package com.gxu.tbvp.service.serviceImpl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.util.StringUtil;
 import com.gxu.tbvp.domain.Buyrecord;
 import com.gxu.tbvp.domain.Produce;
@@ -81,5 +83,15 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public PageInfo<Buyrecord> selectByPage(Buyrecord buyrecord, int start, int length) {
+        int page = start/length+1;
+        Example example = new Example(Buyrecord.class);
+        //分页查询
+        PageHelper.startPage(page, length);
+        List<Buyrecord> buyrecordList = selectByExample(example);
+        return new PageInfo<>(buyrecordList);
     }
 }

@@ -1,8 +1,11 @@
 package com.gxu.tbvp.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.gxu.tbvp.domain.Buyrecord;
 import com.gxu.tbvp.service.BuyrecordService;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -12,15 +15,32 @@ import java.util.Map;
 import java.util.concurrent.*;
 
 @RestController
-@RequestMapping("buyRecord")
+@RequestMapping("/buyRecord")
 public class BuyRecordController {
+
+    @Resource
+    private BuyrecordService buyrecordService;
+
+    @RequestMapping
+    public Map<String,Object> getAll(Buyrecord buyrecord, String draw,
+                                     @RequestParam(required = false, defaultValue = "1") int start,
+                                     @RequestParam(required = false, defaultValue = "10") int length){
+        Map<String,Object> map = new HashMap<>();
+        PageInfo<Buyrecord> pageInfo = buyrecordService.selectByPage(buyrecord, start, length);
+        System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
+        map.put("draw",draw);
+        map.put("recordsTotal",pageInfo.getTotal());
+        map.put("recordsFiltered",pageInfo.getTotal());
+        map.put("data", pageInfo.getList());
+        return map;
+    }
+
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
     private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize + 1, 101, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>(1000));
     LinkedBlockingQueue<Runnable> queue = (LinkedBlockingQueue<Runnable>) executor.getQueue();
 
-    @Resource
-    private BuyrecordService buyrecordService;
+
 
     @RequestMapping("/getConsumption")
     public ArrayList<Integer> getConsumption() throws InterruptedException {
