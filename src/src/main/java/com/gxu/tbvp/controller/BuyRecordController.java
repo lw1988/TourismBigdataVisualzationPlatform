@@ -26,7 +26,7 @@ public class BuyRecordController {
                                      @RequestParam(required = false, defaultValue = "1") int start,
                                      @RequestParam(required = false, defaultValue = "10") int length){
         Map<String,Object> map = new HashMap<>();
-        PageInfo<Buyrecord> pageInfo = buyrecordService.selectByPage(buyrecord, start, length);
+        PageInfo<Buyrecord> pageInfo = buyrecordService.selectByPage(buyrecord, start, 4);
         System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
         map.put("draw",draw);
         map.put("recordsTotal",pageInfo.getTotal());

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -32,21 +33,35 @@ public class ManagerController {
 
 
     @RequestMapping(value="/addManager",method=RequestMethod.POST)
-    public String addManager(HttpServletRequest request, Manager manager, Model model){
+    public ModelAndView  addManager(HttpServletRequest request, Manager manager, Model model){
+        ModelAndView mav = new ModelAndView();
         Manager m = managerService.selectByUsername(manager.getUsername());
-        if(m != null)
-            return "error";
+        if(m != null){
+            mav.addObject("msg", "用户名已存在");
+            // 跳转的页面
+            mav.setViewName("register");
+
+
+            return mav;
+        }
+
         try {
-            manager.setRole(0);
+            manager.setRole(1);
             manager.setEnable(1);
             PasswordHelper passwordHelper = new PasswordHelper();
             passwordHelper.encryptPassword(manager);
             manager.setRegisterTime(new Date());
             managerService.save(manager);
-            return "login";
+            model.addAttribute("Username",manager.getUsername());
+            mav.setViewName("login");
+            //ModelAndView mv = new ModelAndView("login");
+            //return new ModelAndView("login");
+            //return "redirect:/index";
+            return mav;
         } catch (Exception e) {
             e.printStackTrace();
-            return "404";
+            mav.setViewName("404");
+            return mav;
         }
     }
 
