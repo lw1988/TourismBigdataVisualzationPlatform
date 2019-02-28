@@ -38,7 +38,7 @@ public class BuyRecordController {
             executor.execute(new Runnable() {
                 Map tempMap = new HashMap();
                 @Override
-                public void run() {
+                public void run(){
                     try {
                         Map<String, Object> map = new HashedMap();
                         map.put("firstPrice",(int)intMap.get(String.valueOf(consumption))[0]);

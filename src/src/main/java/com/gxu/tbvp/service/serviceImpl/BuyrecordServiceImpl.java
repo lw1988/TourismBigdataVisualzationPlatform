@@ -64,6 +64,12 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
     }
 
     @Override
+    public int countSaleByTime(int month,int year) {
+        int Sale = buyrecordMapper.countSaleByTime(month,year);
+        return Sale;
+    }
+
+    @Override
     public List<Buyrecord> selectByscenicId(int scenicId) {
         Example example = new Example(Buyrecord.class);
         Example.Criteria criteria = example.createCriteria();

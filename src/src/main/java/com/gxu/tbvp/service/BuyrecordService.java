@@ -18,6 +18,8 @@ public interface BuyrecordService extends IService<Buyrecord> {
 
     int countPeopleByPrice(Map<String, Object> map);
 
+    int countSaleByTime(int month,int year);
+
     List<Buyrecord> selectByscenicId(int scenicId);
 
     List<Buyrecord> getUserScenicBuyrecord(int id, int userId);

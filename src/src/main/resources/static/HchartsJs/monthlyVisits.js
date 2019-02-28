@@ -3,7 +3,7 @@ $(function () {
         //异步请求数据
         $.ajax({
             type:"GET",
-            url:'accessRecord/getAccessCount',
+            url:'/products/getSale',
             dataType:'json',
             success:function (data) {
                 var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
