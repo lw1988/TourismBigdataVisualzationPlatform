@@ -2,7 +2,6 @@ package com.gxu.tbvp.service.serviceImpl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.github.pagehelper.util.StringUtil;
 import com.gxu.tbvp.domain.Buyrecord;
 import com.gxu.tbvp.domain.Produce;
 import com.gxu.tbvp.mapper.BuyrecordMapper;
@@ -65,6 +64,9 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
         return temp;
     }
 
+
+
+
     @Override
     public List<Buyrecord> selectByscenicId(int scenicId) {
         Example example = new Example(Buyrecord.class);
@@ -94,4 +96,5 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
         List<Buyrecord> buyrecordList = selectByExample(example);
         return new PageInfo<>(buyrecordList);
     }
+
 }

@@ -3,7 +3,7 @@ package com.gxu.tbvp.domain;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
-public class ProduceSoled {
+public class ProduceSold {
     @Id
     private Integer id;
     /**
