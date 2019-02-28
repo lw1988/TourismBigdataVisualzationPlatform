@@ -19,12 +19,17 @@
     SELECT SUM(buyCount) FROM buyrecord WHERE buy_price BETWEEN #{firstPrice} AND #{lastPrice};
   </select>
 
+
   <select id="countSaleByTime" resultType="int" parameterType="int">
 
     SELECT SUM(buyCount) FROM buyrecord WHERE MONTH(buytime)=#{month} AND YEAR (buytime)=#{year};
   </select>
 
+
   <select id="getUserScenicBuyrecord" parameterType="int" resultType="com.gxu.tbvp.domain.Produce">
     select * from buyRecord where buyproduceid = #{id} and userid = #{userId}
   </select>
+
+
+
 </mapper>

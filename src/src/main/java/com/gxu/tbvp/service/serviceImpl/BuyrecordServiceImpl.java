@@ -1,6 +1,7 @@
 package com.gxu.tbvp.service.serviceImpl;
 
-import com.github.pagehelper.util.StringUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.gxu.tbvp.domain.Buyrecord;
 import com.gxu.tbvp.domain.Produce;
 import com.gxu.tbvp.mapper.BuyrecordMapper;
@@ -63,6 +64,9 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
         return temp;
     }
 
+
+
+
     @Override
     public int countSaleByTime(int month,int year) {
         int Sale = buyrecordMapper.countSaleByTime(month,year);
@@ -88,4 +92,15 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
             return null;
         }
     }
+
+    @Override
+    public PageInfo<Buyrecord> selectByPage(Buyrecord buyrecord, int start, int length) {
+        int page = start/length+1;
+        Example example = new Example(Buyrecord.class);
+        //分页查询
+        PageHelper.startPage(page, length);
+        List<Buyrecord> buyrecordList = selectByExample(example);
+        return new PageInfo<>(buyrecordList);
+    }
+
 }
