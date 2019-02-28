@@ -7,10 +7,7 @@ import com.gxu.tbvp.domain.Buyrecord;
 import com.gxu.tbvp.domain.Manager;
 import com.gxu.tbvp.domain.ManagerRole;
 import com.gxu.tbvp.service.BuyrecordService;
-import com.gxu.tbvp.service.ManagerRoleService;
-import com.gxu.tbvp.service.ManagerService;
-import com.gxu.tbvp.utils.PasswordHelper;
-import org.codehaus.jettison.json.JSONArray;
+
 import org.mortbay.util.ajax.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

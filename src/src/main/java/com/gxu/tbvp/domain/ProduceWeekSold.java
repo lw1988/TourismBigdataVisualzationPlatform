@@ -3,22 +3,13 @@ package com.gxu.tbvp.domain;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
-public class ProduceSold {
-    @Id
-    private Integer id;
+public class ProduceWeekSold {
     /**
      * 购买的产品id
      */
-    @Column(name = "title")
-    private String title;
-    /**
-     * 购买的数量count
-     */
-    @Column(name = "total")
-    private Integer total;
+    @Id
+    private Integer id;
 
-    @Column(name = "proportion")
-    private Float proportion;
 
     public Integer getId() {
         return id;
@@ -27,6 +18,17 @@ public class ProduceSold {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @Column(name = "title")
+    private String title;
+    /**
+     * 购买的数量count
+     */
+    @Column(name = "week_total")
+    private Integer total;
+
+    @Column(name = "week_proportion")
+    private Float proportion;
 
     public String getTitle() {
         return title;
