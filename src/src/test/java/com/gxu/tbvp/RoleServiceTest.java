@@ -21,7 +21,6 @@ public class RoleServiceTest {
     RoleService roleService;
 
     @Ignore
-
     @Test
     public void queryRoleListWithSelectedTest(){
         List<Role> roleList = roleService.queryRoleListWithSelected(3);

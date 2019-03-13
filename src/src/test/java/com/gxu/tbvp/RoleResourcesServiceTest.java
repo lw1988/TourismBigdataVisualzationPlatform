@@ -21,8 +21,6 @@ public class RoleResourcesServiceTest {
 
 
     @Ignore
-
-
     @Test
     public void addRoleResourcesTset(){
 
