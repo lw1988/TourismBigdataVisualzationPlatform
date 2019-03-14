@@ -56,6 +56,18 @@ public class ProductsController {
 
     }
 
+    //计算销售渠道情况
+    @RequestMapping(value="/getSaleWay",method=RequestMethod.GET)
+    public String  getSaleWay(HttpServletRequest request, Buyrecord buyrecord, Model model){
+        ArrayList<List> li = new ArrayList();
+        li.add( compute_4(1));
+        li.add( compute_4(2));
+        li.add( compute_4(3));
+        li.add( compute_4(4));
+        String data = JSON.toString(li);
+        return data;
+    }
+
     //计算促销对销量和客流影响
     @RequestMapping(value="/getPromoSale_Cus",method=RequestMethod.GET)
     public String  getPromoSale_Cus(HttpServletRequest request, Buyrecord buyrecord, Model model){
@@ -162,6 +174,20 @@ public class ProductsController {
         }
         return List;
     }
+
+    public List compute_4(int storetype) { //编写不同渠道销售情况     因为数据库只有2013年1月到2015年7月的数据，所以取最近一年从7月开始算
+        List<Integer> List = new ArrayList();
+            for (int i = 8; i < 13; i++) {
+                List.add(buyrecordService.getSaleWay(storetype, i, 2014));//promo为1做了促销活动
+            }
+            for (int i = 1; i < 8; i++) {
+                List.add(buyrecordService.getSaleWay(storetype, i, 2015));//promo为1做了促销活动
+            }
+        return List;
+    }
+
+
+
 
 
 

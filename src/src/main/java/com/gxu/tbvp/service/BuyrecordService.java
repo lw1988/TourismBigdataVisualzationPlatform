@@ -30,6 +30,8 @@ public interface BuyrecordService extends IService<Buyrecord> {
 
     int countPromoCustomers(int promo,int month,int year);
 
+    int getSaleWay(int storetype,int month,int year);
+
     List<Buyrecord> selectByscenicId(int scenicId);
 
     List<Buyrecord> getUserScenicBuyrecord(int id, int userId);
