@@ -86,7 +86,7 @@ BODY 标签选项：
                 <div class="col-md-6">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">本周产品实时销量排行榜</h3>
+                            <h3 class="box-title">本周代理商总量排行榜</h3>
 
                             <div class="box-tools">
                                 <ul class="pagination pagination-sm no-margin pull-right">
@@ -118,7 +118,7 @@ BODY 标签选项：
                 <div class="col-md-6">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">本月产品实时销量排行榜</h3>
+                            <h3 class="box-title">本月代理商总销量排行榜</h3>
 
                             <div class="box-tools">
                                 <ul class="pagination pagination-sm no-margin pull-right">
@@ -149,13 +149,43 @@ BODY 标签选项：
                 </div>
             </div>
             <!-- ending 产品1 -->
+
+            <!-- 当前平台总访问量与游客年龄统计 -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-info">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">促销活动影响</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="promoInfluence" style="min-height: 350px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-6 -->
+            </div>
+
+
             <!-- 产品2 -->
             <!-- 当前平台总访问量与游客年龄统计 -->
             <div class="row">
                 <div class="col-md-6">
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">游客访问量</h3>
+                            <h3 class="box-title">代理总销量走势</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
@@ -178,20 +208,12 @@ BODY 标签选项：
                     <div class="box box-success">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">游客消费统计</h3>
+                            <h3 class="box-title">客流量走势</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
-                                <!-- <div class="btn-group">
-                                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-wrench"></i></button>
-                                  <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">操作</a></li>
-                                    <li><a href="#">另一个操作</a></li>
-                                  </ul>
-                                </div>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
+
                             </div>
                         </div>
                         <!-- /.box-header -->
@@ -199,7 +221,7 @@ BODY 标签选项：
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div id="consumption" style="width: ; min-height: 350px; margin: 0 auto"></div>
+                                    <div id="VisitsCount" style="width: ; min-height: 350px; margin: 0 auto"></div>
                                 </div>
                                 <div class="col-md-6">
 
@@ -212,6 +234,66 @@ BODY 标签选项：
                 <!-- ./col-md-6 -->
             </div>
             <!-- ending 当前平台总访问量与客源热力图 -->
+
+
+            <!-- 产品3 -->
+            <!-- 节假日对客流，代理销量影响 -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">节假日对代理销量影响</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="holidayInfluence" style="width: ; min-height: 350px; margin: 0 auto"></div>
+                                </div>
+                                <div class="col-md-6">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="box box-success">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">节假日对客流影响</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="holidayCustomer" style="width: ; min-height: 350px; margin: 0 auto"></div>
+                                </div>
+                                <div class="col-md-6">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-6 -->
+            </div>
+            <!-- ending 当前平台总访问量与客源热力图 -->
+
+
+
+
 
 
         </section>
@@ -408,8 +490,7 @@ BODY 标签选项：
 
 <script th:src="@{bower_components/Highcharts-6.1.1/code/highcharts.js}"></script>
 <!-- Highmaps 引入 -->
-<script th:src="@{bower_components/Highmaps-6.1.1/code/modules/map.js}"></script>
-<!-- 中国地图 -->
+
 <script th:src="@{https://data.jianshukeji.com/geochina/china.js}"></script>
 <!-- 3D -->
 <script th:src="@{bower_components/Highcharts-6.1.1/code/highcharts-3d.js}"></script>
@@ -427,6 +508,10 @@ BODY 标签选项：
 
 <!-- Hchart 图表 -->
 <script th:src="@{HchartsJs/monthlyVisits.js}"></script>
+<script th:src="@{HchartsJs/VisitsCount.js}"></script>
+<script th:src="@{HchartsJs/promoInfluence.js}"></script>
+<script th:src="@{HchartsJs/holidayCustomer.js}"></script>
+<script th:src="@{HchartsJs/holidayInfluence.js}"></script>
 <script th:src="@{HchartsJs/sex.js}"></script>
 <script th:src="@{HchartsJs/map.js}"></script>
 <script th:src="@{HchartsJs/travelMap.js}"></script>

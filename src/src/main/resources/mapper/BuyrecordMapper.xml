@@ -25,6 +25,32 @@
     SELECT SUM(buyCount) FROM buyrecord WHERE MONTH(buytime)=#{month} AND YEAR (buytime)=#{year};
   </select>
 
+  <select id="countVisitsByTime" resultType="int" parameterType="int">
+
+   SELECT SUM(buyCount) FROM buyrecord WHERE MONTH(buytime)=#{month} AND YEAR (buytime)=#{year};
+  </select>
+
+
+  <select id="countHolidaySale" resultType="int" parameterType="int">
+
+    SELECT SUM(Sales) FROM agentSaleRecord_holiday WHERE agentSaleRecord_holiday.Date =#{year} AND schoolholiday=#{holiday} AND store=#{store};
+  </select>
+
+  <select id="countHolidayCustomers" resultType="int" parameterType="int">
+
+    SELECT SUM(Customers) FROM agentSaleRecord_holiday WHERE agentSaleRecord_holiday.Date =#{year} AND schoolholiday=#{holiday} AND store=#{store};
+  </select>
+
+  <select id="countPromoCustomers" resultType="int" parameterType="int">
+
+    SELECT  AVG(Customers) FROM agentinfo WHERE  year =#{year} AND  month=#{month}  AND promo=#{promo};
+  </select>
+
+  <select id="countPromoSale" resultType="int" parameterType="int">
+
+    SELECT  AVG(Sales) FROM agentinfo WHERE  year =#{year} AND  month=#{month}  AND promo=#{promo};
+  </select>
+
 
   <select id="getUserScenicBuyrecord" parameterType="int" resultType="com.gxu.tbvp.domain.Produce">
     select * from buyRecord where buyproduceid = #{id} and userid = #{userId}

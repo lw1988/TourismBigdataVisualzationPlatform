@@ -3,16 +3,16 @@ $(function () {
         //异步请求数据
         $.ajax({
             type:"GET",
-            url:'/products/getSale',
+            url:'/products/getVisitsCount',
             dataType:'json',
             success:function (data) {
                 var dafaultMenuItem = Highcharts.getOptions().exporting.buttons.contextButton.menuItems;
-                var chart = Highcharts.chart('monthlyVisits', {
+                var chart = Highcharts.chart('VisitsCount', {
                     chart: {
                         type: 'line'
                     },
                     title: {
-                         text: ' '
+                        text: ' '
                     },
                     exporting: {
                         buttons: {
