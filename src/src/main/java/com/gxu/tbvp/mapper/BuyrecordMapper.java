@@ -10,5 +10,12 @@ import java.util.Map;
 public interface BuyrecordMapper extends MyMapper<Buyrecord> {
     int countPeopleByPrice(Map<String, Object> map);
     int countSaleByTime(@Param("month") int month, @Param("year") int year);
+    int countVisitsByTime(@Param("month") int month, @Param("year") int year);
     List<Buyrecord> getUserScenicBuyrecord(@Param("id") int id, @Param("userId") int userId);
+    int countHolidaySale(@Param("store") int store,@Param("holiday")int holiday,@Param("year")int year);
+    int countHolidayCustomers(@Param("store") int store,@Param("holiday")int promo,@Param("year")int year);
+
+    int countPromoCustomers(@Param("promo") int promo,@Param("month")int month,@Param("year")int year);
+    int countPromoSale(@Param("promo") int promo,@Param("month")int month,@Param("year")int year);
+
 }

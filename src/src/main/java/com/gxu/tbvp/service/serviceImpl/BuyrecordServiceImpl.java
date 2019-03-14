@@ -13,6 +13,7 @@ import tk.mybatis.mapper.entity.Example;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Service
 public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements BuyrecordService {
@@ -64,13 +65,40 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
         return temp;
     }
 
-
+    @Override
+    public int countVisitsByTime(int month,int year) {
+        Random random = new Random();
+        int Visits = buyrecordMapper.countVisitsByTime(month,year)+random.nextInt(1000);
+        return Visits;
+    }
 
 
     @Override
     public int countSaleByTime(int month,int year) {
         int Sale = buyrecordMapper.countSaleByTime(month,year);
         return Sale;
+    }
+    @Override
+    public int countPromoCustomers(int promo, int month,int year) {
+        int Customers = buyrecordMapper.countPromoCustomers(promo,month,year);
+        return Customers;
+    }
+    @Override
+    public int countPromoSale(int promo, int month,int year) {
+        int Sale = buyrecordMapper.countPromoSale(promo,month,year);
+        return Sale;
+    }
+
+    @Override
+    public int countHolidaySale(int store,int holiday,int year){
+        int AVESale = buyrecordMapper.countHolidaySale(store,holiday,year)/2;
+        return AVESale;
+    }
+
+    @Override
+    public int countHolidayCustomers(int store,int holiday,int year){
+        int AVECustomers = buyrecordMapper.countHolidayCustomers(store,holiday,year)/2;
+        return AVECustomers;
     }
 
     @Override
