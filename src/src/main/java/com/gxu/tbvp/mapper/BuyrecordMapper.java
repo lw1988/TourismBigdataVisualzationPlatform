@@ -17,5 +17,6 @@ public interface BuyrecordMapper extends MyMapper<Buyrecord> {
 
     int countPromoCustomers(@Param("promo") int promo,@Param("month")int month,@Param("year")int year);
     int countPromoSale(@Param("promo") int promo,@Param("month")int month,@Param("year")int year);
+    int getSaleWay(@Param("storetype") int storetype,@Param("month")int month,@Param("year")int year);
 
 }

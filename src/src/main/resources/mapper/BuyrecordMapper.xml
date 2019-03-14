@@ -52,6 +52,11 @@
   </select>
 
 
+  <select id="getSaleWay" resultType="int" parameterType="int">
+    SELECT  AVG(Sales) FROM agentinfo WHERE  year =#{year} AND  month=#{month}  AND storetype=#{storetype};
+  </select>
+
+
   <select id="getUserScenicBuyrecord" parameterType="int" resultType="com.gxu.tbvp.domain.Produce">
     select * from buyRecord where buyproduceid = #{id} and userid = #{userId}
   </select>

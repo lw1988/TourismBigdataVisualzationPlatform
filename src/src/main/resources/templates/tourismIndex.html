@@ -87,14 +87,17 @@ BODY 标签选项：
                         旅行从这里开始
                     </p>
                 </div>
-                <form>
+                <form >
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                             <div class="custom-input-group">
-                                <input type="text" class="form-control" placeholder="输入您想查询的关键字">
-                                <button class="appsLand-btn subscribe-btn"><a th:href="@{/searchResult}">开始探索</a></button>
-                                <div class="clearfix"></div>
-                                <i class="icon ion-stats-bars"></i>
+
+                                    <input type="text" id="title" class="form-control" placeholder="输入您想查询的关键字">
+                                    <button class="appsLand-btn subscribe-btn"  id="startSearch">开始探索</button>
+                                    <div class="clearfix"></div>
+                                    <i class="icon ion-stats-bars"></i>
+
+
                             </div>
 
                         </div>
@@ -171,6 +174,7 @@ BODY 标签选项：
                 </div>
                 <!-- ./col-md-6 -->
             </div>
+
 
             <!-- 人群画像 -->
             <div class="row listDiv" style="display: none;">

@@ -167,7 +167,7 @@ BODY 标签选项：
 
             <!-- 当前平台总访问量与游客年龄统计 -->
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="box box-info">
 
                         <div class="box-header with-border">
@@ -191,6 +191,33 @@ BODY 标签选项：
                     </div>
                 </div>
                 <!-- ./col-md-6 -->
+                <div class="col-md-6">
+                    <div class="box box-info">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">各渠道销售情况</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="SaleWay" style="min-height: 350px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-6 -->
+
+
+
             </div>
             <!-- ending 当前平台总访问量与客源热力图 -->
 
@@ -409,6 +436,8 @@ BODY 标签选项：
 <!-- <script th:src="@{bower_components/Highcharts-6.1.1/code/themes/gray.js}"></script> -->
 
 <!-- Hchart 图表 -->
+
+<script th:src="@{HchartsJs/SaleWay.js}"></script>
 <script th:src="@{HchartsJs/monthlyVisits.js}"></script>
 <script th:src="@{HchartsJs/sex.js}"></script>
 <script th:src="@{HchartsJs/map.js}"></script>

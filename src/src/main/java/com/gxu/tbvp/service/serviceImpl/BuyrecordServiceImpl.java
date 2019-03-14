@@ -102,6 +102,13 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
     }
 
     @Override
+    public int getSaleWay(int storetype,int month,int year){
+        int saleWay = buyrecordMapper.getSaleWay(storetype,month,year);
+        return saleWay;
+    }
+
+
+    @Override
     public List<Buyrecord> selectByscenicId(int scenicId) {
         Example example = new Example(Buyrecord.class);
         Example.Criteria criteria = example.createCriteria();
