@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.SearchRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.SearchRecord" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="searchProduceTitle" property="searchProduceTitle" jdbcType="VARCHAR" />
+    <result column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="createdTime" property="createdTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <insert id="insertSearchRecord" >
+   INSERT into searchRecord (searchProduceTitle,createdTime,userName) VALUES(#{searchProduceTitle},#{createdTime},#{userName})
+  </insert>
+
+  <select id="getDefaultSearchData" resultType="java.lang.String">
+  SELECT title FROM (SELECT * FROM produceitem ORDER BY start_time DESC )temp  LIMIT 0,10
+  </select>
+
+  <select id="getSearchRecordByUserName"  resultType="java.lang.String">
+  SELECT searchProduceTitle  FROM  searchRecord WHERE userName=#{userName}
+  </select>
+
+  <select id="getSearchRecordByTitle" resultType="java.lang.String">
+    SELECT title FROM produceitem WHERE title LIKE %#{title}%
+  </select>
+  <select id="getCountByTitle"  resultType="java.lang.Integer">
+  SELECT COUNT(*) FROM searchRecord WHERE searchProduceTitle=#{searchProduceTitle}
+  </select>
+
+</mapper>

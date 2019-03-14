@@ -2,7 +2,9 @@ package com.gxu.tbvp.controller;
 
 
 
+import com.github.pagehelper.util.StringUtil;
 import com.gxu.tbvp.domain.Manager;
+import com.gxu.tbvp.service.SearchRecordService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -14,7 +16,15 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 /**
@@ -23,6 +33,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class HomeController {
+
+
     @RequestMapping(value="/login",method= RequestMethod.GET)
     public String login(){
         return "login";
@@ -42,6 +54,7 @@ public class HomeController {
         }
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token=new UsernamePasswordToken(manager.getUsername(),manager.getPassword());
+        request.getSession().setAttribute("Username",manager.getUsername());
         try {
             subject.login(token);
             return "redirect:managersPage";
@@ -139,7 +152,10 @@ public class HomeController {
     @RequestMapping(value="/tourismIndex", method = RequestMethod.GET)
     public String zhishu(){
         return "tourismIndex";
+
     }
+
+
 
 
     /*-----管理界面-----*/
