@@ -81,74 +81,34 @@ BODY 标签选项：
             <!--------------------------
               | Your Page Content Here 数据图表展示页面 |
               -------------------------->
-            <!-- 产品1 -->
+
+
             <div class="row">
-                <div class="col-md-6">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">本周代理商总量排行榜</h3>
+                <div class="col-md-12">
+                    <div class="box box-info">
 
-                            <div class="box-tools">
-                                <ul class="pagination pagination-sm no-margin pull-right">
-                                    <li><a href="#">«</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">»</a></li>
-                                </ul>
+                        <div class="box-header with-border">
+                            <h3 class="box-title">平均售价影响</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
                             </div>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <table class="table table-bordered data-table" id="datatable_1" >
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>产品名称</th>
-                                    <th>销量</th>
-                                    <th>占比</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-                <div class="col-md-6">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">本月代理商总销量排行榜</h3>
 
-                            <div class="box-tools">
-                                <ul class="pagination pagination-sm no-margin pull-right">
-                                    <li><a href="#">«</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">»</a></li>
-                                </ul>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="sold_price" style="min-height: 350px; margin: 0 auto"></div>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <table class="table table-bordered data-table" id="datatable" >
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>产品名称</th>
-                                    <th>销量</th>
-                                    <th>占比</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
+                        <!-- ./box-body -->
                     </div>
-                    <!-- /.box -->
                 </div>
+                <!-- ./col-md-6 -->
             </div>
-            <!-- ending 产品1 -->
 
             <!-- 当前平台总访问量与游客年龄统计 -->
             <div class="row">
@@ -507,6 +467,9 @@ BODY 标签选项：
 <!-- <script th:src="@{bower_components/Highcharts-6.1.1/code/themes/gray.js}"></script> -->
 
 <!-- Hchart 图表 -->
+
+<script src="https://img.highcharts.com.cn/highcharts/highcharts-more.js"></script>
+
 <script th:src="@{HchartsJs/monthlyVisits.js}"></script>
 <script th:src="@{HchartsJs/VisitsCount.js}"></script>
 <script th:src="@{HchartsJs/promoInfluence.js}"></script>
@@ -519,5 +482,7 @@ BODY 标签选项：
 <script th:src="@{HchartsJs/age.js}"></script>
 <script th:src="@{HchartsJs/weekVisits.js}"></script>
 <script th:src="@{HchartsJs/consumption.js}"></script>
+<script th:src="@{HchartsJs/sold_price.js}"></script>
+
 </body>
 </html>
