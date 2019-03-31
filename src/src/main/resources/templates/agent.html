@@ -84,7 +84,7 @@ BODY 标签选项：
 
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="box box-info">
 
                         <div class="box-header with-border">
@@ -108,11 +108,7 @@ BODY 标签选项：
                     </div>
                 </div>
                 <!-- ./col-md-6 -->
-            </div>
-
-            <!-- 当前平台总访问量与游客年龄统计 -->
-            <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="box box-info">
 
                         <div class="box-header with-border">
@@ -135,14 +131,40 @@ BODY 标签选项：
                         <!-- ./box-body -->
                     </div>
                 </div>
-                <!-- ./col-md-6 -->
+
+            <div class="col-md-4">
+                <div class="box box-info">
+
+                    <div class="box-header with-border">
+                        <h3 class="box-title">销售环比增长情况</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="SaleBehavior" style="min-height: 350px; margin: 0 auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./box-body -->
+                </div>
             </div>
+            </div>
+
+            <!-- 当前平台总访问量与游客年龄统计 -->
+
 
 
             <!-- 产品2 -->
             <!-- 当前平台总访问量与游客年龄统计 -->
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">代理总销量走势</h3>
@@ -164,42 +186,7 @@ BODY 标签选项：
                         <!-- ./box-body -->
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="box box-success">
-
-                        <div class="box-header with-border">
-                            <h3 class="box-title">客流量走势</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="VisitsCount" style="width: ; min-height: 350px; margin: 0 auto"></div>
-                                </div>
-                                <div class="col-md-6">
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./box-body -->
-                    </div>
-                </div>
-                <!-- ./col-md-6 -->
-            </div>
-            <!-- ending 当前平台总访问量与客源热力图 -->
-
-
-            <!-- 产品3 -->
-            <!-- 节假日对客流，代理销量影响 -->
-            <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">节假日对代理销量影响</h3>
@@ -221,11 +208,12 @@ BODY 标签选项：
                         <!-- ./box-body -->
                     </div>
                 </div>
-                <div class="col-md-6">
+                <!-- ./col-md-6 -->
+                <div class="col-md-4">
                     <div class="box box-success">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">节假日对客流影响</h3>
+                            <h3 class="box-title">销售渠道占比</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -238,17 +226,28 @@ BODY 标签选项：
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div id="holidayCustomer" style="width: ; min-height: 350px; margin: 0 auto"></div>
+                                    <div id="SaleWay" style="width: ; min-height: 350px; margin: 0 auto"></div>
                                 </div>
                                 <div class="col-md-6">
+
                                 </div>
                             </div>
                         </div>
                         <!-- ./box-body -->
                     </div>
                 </div>
-                <!-- ./col-md-6 -->
+
+
+
+
+
             </div>
+            <!-- ending 当前平台总访问量与客源热力图 -->
+
+
+            <!-- 产品3 -->
+            <!-- 节假日对客流，代理销量影响 -->
+
             <!-- ending 当前平台总访问量与客源热力图 -->
 
 
@@ -470,6 +469,7 @@ BODY 标签选项：
 
 <script src="https://img.highcharts.com.cn/highcharts/highcharts-more.js"></script>
 
+<script th:src="@{HchartsJs/SaleBehavior.js}"></script>
 <script th:src="@{HchartsJs/monthlyVisits.js}"></script>
 <script th:src="@{HchartsJs/VisitsCount.js}"></script>
 <script th:src="@{HchartsJs/promoInfluence.js}"></script>
@@ -483,6 +483,6 @@ BODY 标签选项：
 <script th:src="@{HchartsJs/weekVisits.js}"></script>
 <script th:src="@{HchartsJs/consumption.js}"></script>
 <script th:src="@{HchartsJs/sold_price.js}"></script>
-
+<script th:src="@{HchartsJs/SaleWay.js}"></script>
 </body>
 </html>

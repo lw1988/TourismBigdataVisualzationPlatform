@@ -17,10 +17,10 @@ $(function () {
                         enabled: false
                     },
                     title: {
-                        text: '月平均售价对销量的影响'
+                        text: '18年月平均售价对销量的影响'
                     },
                     subtitle: {
-                        text: '2018年售价与销量数据'
+                        text: '圆圈面积表示销量，可以看到3月份价格最低时，此时售量越高'
                     },
                     xAxis: {
                         gridLineWidth: 1,
