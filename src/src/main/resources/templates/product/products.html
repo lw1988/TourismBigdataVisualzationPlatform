@@ -28,6 +28,10 @@
     <!--[if lt IE 9]>
     <script th:src="@{https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js}"></script>
     <script th:src="@{https://oss.maxcdn.com/respond/1.4.2/respond.min.js}"></script>
+
+
+
+
     <![endif]-->
 
     <!-- HighCharts引入 唯一需要注意的是保证 highcharts.js} 的
@@ -453,44 +457,11 @@ BODY 标签选项：
     } );
 
 </script>
-
-
-<script th:src="@{bower_components/Highcharts-6.1.1/code/highcharts.js}"></script>
-<!-- Highmaps 引入 -->
-<script th:src="@{bower_components/Highmaps-6.1.1/code/modules/map.js}"></script>
-<!-- 中国地图 -->
-<script th:src="@{https://data.jianshukeji.com/geochina/china.js}"></script>
-<!-- 3D -->
-<script th:src="@{bower_components/Highcharts-6.1.1/code/highcharts-3d.js}"></script>
-<!-- 启用导出功能 -->
-<script th:src="@{bower_components/Highcharts-6.1.1/code/modules/exporting.js}"></script>
-<!-- 向下钻功能 -->
-<script th:src="@{bower_components/Highcharts-6.1.1/code/modules/drilldown.js}"></script>
-<script th:src="@{bower_components/Highcharts-6.1.1/code/modules/oldie.js}"></script>
-<!-- 汉化 -->
-<script th:src="@{https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js}"></script>
-<script th:src="@{https://code.highcharts.com/modules/data.js}"></script>
-
+<script th:src="@{https://img.highcharts.com.cn/highcharts/highcharts.js}"></script>
+<script th:src="@{https://img.highcharts.com.cn/highcharts/modules/exporting.js}"></script>
 <script th:src="@{https://img.highcharts.com.cn/highcharts/modules/heatmap.js}"></script>
 <script th:src="@{https://img.highcharts.com.cn/highcharts/modules/treemap.js}"></script>
-
-<script th:src="@{https://img.highcharts.com.cn/highcharts/themes/grid-light.js}"></script>
-
-<!-- <script type="text/javascript" src="//img.hcharts.cn/mapdata/cn-with-citys.js}"></script> -->
-<!-- 切换主题 -->
-<!-- <script th:src="@{bower_components/Highcharts-6.1.1/code/themes/gray.js}"></script> -->
-
-<!-- Hchart 图表 -->
-
-<script th:src="@{HchartsJs/SaleWay.js}"></script>
-<script th:src="@{HchartsJs/monthlyVisits.js}"></script>
-<script th:src="@{HchartsJs/sex.js}"></script>
-<script th:src="@{HchartsJs/map.js}"></script>
-<script th:src="@{HchartsJs/travelMap.js}"></script>
-<script th:src="@{HchartsJs/travelMode.js}"></script>
-<script th:src="@{HchartsJs/age.js}"></script>
-<script th:src="@{HchartsJs/weekVisits.js}"></script>
-<script th:src="@{HchartsJs/consumption.js}"></script>
+<script th:src="@{https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js}"></script>
 <script th:src="@{HchartsJs/productCount.js}"></script>
 <script th:src="@{HchartsJs/lookCount.js}"></script>
 </body>
