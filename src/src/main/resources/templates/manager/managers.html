@@ -89,213 +89,72 @@ BODY 标签选项：
               | Your Page Content Here 数据图表展示页面 |
               -------------------------->
             <!-- 产品访问量排名 -->
-            <div class="row" style="">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-green" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
+            <!--<div class="row" style="">-->
+            <div class="col-md-6">
+                <div id="guangximap" style="height: 600px"></div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
 
-                        <div class="info-box-content">
-                            <h4>今周产品实时热搜榜 <a th:href="@{list.html}" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4>
-                            <ul style="list-style: none;line-height: 22px;">
-                                <li><span class="label label-danger">1</span>  南宁 11410</li>
-                                <li><span class="label label-info">2</span>  崇左 41,410</li>
-                                <li><span class="label label-warning">3</span>  桂林  41,410</li>
-                            </ul>
-                        </div>
-                        <!-- /.info-box-content -->
-
+                    <div class="info-box-content">
+                        <span class="info-box-text"><h4>今周产品实时热搜榜 <a th:href="@{list.html}" class=""
+                                                                     style="font-size: 14px;">更多信息 <i
+                                class="fa fa-arrow-circle-right"></i></a></h4></span>
+                        <ul style="list-style: none;line-height: 22px;">
+                            <li><span class="label label-danger">1</span> 南宁 11410</li>
+                            <li><span class="label label-info">2</span> 崇左 41,410</li>
+                            <li><span class="label label-warning">3</span> 桂林 41,410</li>
+                        </ul>
                     </div>
-                    <!-- /.info-box -->
+                    <!-- /.info-box-content -->
+
                 </div>
+                <!-- /.info-box -->
+            </div>
 
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-yellow" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-yellow" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text"><h4>本月产品实时热搜榜 <a th:href="@{list.html}" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
-                            <ul style="list-style: none;line-height: 22px;">
-                                <li><span class="label label-danger">1</span>  南宁 11410</li>
-                                <li><span class="label label-info">2</span>  柳州 41,410</li>
-                                <li><span class="label label-warning">3</span>  桂林  41,410</li>
-                            </ul>
-                        </div>
-                        <!-- /.info-box-content -->
+                    <div class="info-box-content">
+                        <span class="info-box-text"><h4>本月产品实时热搜榜 <a th:href="@{list.html}" class=""
+                                                                     style="font-size: 14px;">更多信息 <i
+                                class="fa fa-arrow-circle-right"></i></a></h4></span>
+                        <ul style="list-style: none;line-height: 22px;">
+                            <li><span class="label label-danger">1</span> 南宁 11410</li>
+                            <li><span class="label label-info">2</span> 柳州 41,410</li>
+                            <li><span class="label label-warning">3</span> 桂林 41,410</li>
+                        </ul>
                     </div>
-                    <!-- /.info-box -->
+                    <!-- /.info-box-content -->
                 </div>
-
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-blue" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text"><h4>今月产品实时销量榜 <a th:href="@{list.html}" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
-                            <ul style="list-style: none;line-height: 22px;">
-                                <li><span class="label label-danger">1</span>  南宁 11410</li>
-                                <li><span class="label label-info">2</span>  贺州 41,410</li>
-                                <li><span class="label label-warning">3</span>  梧州  41,410</li>
-                            </ul>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-red" style="height: 125px;"><i class="fa ion-android-favorite"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text"><h4>本周产品实时销量榜 <a th:href="@{list.html}" class="" style="font-size: 14px;">更多信息 <i class="fa fa-arrow-circle-right"></i></a></h4></span>
-                            <ul style="list-style: none;line-height: 22px;">
-                                <li><span class="label label-danger">1</span>  南宁 11410</li>
-                                <li><span class="label label-info">2</span>  桂林 41,410</li>
-                                <li><span class="label label-warning">3</span>  梧州  41,410</li>
-                            </ul>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
+                <!-- /.info-box -->
+            </div>
+            <!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
+            <!--</div>-->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div id="ShoppingHabits" style=" min-height: 463px; margin: 0 auto">
+                <pre id="tsv" style="= display:none">Browser Version	Total Market Share
+                收藏后购买 14	11.97%
+                加入购物车 50	42.3%
+                直接购买 54	45.72%
+                </pre>
                 </div>
             </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div id="PassengerListAnalysis" style=" min-height: 463px; margin: 0 auto"></div>
+            </div>
+            <!--<div class="row" style="">-->
             <!-- ending 产品访问量排名 -->
-
-            <!-- 客源分析 -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="box">
-
-                        <!-- <div class="box-header with-border">
-                          <h3 class="box-title">访客统计</h3>
-
-                          <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                          </div>
-                        </div> -->
-                        <!-- /.box-header -->
-
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div id="sex" style=" min-height: 400px; margin: 0 auto"></div>
-                                </div>
-                                <div class="col-md-4" style="margin-left: -30px">
-                                    <div id="guangximap" style=" min-height: 400px; margin: 0 auto"></div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div id="travelMode" style=" min-height: 400px; margin: 0 auto"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./box-body -->
-                    </div>
-                </div>
-
-                <!-- ./col-md-6 -->
-            </div>
-            <!-- ending 客源分析 -->
-
-            <!-- 当前平台总访问量与游客年龄统计 -->
-            <div class="row">
+            <div class="row" style="">
                 <div class="col-md-6">
-                    <div class="box box-info">
-
-                        <div class="box-header with-border">
-                            <h3 class="box-title">每月访问量</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <!-- <div class="btn-group">
-                                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-wrench"></i></button>
-                                  <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">操作</a></li>
-                                    <li><a href="#">另一个操作</a></li>
-                                  </ul>
-                                </div>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="monthlyVisits" style="width: ; min-height: 350px; margin: 0 auto"></div>
-                                </div>
-                                <div class="col-md-6">
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./box-body -->
-                    </div>
+                    <div id="weekVisits" style="height: 280px"></div>
                 </div>
-
                 <div class="col-md-6">
-                    <div class="box box-success">
-
-                        <div class="box-header with-border">
-                            <h3 class="box-title">游客年龄段统计</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="age" style="width: ; min-height: 350px; margin: 0 auto"></div>
-                                </div>
-                                <div class="col-md-6">
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./box-body -->
-                    </div>
+                    <div id="TimeUsed" style="height: 280px"></div>
                 </div>
-                <!-- ./col-md-6 -->
             </div>
-            <!-- ending 当前平台总访问量与客源热力图 -->
-
-            <!-- 客源分析 -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="box box-warning">
-
-                        <!-- <div class="box-header with-border">
-                          <h3 class="box-title">访客统计</h3>
-
-                          <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                          </div>
-                        </div> -->
-                        <!-- /.box-header -->
-
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div id="weekVisits" style=" min-height: 400px; margin: 0 auto"></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div id="consumption" style=" min-height: 400px; margin: 0 auto"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ./box-body -->
-                    </div>
-                </div>
-
-                <!-- ./col-md-6 -->
-            </div>
-            <!-- ending 客源分析 -->
 
 
         </section>
@@ -405,6 +264,7 @@ BODY 标签选项：
 <!-- Highmaps 引入 -->
 <script th:src="@{/bower_components/Highmaps-6.1.1/code/modules/map.js}"></script>
 <!-- 中国地图 -->
+<script th:src="@{/bower_components/Highcharts-6.1.1/code/highcharts-more.js}"></script>
 <script th:src="@{https://data.jianshukeji.com/geochina/china.js}"></script>
 <!-- 3D -->
 <script th:src="@{/bower_components/Highcharts-6.1.1/code/highcharts-3d.js}"></script>
@@ -432,5 +292,9 @@ BODY 标签选项：
 <script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
 <script src="https://data.jianshukeji.com/geochina/guangxi.js"></script>
 <script th:src="@{/HchartsJs/guangximap.js}"></script>
+<script th:src="@{/HchartsJs/ShoppingHabits.js}"></script>
+<script th:src="@{/HchartsJs/PassengerListAnalysis.js}"></script>
+<script th:src="@{/HchartsJs/TimeUsed.js}"></script>
+
 </body>
 </html>
