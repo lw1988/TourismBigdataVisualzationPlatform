@@ -16,7 +16,7 @@ $(function () {
                         text: ' '
                     },
                     subtitle: {
-                        text: '2018年数据'
+                        text: '由2018年销量频率可以看出，节假日产品销售量整体趋势高于非节假日'
                     },
                     xAxis: {
                         title: {

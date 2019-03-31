@@ -12,10 +12,10 @@ $(function () {
                         type: 'column'
                     },
                     title: {
-                        text: '促销对每月的日平均销量与客流量影响'
+                        text: '18年促销对每月的日平均销量与客流量影响'
                     },
                     subtitle: {
-                        text: '2018年代理销售及客流数据'
+                        text: '促销对客流的提升与购买力有着明显的作用，有促销活动时客流与销售量偏高'
                     },
                     xAxis: {
                         categories: [
