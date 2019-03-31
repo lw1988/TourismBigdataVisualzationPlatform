@@ -67,11 +67,6 @@ BODY 标签选项：
     <!-- Left side column. contains the logo and sidebar -->
     <div th:include="common/main-sidebar :: main-sidebar"></div>
 
-
-
-
-
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (页眉) -->
@@ -94,84 +89,13 @@ BODY 标签选项：
               -------------------------->
 
             <!-- 产品1 -->
+
             <div class="row">
-                <div class="col-md-6">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">本周产品实时销量排行榜</h3>
-
-                            <div class="box-tools">
-                                <ul class="pagination pagination-sm no-margin pull-right">
-                                    <li><a href="#">«</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">»</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <table class="table table-bordered data-table" id="datatable_1" >
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>产品名称</th>
-                                    <th>销量</th>
-                                    <th>占比</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-
-                <div class="col-md-6">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">本月产品实时销量排行榜</h3>
-
-                            <div class="box-tools">
-                                <ul class="pagination pagination-sm no-margin pull-right">
-                                    <li><a href="#">«</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">»</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <table class="table table-bordered data-table" id="datatable" >
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>产品名称</th>
-                                    <th>销量</th>
-                                    <th>占比</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-
-            </div>
-
-            <!-- ending 产品2 -->
-
-            <!-- 当前平台总访问量与游客年龄统计 -->
-            <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">历年产品总销量走势图</h3>
+
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -183,7 +107,7 @@ BODY 标签选项：
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div id="monthlyVisits" style="min-height: 350px; margin: 0 auto"></div>
+                                    <div id="look_count" style="min-height: 250px; margin: 0 auto"></div>
                                 </div>
                             </div>
                         </div>
@@ -191,11 +115,11 @@ BODY 标签选项：
                     </div>
                 </div>
                 <!-- ./col-md-6 -->
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">各渠道销售情况</h3>
+
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -207,7 +131,54 @@ BODY 标签选项：
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div id="SaleWay" style="min-height: 350px; margin: 0 auto"></div>
+                                    <div id="save_count" style="min-height: 250px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="box box-info">
+
+                        <div class="box-header with-border">
+
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="readybuy_count" style="min-height: 250px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="box box-info">
+
+                        <div class="box-header with-border">
+
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="buy_count" style="min-height: 250px; margin: 0 auto"></div>
                                 </div>
                             </div>
                         </div>
@@ -215,12 +186,80 @@ BODY 标签选项：
                     </div>
                 </div>
                 <!-- ./col-md-6 -->
-
-
-
             </div>
-            <!-- ending 当前平台总访问量与客源热力图 -->
 
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box box-info">
+
+                        <div class="box-header with-border">
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="proportion_3" style="min-height: 400px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-6 -->
+                <div class="col-md-4">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="proportion_2" style="min-height: 400px; margin: 0 auto"></div>
+                                    <!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box box-info">
+
+                        <div class="box-header with-border">
+
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="proportion_1" style="min-height: 400px; margin: 0 auto"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./box-body -->
+                    </div>
+                </div>
+                <!-- ./col-md-6 -->
+            </div>
 
 
         </section>
@@ -431,6 +470,12 @@ BODY 标签选项：
 <!-- 汉化 -->
 <script th:src="@{https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js}"></script>
 <script th:src="@{https://code.highcharts.com/modules/data.js}"></script>
+
+<script th:src="@{https://img.highcharts.com.cn/highcharts/modules/heatmap.js}"></script>
+<script th:src="@{https://img.highcharts.com.cn/highcharts/modules/treemap.js}"></script>
+
+<script th:src="@{https://img.highcharts.com.cn/highcharts/themes/grid-light.js}"></script>
+
 <!-- <script type="text/javascript" src="//img.hcharts.cn/mapdata/cn-with-citys.js}"></script> -->
 <!-- 切换主题 -->
 <!-- <script th:src="@{bower_components/Highcharts-6.1.1/code/themes/gray.js}"></script> -->
@@ -446,5 +491,7 @@ BODY 标签选项：
 <script th:src="@{HchartsJs/age.js}"></script>
 <script th:src="@{HchartsJs/weekVisits.js}"></script>
 <script th:src="@{HchartsJs/consumption.js}"></script>
+<script th:src="@{HchartsJs/productCount.js}"></script>
+<script th:src="@{HchartsJs/lookCount.js}"></script>
 </body>
 </html>
