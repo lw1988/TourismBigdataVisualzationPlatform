@@ -23,12 +23,14 @@
           您可以选择其他皮肤。皮肤样式写在 body 标签中，
           以便使之生效。 -->
     <link rel="stylesheet" th:href="@{/dist/css/skins/skin-blue.min.css}">
-
+    <link rel="stylesheet" th:href="@{http://cache.amap.com/lbs/static/main1119.css}"/>
     <!-- HTML5 Shim and Respond.js} IE8 support of HTML5 elements and media queries -->
     <!-- 警告：Respond.js} 不支持 file:// 方式查看（即本地方式查看）-->
     <!--[if lt IE 9]>
+
     <script th:src="@{https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js}"></script>
     <script th:src="@{https://oss.maxcdn.com/respond/1.4.2/respond.min.js}"></script>
+
     <![endif]-->
 
     <!-- HighCharts引入 唯一需要注意的是保证 highcharts.js} 的
@@ -38,7 +40,15 @@
     <!--&lt;!&ndash; Google Font &ndash;&gt;-->
     <!--<link rel="stylesheet"-->
     <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+<style>
+    .amap-logo{
+        display: none;    /*隐藏左下角地图logo*/
+    }
+    .amap-copyright{
+        display: none!important;
+    }
 
+</style>
 </head>
 <!--
 BODY 标签选项：
@@ -91,7 +101,7 @@ BODY 标签选项：
             <!-- 产品访问量排名 -->
             <!--<div class="row" style="">-->
             <div class="col-md-6">
-                <div id="guangximap" style="height: 600px"></div>
+                <div id="guangximap" style="height: 600px" ></div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
@@ -291,10 +301,89 @@ BODY 标签选项：
 
 <script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
 <script src="https://data.jianshukeji.com/geochina/guangxi.js"></script>
-<script th:src="@{/HchartsJs/guangximap.js}"></script>
+<!--<script th:src="@{/HchartsJs/guangximap.js}"></script>-->
 <script th:src="@{/HchartsJs/ShoppingHabits.js}"></script>
 <script th:src="@{/HchartsJs/PassengerListAnalysis.js}"></script>
 <script th:src="@{/HchartsJs/TimeUsed.js}"></script>
+<script  th:src="@{http://webapi.amap.com/maps?v=1.4.13&key=aa64e5b730bf26fa6443c306bff37139&plugin=AMap.Geocoder}"></script>
+<script th:src="@{https://webapi.amap.com/js/marker.js}"></script>
+<script  type="text/javascript" >
+        $(document).ready(function () {
 
+            var map=new AMap.Map('guangximap',{resizeEnable: true,zoom:13});
+            map.plugin(["AMap.ToolBar"], function() {
+                map.addControl(new AMap.ToolBar());
+            });
+            var markers = [];
+            $.ajax({
+                type:"GET",
+                url:'getALLTourismAndPeopleCount',
+                dataType:'json',
+                traditional:true,
+                success:function (data) {
+                    var address=[];
+                    for(var j=1;j<data.length;j++){
+                        address.push(data[j].title)
+                    }
+                    var geocoder=[];
+                    AMap.plugin('AMap.Geocoder', function() {
+                        geocoder=new AMap.Geocoder({
+                            city:"南宁"
+                        });
+                    });
+                    geocoder.getLocation(address, function(status, result) {
+                        if (status === 'complete'&&result.geocodes.length) {
+                                for(var i=0;i<result.geocodes.length;i++){
+                                    if(data[i].count>50){
+                                        icon=new AMap.Icon({
+                                            image:'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png',
+                                            size: new AMap.Size(24, 24)
+                                        });
+                                    }else{
+                                        icon=new AMap.Icon({
+                                            image:'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
+                                            size: new AMap.Size(24, 24)
+                                        });
+                                    }
+                                    if(!result.geocodes[i].location) {
+                                        var marker = new AMap.Marker({
+                                            position: result.geocodes[i].location,
+                                            icon: icon,
+                                            offset: new AMap.Pixel(-12, -12),
+                                            zIndex: 101,
+                                            title: data[i].title + "已有" + data[i].count + "人旅游过",
+                                        });
+                                    }
+                                    markers.push(marker);
+                                }
+                                map.add(markers);
+                                map.setFitView(markers);
+                            }
+                        })
+                        },
+                error:function(e){
+
+                }
+            });
+
+        })
+
+
+      //获取经纬度
+     function getPosition(address) {
+         var lnglat;
+         AMap.plugin('AMap.Geocoder', function() {
+             var geocoder = new AMap.Geocoder();
+             geocoder.getLocation(address, function(status, result) {
+                 if (status === 'complete'&&result.geocodes.length) {
+                      lnglat = result.geocodes[0].location
+                 }
+         })
+     })
+         return lnglat;
+     }
+</script>
+<script  th:src="@{http://cache.amap.com/lbs/static/addToolbar.js}"></script>
 </body>
+
 </html>

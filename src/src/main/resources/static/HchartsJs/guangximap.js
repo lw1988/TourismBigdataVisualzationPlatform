@@ -1,35 +1,52 @@
-var data = [{"name":"南宁","value":95},{"name":"柳州","value":2},{"name":"桂林","value":76},{"name":"梧州","value":45},{"name":"北海","value":83},{"name":"防城港","value":63},{"name":"钦州","value":58},{"name":"贵港","value":53},{"name":"玉林","value":78},{"name":"百色","value":83},{"name":"贺州","value":28},{"name":"河池","value":73},{"name":"来宾","value":61},{"name":"崇左","value":52}];
-// 初始化图表
-var map = new Highcharts.Map('guangximap', {
-    title: {
-        text: '广西客源地热力图'
-    },
-    colorAxis: {
-        min: 0,
-        minColor: 'rgb(255,255,255)',
-        maxColor: '#006cee'
-    },
-    series: [{
-        data: data,
-        name: '游客人数/万人',
-        mapData: Highcharts.maps['cn/guangxi'],
-        joinBy: 'name' // 根据 name 属性进行关联
-    }]
-});
+$(function () {
+    $(document).ready(function () {
+       var map=new AMap.Map('guangximap',{resizeEnable: true,zoom:13});
+        $.ajax({
+            type:"GET",
+            url:'getALLTourismAndPeopleCount',
+            dataType:'json',
+            traditional:true,
+            success:function (data) {
+              for(var i=1;i<produces.length;i=i+1){
+                  var marker;
+                  var icon;
+                  if(produces[i].count>50){
+                      icon=new AMap.Icon({
+                          image:'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png',
+                          size: new AMap.Size(24, 24)
+                      });
+                  }else{
+                      icon=new AMap.Icon({
+                          image:'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
+                          size: new AMap.Size(24, 24)
+                      });
+                  }
+                  marker = new AMap.Marker({
+                      icon: icon,
+                      position:getPosition(produces[i].title),
+                      offset: new AMap.Pixel(-12,-12),
+                      zIndex: 101,
+                      title:produces[i].title+"已有"+produces[i].count+"人旅游过"
+                  });
+              }
+            },
+            error:function(e){
 
-var map = new Highcharts.Map('guangxitourmap', {
-    title: {
-        text: ''
-    },
-    colorAxis: {
-        min: 0,
-        minColor: 'rgb(255,255,255)',
-        maxColor: '#006cee'
-    },
-    series: [{
-        data: data,
-        name: '游客人数/万人',
-        mapData: Highcharts.maps['cn/guangxi'],
-        joinBy: 'name' // 根据 name 属性进行关联
-    }]
-});
+            }
+        });
+
+    })
+})
+
+//获取经纬度
+function getPosition( address) {
+    var lng;
+    var lat;
+    geocoder.getLocation(address, function(status, result) {
+        if (status === 'complete' && result.info === 'OK') {
+            lng = result.geocodes[0].location.lng;
+            lat=result.geocodes[0].location.lat;
+        }
+    });
+    return [lng,lat]
+}

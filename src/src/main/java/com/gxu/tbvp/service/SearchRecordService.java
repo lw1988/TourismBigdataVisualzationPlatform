@@ -17,4 +17,5 @@ public interface SearchRecordService extends IService<SearchRecord> {
     //获取搜索的相关景点
     List<Map> getSearchRecordByTitle(String title);
 
+
 }
