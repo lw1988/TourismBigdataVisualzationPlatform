@@ -13,7 +13,7 @@
   </select>
 
   <select id="getPeopleCount" resultType="java.lang.Integer">
-    SELECT SUM(scenic_buyrecord.buy_count) as count FROM produceitem LEFT JOIN scenic_buyrecord ON produceitem.produceId=scenic_buyrecord.scenicId WHERE produceitem.produceId=#{produceId}
+    SELECT ifnull(SUM(scenic_buyrecord.buy_count),0) as count FROM produceitem LEFT JOIN scenic_buyrecord ON produceitem.produceId=scenic_buyrecord.scenicId WHERE produceitem.produceId=#{produceId}
   </select>
 
 </mapper>

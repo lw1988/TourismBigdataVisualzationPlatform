@@ -305,69 +305,67 @@ BODY 标签选项：
 <script th:src="@{/HchartsJs/ShoppingHabits.js}"></script>
 <script th:src="@{/HchartsJs/PassengerListAnalysis.js}"></script>
 <script th:src="@{/HchartsJs/TimeUsed.js}"></script>
-<script  th:src="@{http://webapi.amap.com/maps?v=1.4.13&key=aa64e5b730bf26fa6443c306bff37139&plugin=AMap.Geocoder}"></script>
+<script  th:src="@{https://webapi.amap.com/maps?v=1.4.14&key=aa64e5b730bf26fa6443c306bff37139&plugin=AMap.Geocoder}"></script>
 <script th:src="@{https://webapi.amap.com/js/marker.js}"></script>
+<script  th:src="@{http://cache.amap.com/lbs/static/addToolbar.js}"></script>
 <script  type="text/javascript" >
-        $(document).ready(function () {
+    var map;
+    var markers=[];
+    $(document).ready(function () {
+            init();
+            addMarker();
+    })
 
-            var map=new AMap.Map('guangximap',{resizeEnable: true,zoom:13});
-            map.plugin(["AMap.ToolBar"], function() {
-                map.addControl(new AMap.ToolBar());
-            });
-            var markers = [];
-            $.ajax({
-                type:"GET",
-                url:'getALLTourismAndPeopleCount',
-                dataType:'json',
-                traditional:true,
-                success:function (data) {
-                    var address=[];
-                    for(var j=1;j<data.length;j++){
-                        address.push(data[j].title)
-                    }
-                    var geocoder=[];
-                    AMap.plugin('AMap.Geocoder', function() {
-                        geocoder=new AMap.Geocoder({
-                            city:"南宁"
-                        });
-                    });
-                    geocoder.getLocation(address, function(status, result) {
-                        if (status === 'complete'&&result.geocodes.length) {
-                                for(var i=0;i<result.geocodes.length;i++){
-                                    if(data[i].count>50){
-                                        icon=new AMap.Icon({
-                                            image:'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png',
-                                            size: new AMap.Size(24, 24)
-                                        });
-                                    }else{
-                                        icon=new AMap.Icon({
-                                            image:'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
-                                            size: new AMap.Size(24, 24)
-                                        });
-                                    }
-                                    if(!result.geocodes[i].location) {
-                                        var marker = new AMap.Marker({
-                                            position: result.geocodes[i].location,
-                                            icon: icon,
-                                            offset: new AMap.Pixel(-12, -12),
-                                            zIndex: 101,
-                                            title: data[i].title + "已有" + data[i].count + "人旅游过",
-                                        });
-                                    }
-                                    markers.push(marker);
-                                }
-                                map.add(markers);
-                                map.setFitView(markers);
-                            }
-                        })
-                        },
-                error:function(e){
+    function init() {
+        map=new AMap.Map('guangximap',{resizeEnable: true,zoom:13});
+    }
+    function addMarker() {
+        var geocoder=new AMap.Geocoder({
+            city: "", //城市设为北京，默认：“全国”
+        });
+        $.ajax({
+            type:"GET",
+            url:'getALLTourismAndPeopleCount',
+            dataType:'json',
+            traditional:true,
+            success:function (data) {
+                var list=[];
+              for(var j=0;j<data.length;j++) {
+                  (function(j){
+                       geocoder.getLocation(data[j].title, function(status, result) {
+                           if (status ==='complete' && result.geocodes.length) {
+                               var icon;
+                               if(data[j].count>50){
+                               icon=new AMap.Icon({
+                                   image:'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png',
+                                   size: new AMap.Size(24, 24)
+                               });
+                           }else {
+                               icon = new AMap.Icon({
+                                   image: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
+                                   size: new AMap.Size(24, 24)
+                               });
+                           }
+                               var  marker = new AMap.Marker({
+                                   position: result.geocodes[0].location,
+                                   icon:icon,
+                                   title: data[j].title + "已有" +data[j].count + "人旅游过",
+                                   map:map
+                               });
+                               markers.push(marker);
+                           }
+                       })
 
-                }
-            });
+                   })(j);
+               }
+                map.add(markers);
+                map.setFitView(markers);
+            },
+            error:function(e){
 
-        })
-
+            }
+        });
+    }
 
       //获取经纬度
      function getPosition(address) {
@@ -383,7 +381,7 @@ BODY 标签选项：
          return lnglat;
      }
 </script>
-<script  th:src="@{http://cache.amap.com/lbs/static/addToolbar.js}"></script>
+
 </body>
 
 </html>
