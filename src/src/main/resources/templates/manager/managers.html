@@ -144,13 +144,13 @@ BODY 标签选项：
             <!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
             <!--</div>-->
             <div class="col-md-3 col-sm-6 col-xs-12">
-                <div id="ShoppingHabits" style=" min-height: 463px; margin: 0 auto">
-                <pre id="tsv" style="= display:none">Browser Version	Total Market Share
-                收藏后购买 14	11.97%
-                加入购物车 50	42.3%
-                直接购买 54	45.72%
-                </pre>
-                </div>
+                <div id="ShoppingHabits" style=" min-height: 463px; margin: 0 auto"></div>
+                <!--<pre id="tsv1" style="= display:none">Browser Version	Total Market Share-->
+                <!--收藏后购买 14	11.97%-->
+                <!--加入购物车 50	42.3%-->
+                <!--直接购买 54	45.72%-->
+                <!--</pre>-->
+
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div id="PassengerListAnalysis" style=" min-height: 463px; margin: 0 auto"></div>
@@ -308,6 +308,8 @@ BODY 标签选项：
 <script  th:src="@{https://webapi.amap.com/maps?v=1.4.14&key=aa64e5b730bf26fa6443c306bff37139&plugin=AMap.Geocoder}"></script>
 <script th:src="@{https://webapi.amap.com/js/marker.js}"></script>
 <script  th:src="@{http://cache.amap.com/lbs/static/addToolbar.js}"></script>
+
+<script th:src="@{/HchartsJs/test.js}"></script>
 <script  type="text/javascript" >
     var map;
     var markers=[];
