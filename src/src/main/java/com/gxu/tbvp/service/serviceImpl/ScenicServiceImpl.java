@@ -22,11 +22,11 @@ public class ScenicServiceImpl extends BaseService<Scenic> implements ScenicServ
     private ScenicMapper scenicMapper;
 
     @Override
-    public int getScenicByName(String scenic) {
+    public int getScenicByName(String title) {
         Example example = new Example(Scenic.class);
         Example.Criteria criteria = example.createCriteria();
-        if (StringUtil.isNotEmpty(scenic)){
-            criteria.andEqualTo("scenic", scenic);
+        if (StringUtil.isNotEmpty(title)){
+            criteria.andEqualTo("title", title);
         }
         List<Scenic> scenicList = selectByExample(example);
         if (scenicList.size() != 0){

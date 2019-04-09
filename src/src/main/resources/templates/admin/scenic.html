@@ -47,7 +47,11 @@
                             </th>
                             <th>ID</th>
                             <th>景点名称</th>
-                            <th>景点所在地</th>
+                            <th>景点描述</th>
+                            <th>城市</th>
+                            <th>等级</th>
+                            <th>地区</th>
+                            <th>价格</th>
                         </tr>
                         </thead>
                     </table>
@@ -69,18 +73,37 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="addroleLabel">添加资源</h4>
             </div>
+
             <div class="modal-body">
                 <form id="resourcesForm">
                     <div class="form-group">
                         <label  class="control-label">景点名称:</label>
-                        <input type="text" class="form-control" name="scenic" id="scenic" placeholder="请输入资源名称"/>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="请输入景点名称"/>
                     </div>
                     <div class="form-group">
-                        <label  class="control-label">景点所在地:</label>
-                        <input type="text" class="form-control" id="province" name="province"  placeholder="请输入父资源ID">
+                        <label  class="control-label">景点描述:</label>
+                        <input type="text" class="form-control" id="description" name="description"  placeholder="请输入景点描述">
                     </div>
+                    <div class="form-group">
+                        <label  class="control-label">城市:</label>
+                        <input type="text" class="form-control" name="city" id="city" placeholder="请输入城市"/>
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label">等级:</label>
+                        <input type="text" class="form-control" id="level" name="level"  placeholder="请输入等级">
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label">地区:</label>
+                        <input type="text" class="form-control" name="place" id="place" placeholder="请输入地区"/>
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label">价格:</label>
+                        <input type="text" class="form-control" id="price" name="price"  placeholder="请输入价格">
+                    </div>
+
                 </form>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" onclick="addResources();" class="btn btn-primary">Save</button>
@@ -121,13 +144,21 @@
                     "bSortable": false
                 },
                 { "data": "id" },
-                { "data": "scenic" },
-                { "data": "province" },
+                { "data": "title" },
+                { "data": "description" },
+                { "data": "city" },
+                { "data": "level" },
+                { "data": "place" },
+                { "data": "price" }
             ],
             columnDefs:[
                 { "orderable": false, "targets": 1 },
                 { "orderable": false, "targets": 2 },
                 { "orderable": false, "targets": 3 },
+                { "orderable": false, "targets": 4 },
+                { "orderable": false, "targets": 5 },
+                { "orderable": false, "targets": 6 },
+                { "orderable": false, "targets": 7 },
             ],
 
         } );
@@ -139,19 +170,23 @@
 
     //添加用户
     function addResources() {
-        var scenic = $("#scenic").val();
-        var province = $("#province").val();
+        var scenic = $("#title").val();
+        var province = $("#description").val();
+        var city = $("#city").val();
+        var level = $("#level").val();
+        var place = $("#place").val();
+        var price = $("#price").val();
 
-        if(scenic == "" || scenic == undefined || scenic == null){
-            return layer.msg('资源名称不能为空', function(){
-                //关闭后的操作
-            });
-        }
-        if(province == "" || province == undefined || province == null){
-            return layer.msg('父资源id不能为空', function(){
-                //关闭后的操作
-            });
-        }
+        // if(scenic == "" || scenic == undefined || scenic == null){
+        //     return layer.msg('资源名称不能为空', function(){
+        //         //关闭后的操作
+        //     });
+        // }
+        // if(province == "" || province == undefined || province == null){
+        //     return layer.msg('父资源id不能为空', function(){
+        //         //关闭后的操作
+        //     });
+        // }
         $.ajax({
             cache: true,
             type: "POST",
