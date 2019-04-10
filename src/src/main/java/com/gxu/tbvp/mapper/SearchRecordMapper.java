@@ -1,4 +1,5 @@
 package com.gxu.tbvp.mapper;
+import com.gxu.tbvp.mockData.ProduceItemBuyRecord;
 import com.gxu.tbvp.utils.MyMapper;
 import com.gxu.tbvp.domain.SearchRecord;
 

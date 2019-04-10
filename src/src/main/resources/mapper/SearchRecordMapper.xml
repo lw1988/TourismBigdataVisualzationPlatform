@@ -24,10 +24,18 @@
   </select>
 
   <select id="getSearchRecordByTitle" resultType="java.lang.String">
-    SELECT title FROM produceitem WHERE title LIKE %#{title}%
+    SELECT title FROM produceitem WHERE title LIKE CONCAT('%',#{title},'%')
   </select>
   <select id="getCountByTitle"  resultType="java.lang.Integer">
   SELECT COUNT(*) FROM searchRecord WHERE searchProduceTitle=#{searchProduceTitle}
+  </select>
+
+  <select id="getALLTourism" resultType="java.util.List">
+    SELECT produceitem.title,produceitem.produceId FROM produceitem
+  </select>
+
+  <select id="getPeopleCount" resultType="java.lang.Integer">
+    SELECT SUM(scenic_buyrecord.buy_count) FROM produceitem LEFT JOIN scenic_buyrecord ON produceitem.produceId=scenic_buyrecord.scenicId WHERE produceitem.produceId=#{produceId}
   </select>
 
 </mapper>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/adminSystem/css/matrix-style.css}" />
     <link rel="stylesheet" th:href="@{/adminSystem/css/matrix-media.css}" />
     <link th:href="@{/adminSystem/font-awesome/css/font-awesome.css}" rel="stylesheet" />
-    <title>景点管理</title>
+    <title>路线管理</title>
 </head>
 <body>
 
@@ -33,11 +33,11 @@
 
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                        <h5>景点列表</h5>
+                        <h5>路线列表</h5>
                     </div>
                     <form class="form-inline">
-                        <button type="button" shiro:hasPermission="/scenic/add" onclick="$('#resourcesModal').modal();" class="btn btn-info" style="float: right; margin-right: 1px;">新增</button>
-                        <button type="button" shiro:hasPermission="/scenic/delete" onclick="delById();" class="btn btn-info" style="float: right; margin-right: 1px;">删除</button>
+                        <button type="button" shiro:hasPermission="/route/add" onclick="$('#resourcesModal').modal();" class="btn btn-info" style="float: right; margin-right: 1px;">新增</button>
+                        <button type="button" shiro:hasPermission="/route/delete" onclick="delById();" class="btn btn-info" style="float: right; margin-right: 1px;">删除</button>
                     </form>
                     <table class="table table-bordered data-table" id="datatable" >
                         <thead>
@@ -46,12 +46,9 @@
                                 <input type="checkbox" class="checkall" />
                             </th>
                             <th>ID</th>
-                            <th>景点名称</th>
-                            <th>景点描述</th>
-                            <th>城市</th>
-                            <th>等级</th>
-                            <th>地区</th>
-                            <th>价格</th>
+                            <th>路线名称</th>
+                            <th>路线链接</th>
+                            <th>路线套餐价格</th>
                         </tr>
                         </thead>
                     </table>
@@ -71,39 +68,24 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="addroleLabel">添加资源</h4>
+                <h4 class="modal-title" id="addroleLabel">添加路线</h4>
             </div>
-
             <div class="modal-body">
                 <form id="resourcesForm">
                     <div class="form-group">
-                        <label  class="control-label">景点名称:</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="请输入景点名称"/>
+                        <label  class="control-label">路线名称:</label>
+                        <input type="text" class="form-control" name="route" id="route" placeholder="请输入路线名称"/>
                     </div>
                     <div class="form-group">
-                        <label  class="control-label">景点描述:</label>
-                        <input type="text" class="form-control" id="description" name="description"  placeholder="请输入景点描述">
+                        <label  class="control-label">路线链接:</label>
+                        <input type="text" class="form-control" id="description" name="description"  placeholder="请输入路线链接">
                     </div>
                     <div class="form-group">
-                        <label  class="control-label">城市:</label>
-                        <input type="text" class="form-control" name="city" id="city" placeholder="请输入城市"/>
+                        <label  class="control-label">路线价格:</label>
+                        <input type="text" class="form-control" id="price" name="price"  placeholder="请输入路线价格">
                     </div>
-                    <div class="form-group">
-                        <label  class="control-label">等级:</label>
-                        <input type="text" class="form-control" id="level" name="level"  placeholder="请输入等级">
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label">地区:</label>
-                        <input type="text" class="form-control" name="place" id="place" placeholder="请输入地区"/>
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label">价格:</label>
-                        <input type="text" class="form-control" id="price" name="price"  placeholder="请输入价格">
-                    </div>
-
                 </form>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" onclick="addResources();" class="btn btn-primary">Save</button>
@@ -133,7 +115,7 @@
             "serverSide": true,//开启服务器模式，使用服务器端处理配置datatable
             "processing": true,//开启读取服务器数据时显示正在加载中……特别是大数据量的时候，开启此功能比较好
 
-            "ajax": 'scenic',
+            "ajax": 'route',
             "columns": [
                 {
                     "sClass": "text-center",
@@ -144,21 +126,15 @@
                     "bSortable": false
                 },
                 { "data": "id" },
-                { "data": "title" },
+                { "data": "route" },
                 { "data": "description" },
-                { "data": "city" },
-                { "data": "level" },
-                { "data": "place" },
-                { "data": "price" }
+                { "data": "price" },
             ],
             columnDefs:[
                 { "orderable": false, "targets": 1 },
                 { "orderable": false, "targets": 2 },
                 { "orderable": false, "targets": 3 },
                 { "orderable": false, "targets": 4 },
-                { "orderable": false, "targets": 5 },
-                { "orderable": false, "targets": 6 },
-                { "orderable": false, "targets": 7 },
             ],
 
         } );
@@ -170,27 +146,30 @@
 
     //添加用户
     function addResources() {
-        var scenic = $("#title").val();
-        var province = $("#description").val();
-        var city = $("#city").val();
-        var level = $("#level").val();
-        var place = $("#place").val();
+        var route = $("#route").val();
+        var description = $("#description").val();
         var price = $("#price").val();
 
-        // if(scenic == "" || scenic == undefined || scenic == null){
-        //     return layer.msg('资源名称不能为空', function(){
-        //         //关闭后的操作
-        //     });
-        // }
-        // if(province == "" || province == undefined || province == null){
-        //     return layer.msg('父资源id不能为空', function(){
-        //         //关闭后的操作
-        //     });
-        // }
+
+        if(route == "" || route == undefined || route == null){
+            return layer.msg('路线名称不能为空', function(){
+                //关闭后的操作
+            });
+        }
+        if(price == "" || price == undefined || price == null){
+            return layer.msg('价格名称不能为空', function(){
+                //关闭后的操作
+            });
+        }
+        if(description == "" || description == undefined || description == null){
+            return layer.msg('链接名称不能为空', function(){
+                //关闭后的操作
+            });
+        }
         $.ajax({
             cache: true,
             type: "POST",
-            url:'scenic/add',
+            url:'route/add',
             data:$('#resourcesForm').serialize(),// 你的formid
             async: false,
             success: function(data) {
@@ -224,7 +203,7 @@
             $.ajax({
                 cache: true,
                 type: "POST",
-                url:'scenic/delete',
+                url:'route/delete',
                 data:{id:id},
                 async: false,
                 success: function(data) {

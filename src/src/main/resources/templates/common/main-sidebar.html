@@ -34,15 +34,17 @@
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a th:href="@{/managersPage}"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
                 <li><a th:href="@{/visitors}"><i class="fa fa-pie-chart"></i> <span>游客大数据</span></a></li>
-                <li><a th:href="@{/products}"><i class="fa fa-circle-o"></i> <span>产品大数据</span></a></li>
-                <li><a th:href="@{/agent}"><i class="fa fa-edit"></i> <span>代理大数据</span></a></li>
+                <!--<li><a th:href="@{/products}"><i class="fa fa-circle-o"></i> <span>产品大数据</span></a></li>-->
+                <!--<li><a th:href="@{/agent}"><i class="fa fa-edit"></i> <span>代理大数据</span></a></li>-->
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>专家系统</span>
+                    <a href=""><i class="fa fa-link"></i> <span>产品大数据</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a th:href="@{/products}">产品数据分析</a></li>
+                        <li><a th:href="@{/agent}">销售数据分析</a></li>
                         <li><a th:href="@{/keywords}">个性化推荐</a></li>
                         <li><a th:href="@{/allroutes}">路线组合推荐</a></li>
                         <li><a th:href="@{/tourismIndex}">旅游指数</a></li>

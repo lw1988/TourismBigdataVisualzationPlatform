@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gxu.tbvp.mapper.ProduceItemBuyRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.gxu.tbvp.mockData.ProduceItemBuyRecord" >
+    <result column="produceId" property="produceId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+  </resultMap>
+
+
+  <select id="getALLTourism" resultType="com.gxu.tbvp.mockData.ProduceItemBuyRecord" >
+    SELECT produceitem.title,produceitem.produceId FROM produceitem
+  </select>
+
+  <select id="getPeopleCount" resultType="java.lang.Integer">
+    SELECT ifnull(SUM(scenic_buyrecord.buy_count),0) as count FROM produceitem LEFT JOIN scenic_buyrecord ON produceitem.produceId=scenic_buyrecord.scenicId WHERE produceitem.produceId=#{produceId}
+  </select>
+
+</mapper>

@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gxu.tbvp.mapper.ScenicMapper" >
+<!--<mapper namespace="com.gxu.tbvp.mapper.ScenicMapper" >-->
+<!--<resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Scenic" >-->
+<!--&lt;!&ndash;-->
+<!--WARNING - @mbg.generated-->
+<!--&ndash;&gt;-->
+<!--<result column="id" property="id" jdbcType="INTEGER" />-->
+<!--<result column="scenic" property="scenic" jdbcType="VARCHAR" />-->
+<!--<result column="province" property="province" jdbcType="VARCHAR" />-->
+<!--</resultMap>-->
+
+<!--<select id="selectAllScenicsId" resultType="int" >-->
+<!--select id from scenic-->
+<!--</select>-->
+
+<!--<select id="selectScenicByKey" resultType="string" parameterType="int">-->
+<!--select scenic from scenic where id = #{key}-->
+<!--</select>-->
+<!--</mapper>-->
+
+
+<mapper namespace="com.gxu.tbvp.mapper.ScenicMapper">
   <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.Scenic" >
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="id" property="id" jdbcType="INTEGER" />
-    <result column="scenic" property="scenic" jdbcType="VARCHAR" />
-    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="produceId" property="id" jdbcType="INTEGER" />   <!--column:sql -->
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+
   </resultMap>
 
   <select id="selectAllScenicsId" resultType="int" >
-    select id from scenic
+    select produceId from produceitem
   </select>
 
   <select id="selectScenicByKey" resultType="string" parameterType="int">
-    select scenic from scenic where id = #{key}
+    select title from produceitem where produceId = #{key}
   </select>
 </mapper>
+

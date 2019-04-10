@@ -220,4 +220,10 @@ public class HomeController {
         return "important";
     }
 
+    //路线管理
+    @RequestMapping("/routeManagement")
+    public String routeManagement(){
+        return "admin/route";
+    }
+
 }

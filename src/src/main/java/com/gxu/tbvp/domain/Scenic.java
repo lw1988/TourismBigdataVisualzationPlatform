@@ -6,52 +6,125 @@ import java.io.Serializable;
 
 public class Scenic implements Serializable {
 
+//    @Id
+//    private Integer id;
+//
+//    private String scenic;
+//
+//    private String province;
+//
+//    /**
+//     * @return id
+//     */
+//    public Integer getId() {
+//        return id;
+//    }
+//
+//    /**
+//     * @param id
+//     */
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
+//
+//    /**
+//     * @return scenic
+//     */
+//    public String getScenic() {
+//        return scenic;
+//    }
+//
+//    /**
+//     * @param scenic
+//     */
+//    public void setScenic(String scenic) {
+//        this.scenic = scenic;
+//    }
+//
+//    /**
+//     * @return provice
+//     */
+//    public String getProvince() {
+//        return province;
+//    }
+//
+//    /**
+//     * @param province
+//     */
+//    public void setProvince(String province) {
+//        this.province = province;
+//    }
+
+
     @Id
     private Integer id;
 
-    private String scenic;
+    private String title;
 
-    private String province;
+    private String description;
 
-    /**
-     * @return id
-     */
+    private String city;
+
+    private String level;
+
+    private String place;
+
+    private String price;
+
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * @param id
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * @return scenic
-     */
-    public String getScenic() {
-        return scenic;
+    public String getTitle() {
+        return title;
     }
 
-    /**
-     * @param scenic
-     */
-    public void setScenic(String scenic) {
-        this.scenic = scenic;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    /**
-     * @return provice
-     */
-    public String getProvince() {
-        return province;
+    public String getDescription() {
+        return description;
     }
 
-    /**
-     * @param province
-     */
-    public void setProvince(String province) {
-        this.province = province;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

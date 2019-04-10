@@ -23,12 +23,14 @@
           您可以选择其他皮肤。皮肤样式写在 body 标签中，
           以便使之生效。 -->
     <link rel="stylesheet" th:href="@{/dist/css/skins/skin-blue.min.css}">
-
+    <link rel="stylesheet" th:href="@{http://cache.amap.com/lbs/static/main1119.css}"/>
     <!-- HTML5 Shim and Respond.js} IE8 support of HTML5 elements and media queries -->
     <!-- 警告：Respond.js} 不支持 file:// 方式查看（即本地方式查看）-->
     <!--[if lt IE 9]>
+
     <script th:src="@{https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js}"></script>
     <script th:src="@{https://oss.maxcdn.com/respond/1.4.2/respond.min.js}"></script>
+
     <![endif]-->
 
     <!-- HighCharts引入 唯一需要注意的是保证 highcharts.js} 的
@@ -38,7 +40,15 @@
     <!--&lt;!&ndash; Google Font &ndash;&gt;-->
     <!--<link rel="stylesheet"-->
     <!--href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+<style>
+    .amap-logo{
+        display: none;    /*隐藏左下角地图logo*/
+    }
+    .amap-copyright{
+        display: none!important;
+    }
 
+</style>
 </head>
 <!--
 BODY 标签选项：
@@ -91,7 +101,7 @@ BODY 标签选项：
             <!-- 产品访问量排名 -->
             <!--<div class="row" style="">-->
             <div class="col-md-6">
-                <div id="guangximap" style="height: 600px"></div>
+                <div id="guangximap" style="height: 600px" ></div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
@@ -134,13 +144,13 @@ BODY 标签选项：
             <!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
             <!--</div>-->
             <div class="col-md-3 col-sm-6 col-xs-12">
-                <div id="ShoppingHabits" style=" min-height: 463px; margin: 0 auto">
-                <pre id="tsv" style="= display:none">Browser Version	Total Market Share
-                收藏后购买 14	11.97%
-                加入购物车 50	42.3%
-                直接购买 54	45.72%
-                </pre>
-                </div>
+                <div id="ShoppingHabits" style=" min-height: 463px; margin: 0 auto"></div>
+                <!--<pre id="tsv1" style="= display:none">Browser Version	Total Market Share-->
+                <!--收藏后购买 14	11.97%-->
+                <!--加入购物车 50	42.3%-->
+                <!--直接购买 54	45.72%-->
+                <!--</pre>-->
+
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div id="PassengerListAnalysis" style=" min-height: 463px; margin: 0 auto"></div>
@@ -291,10 +301,89 @@ BODY 标签选项：
 
 <script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
 <script src="https://data.jianshukeji.com/geochina/guangxi.js"></script>
-<script th:src="@{/HchartsJs/guangximap.js}"></script>
+<!--<script th:src="@{/HchartsJs/guangximap.js}"></script>-->
 <script th:src="@{/HchartsJs/ShoppingHabits.js}"></script>
 <script th:src="@{/HchartsJs/PassengerListAnalysis.js}"></script>
 <script th:src="@{/HchartsJs/TimeUsed.js}"></script>
+<script  th:src="@{https://webapi.amap.com/maps?v=1.4.14&key=aa64e5b730bf26fa6443c306bff37139&plugin=AMap.Geocoder}"></script>
+<script th:src="@{https://webapi.amap.com/js/marker.js}"></script>
+<script  th:src="@{http://cache.amap.com/lbs/static/addToolbar.js}"></script>
+
+<script th:src="@{/HchartsJs/test.js}"></script>
+<script  type="text/javascript" >
+    var map;
+    var markers=[];
+    $(document).ready(function () {
+            init();
+            addMarker();
+    })
+
+    function init() {
+        map=new AMap.Map('guangximap',{resizeEnable: true,zoom:13});
+    }
+    function addMarker() {
+        var geocoder=new AMap.Geocoder({
+            city: "", //城市设为北京，默认：“全国”
+        });
+        $.ajax({
+            type:"GET",
+            url:'getALLTourismAndPeopleCount',
+            dataType:'json',
+            traditional:true,
+            success:function (data) {
+                var list=[];
+              for(var j=0;j<data.length;j++) {
+                  (function(j){
+                       geocoder.getLocation(data[j].title, function(status, result) {
+                           if (status ==='complete' && result.geocodes.length) {
+                               var icon;
+                               if(data[j].count>50){
+                               icon=new AMap.Icon({
+                                   image:'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png',
+                                   size: new AMap.Size(24, 24)
+                               });
+                           }else {
+                               icon = new AMap.Icon({
+                                   image: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
+                                   size: new AMap.Size(24, 24)
+                               });
+                           }
+                               var  marker = new AMap.Marker({
+                                   position: result.geocodes[0].location,
+                                   icon:icon,
+                                   title: data[j].title + "已有" +data[j].count + "人旅游过",
+                                   map:map
+                               });
+                               markers.push(marker);
+                           }
+                       })
+
+                   })(j);
+               }
+                map.add(markers);
+                map.setFitView(markers);
+            },
+            error:function(e){
+
+            }
+        });
+    }
+
+      //获取经纬度
+     function getPosition(address) {
+         var lnglat;
+         AMap.plugin('AMap.Geocoder', function() {
+             var geocoder = new AMap.Geocoder();
+             geocoder.getLocation(address, function(status, result) {
+                 if (status === 'complete'&&result.geocodes.length) {
+                      lnglat = result.geocodes[0].location
+                 }
+         })
+     })
+         return lnglat;
+     }
+</script>
 
 </body>
+
 </html>
