@@ -43,8 +43,10 @@ import java.util.*;
 public class HomeController {
     @Resource
     RecomendListService recomendListService;
+
     @Resource
     ScenicService scenicService;
+
     @Resource
     BuyrecordService buyrecordService;
 
@@ -172,24 +174,65 @@ public class HomeController {
         model.addAttribute("data",list);
 
 
-//        int i;
-//        int count=0;
-//
-//        for(i=0;i<list.size();i++){
-//            int id = list.get(i).getId();
-//            List<Buyrecord> list_buyrecord = buyrecordService.getPropertyById(id);
-//            for(int j=0;j<list_buyrecord.size();j++){
-//                count = list_buyrecord.get(j).getBuytool();
-//            }
-//
+        int i;
+        int count=0;
+        List<Integer> produceTotalsList = new ArrayList<>();
+        List<String> produceNameList = new ArrayList<>();
+
+        String title;
+
+        Map<String, Integer> dictionary = new HashMap<String, Integer>();
+
+        for(i=0;i<list.size();i++){
+            Integer id = list.get(i).getId();
+            int total = 0;
+//            System.out.println("111111111111111111111111111111"+id);
+//            System.out.println("222222222222222222222222222222"+ buyrecordService.getPropertyById(id));
+            List<Buyrecord> list_buyrecord = buyrecordService.getPropertyById(id);
+            //System.out.println("#######################################################"+list_buyrecord.size());
+            int j;
+            for(j=0;j<list_buyrecord.size();j++){
+                //System.out.println("#######################################################"+list_buyrecord.get(j).getBuycount());
+                total = total + list_buyrecord.get(j).getBuycount();
+            }
+            title = list.get(i).getTitle();
+            produceTotalsList.add(total);
+            produceNameList.add(title);
+            dictionary.put(title,total);
+            //System.out.println("#######################################################"+total+title);
+        }
+
+        //System.out.println("#######################################################"+produceTotalsList.get(0)+produceNameList.get(0));
+        System.out.println("#######################################################"+dictionary);
+//        model.addAttribute("data1",produceTotalsList);
+//        model.addAttribute("data2",produceNameList);
+
+        // 通过ArrayList构造函数把map.entrySet()转换成list
+        List<Map.Entry<String, Integer>> dic_list = new ArrayList<Map.Entry<String, Integer>>(dictionary.entrySet());
+
+        // 通过比较器实现比较排序
+        Collections.sort(dic_list, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> mapping1, Map.Entry<String, Integer> mapping2) {
+                return mapping1.getValue().compareTo(mapping2.getValue());
+            }
+        });
+//        for (String key : dictionary.keySet()) {
+//            System.out.println(key + " ：" + dictionary.get(key));
 //        }
 
+        //put sorted list into map again
+//        Map sortedMap = new LinkedHashMap();
+//        for (Iterator it = dic_list.iterator(); it.hasNext();) {
+//            Map.Entry entry = (Map.Entry)it.next();
+//            sortedMap.put(entry.getKey(), entry.getValue());
+//        }
+//
+//        System.out.println("111111111111111111111111111111111111111111111111"+sortedMap);
 
 
+        System.out.println("111111111111111111111111111111111111111111111111"+dic_list.get(0).getKey());
+        model.addAttribute("list",dic_list);
 
-
-
-        //System.out.println("#######################################################"+list.get(0));
         return "searchResult";
     }
 
@@ -263,22 +306,6 @@ public class HomeController {
             return "admin/adminLogin";
         }
     }
-
-//    @RequestMapping("/recomend_list")
-//    @ResponseBody
-//    public Object  itemsList() {
-//        Example example = new Example(RecomendList.class);
-//        Example.Criteria criteria = example.createCriteria();
-//        criteria.andEqualTo("user", "1234");
-//        return recomendListService.selectByExample(example);
-//    }
-
-//    @RequestMapping("/recomend_list")
-//    public String  itemsList(Model model) {
-//        model.addAttribute("data","123456");
-//        return "aaa/bbb";
-//    }
-
 
 
 

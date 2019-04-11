@@ -138,15 +138,12 @@ public class BuyrecordServiceImpl extends BaseService<Buyrecord> implements Buyr
         return new PageInfo<>(buyrecordList);
     }
 
-//    @Override
-//    public List<Buyrecord> getPropertyById(int id) {
-//        try {
-//            List<Buyrecord> buyrecordList = buyrecordMapper.getPropertyById(id);
-//            return buyrecordList;
-//        } catch (Exception e){
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
+    @Override
+    public List<Buyrecord> getPropertyById(Integer id) {
+        List<Buyrecord> buyrecordList = buyrecordMapper.getPropertyById(id);
+        return buyrecordList;
+
+
+    }
 
 }

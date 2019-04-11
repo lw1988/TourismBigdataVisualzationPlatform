@@ -96,7 +96,7 @@ BODY 标签选项：
             <div class="col-md-6">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">搜索该景点其他人还喜欢</h3>
+                        <h3 class="box-title">相关景点热度</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -108,7 +108,6 @@ BODY 标签选项：
 
                     <div class="box-body">
                         <div class="row">
-
                             <div id="othersLike" style="min-height: 650px; margin: 0 auto">
                                 <div class="service-content">
                                     <ul class="list">
@@ -116,7 +115,8 @@ BODY 标签选项：
                                             <div class="content">
                                                 <div class="left">
                                                     <span class="rank rank-1">1</span>
-                                                    <span class="name"><a th:href="@{/routeScenic}">泰国</a></span></div>
+                                                    <span class="name">
+                                                        <a th:href="@{/routeScenic}" th:text="${list.get(13).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -124,7 +124,7 @@ BODY 标签选项：
                                                         </div>
                                                     </div>
                                                     <div class="trend">
-                                                        <span class="value">4,928k</span>
+                                                        <span class="value" th:text="${list.get(13).getValue()}"></span>
                                                         <span class="trend-icon">
                                                         <i class="icon trend-fair"></i>
                                                     </span>
@@ -136,7 +136,7 @@ BODY 标签选项：
                                             <div class="content">
                                                 <div class="left">
                                                     <span class="rank rank-2">2</span>
-                                                    <span class="name"><a th:href="@{/routeScenic}">越南</a></span>
+                                                    <span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(12).getKey()}"></a></span>
                                                 </div>
                                                 <div class="right">
                                                     <div class="line">
@@ -145,7 +145,7 @@ BODY 标签选项：
                                                         </div>
                                                     </div>
                                                     <div class="trend">
-                                                        <span class="value">3,464k</span>
+                                                        <span class="value" th:text="${list.get(12).getValue()}"></span>
                                                         <span class="trend-icon">
                                                         <i class="icon trend-fair"></i>
                                                     </span>
@@ -157,7 +157,7 @@ BODY 标签选项：
                                             <div class="content">
                                                 <div class="left">
                                                     <span class="rank rank-3">3</span>
-                                                    <span class="name"><a th:href="@{/routeScenic}">印度尼西亚</a></span>
+                                                    <span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(11).getKey()}"></a></span>
                                                 </div>
                                                 <div class="right">
                                                     <div class="line">
@@ -166,7 +166,7 @@ BODY 标签选项：
                                                         </div>
                                                     </div>
                                                     <div class="trend">
-                                                        <span class="value">3,239k</span>
+                                                        <span class="value" th:text="${list.get(11).getValue()}"></span>
                                                         <span class="trend-icon">
                                                         <i class="icon trend-fair"></i>
                                                     </span>
@@ -178,7 +178,7 @@ BODY 标签选项：
                                             <div class="content">
                                                 <div class="left">
                                                     <span class="rank">4</span>
-                                                    <span class="name"><a th:href="@{/routeScenic}">新加坡</a></span>
+                                                    <span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(10).getKey()}"></a></span>
                                                 </div>
                                                 <div class="right">
                                                     <div class="line">
@@ -187,7 +187,7 @@ BODY 标签选项：
                                                         </div>
                                                     </div>
                                                     <div class="trend">
-                                                        <span class="value">2,863k</span>
+                                                        <span class="value" th:text="${list.get(10).getValue()}"></span>
                                                         <span class="trend-icon">
                                                         <i class="icon trend-fair"></i>
                                                     </span>
@@ -198,7 +198,7 @@ BODY 标签选项：
                                         <li class="list-item">
                                             <div class="content">
                                                 <div class="left"><span
-                                                        class="rank">5</span><span class="name"><a th:href="@{/routeScenic}">泰国</a></span></div>
+                                                        class="rank">5</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(9).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -207,7 +207,7 @@ BODY 标签选项：
                                                         </div>
                                                     </div>
                                                     <div class="trend">
-                                                        <span class="value">2,411k</span>
+                                                        <span class="value" th:text="${list.get(9).getValue()}"></span>
                                                         <span class="trend-icon">
                                                         <i class="icon trend-up"></i>
                                                     </span>
@@ -218,7 +218,7 @@ BODY 标签选项：
                                         <li class="list-item">
                                             <div class="content">
                                                 <div class="left"><span
-                                                        class="rank">6</span><span class="name"><a th:href="@{/routeScenic}">越南</a></span></div>
+                                                        class="rank">6</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(8).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -226,7 +226,7 @@ BODY 标签选项：
                                                         </div>
                                                     </div>
                                                     <div class="trend">
-                                                        <span class="value">2,387k</span>
+                                                        <span class="value" th:text="${list.get(8).getValue()}"></span>
                                                         <span class="trend-icon">
                                                         <i class="icon trend-up"></i>
                                                     </span>
@@ -237,7 +237,7 @@ BODY 标签选项：
                                         <li class="list-item">
                                             <div class="content">
                                                 <div class="left"><span
-                                                        class="rank">7</span><span class="name"><a th:href="@{/routeScenic}">印度尼西亚</a></span></div>
+                                                        class="rank">7</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(7).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -245,9 +245,7 @@ BODY 标签选项：
                                                                  style="width: 47.61%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="trend"><span
-
-                                                            class="value">2,346k</span><span
+                                                    <div class="trend"> <span class="value" th:text="${list.get(7).getValue()}"></span><span
 
                                                             class="trend-icon"><i
 
@@ -258,7 +256,7 @@ BODY 标签选项：
                                         <li class="list-item">
                                             <div class="content">
                                                 <div class="left"><span
-                                                        class="rank">8</span><span class="name"><a th:href="@{/routeScenic}">老挝</a></span></div>
+                                                        class="rank">8</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(6).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -266,20 +264,18 @@ BODY 标签选项：
                                                                  style="width: 33.69%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="trend"><span
-
-                                                            class="value">1,660k</span><span
+                                                    <div class="trend"> <span class="value" th:text="${list.get(6).getValue()}"></span><span
 
                                                             class="trend-icon"><i
-                                                            class="icon trend-up"></i></span>
-                                                    </div>
+
+                                                            class="icon trend-down"></i></span></div>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-item">
                                             <div class="content">
                                                 <div class="left"><span
-                                                        class="rank">9</span><span class="name"><a th:href="@{/routeScenic}">缅甸</a></span></div>
+                                                        class="rank">9</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(5).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -287,9 +283,7 @@ BODY 标签选项：
                                                                  style="width: 32.76%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="trend"><span
-
-                                                            class="value">1,614k</span><span
+                                                    <div class="trend"> <span class="value" th:text="${list.get(5).getValue()}"></span><span
 
                                                             class="trend-icon"><i
 
@@ -299,7 +293,7 @@ BODY 标签选项：
                                         </li>
                                         <li class="list-item">
                                             <div class="content">
-                                                <div class="left"><span class="rank">10</span><span class="name"><a th:href="@{/routeScenic}">泰国</a></span></div>
+                                                <div class="left"><span class="rank">10</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(4).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -307,9 +301,7 @@ BODY 标签选项：
                                                                  style="width: 26.74%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="trend"><span
-
-                                                            class="value">1,318k</span><span
+                                                    <div class="trend"> <span class="value" th:text="${list.get(4).getValue()}"></span><span
 
                                                             class="trend-icon"><i
 
@@ -319,7 +311,7 @@ BODY 标签选项：
                                         </li>
                                         <li class="list-item">
                                             <div class="content">
-                                                <div class="left"><span class="rank">11</span><span class="name"><a th:href="@{/routeScenic}">老挝</a></span></div>
+                                                <div class="left"><span class="rank">11</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(3).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -327,9 +319,7 @@ BODY 标签选项：
                                                                  style="width: 21.49%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="trend"><span
-
-                                                            class="value">1,059k</span><span
+                                                    <div class="trend"> <span class="value" th:text="${list.get(3).getValue()}"></span><span
 
                                                             class="trend-icon"><i
 
@@ -339,7 +329,7 @@ BODY 标签选项：
                                         </li>
                                         <li class="list-item">
                                             <div class="content">
-                                                <div class="left"><span class="rank">12</span><span class="name"><a th:href="@{/routeScenic}">印度尼西亚</a></span></div>
+                                                <div class="left"><span class="rank">12</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(2).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -347,9 +337,7 @@ BODY 标签选项：
                                                                  style="width: 18.84%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="trend"><span
-
-                                                            class="value">928k</span><span
+                                                    <div class="trend"> <span class="value" th:text="${list.get(2).getValue()}"></span><span
 
                                                             class="trend-icon"><i
                                                             class="icon trend-up"></i></span>
@@ -359,7 +347,7 @@ BODY 标签选项：
                                         </li>
                                         <li class="list-item">
                                             <div class="content">
-                                                <div class="left"><span class="rank">13</span><span class="name"><a th:href="@{/routeScenic}">老挝</a></span></div>
+                                                <div class="left"><span class="rank">13</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(1).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -367,9 +355,7 @@ BODY 标签选项：
                                                                  style="width: 18.53%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="trend"><span
-
-                                                            class="value">913k</span><span
+                                                    <div class="trend"> <span class="value" th:text="${list.get(1).getValue()}"></span><span
 
                                                             class="trend-icon"><i
 
@@ -379,7 +365,7 @@ BODY 标签选项：
                                         </li>
                                         <li class="list-item">
                                             <div class="content">
-                                                <div class="left"><span class="rank">14</span><span class="name"><a th:href="@{/routeScenic}">泰国</a></span></div>
+                                                <div class="left"><span class="rank">14</span><span class="name"><a th:href="@{/routeScenic}" th:text="${list.get(0).getKey()}"></a></span></div>
                                                 <div class="right">
                                                     <div class="line">
                                                         <div class="line-gray">
@@ -387,9 +373,7 @@ BODY 标签选项：
                                                                  style="width: 18.39%;"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="trend"><span
-
-                                                            class="value">906k</span><span
+                                                    <div class="trend"> <span class="value" th:text="${list.get(0).getValue()}"></span><span
 
                                                             class="trend-icon"><i
 
