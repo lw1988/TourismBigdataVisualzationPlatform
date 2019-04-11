@@ -84,12 +84,12 @@ BODY 标签选项：
                         旅行从这里开始
                     </p>
                 </div>
-                <form>
+                <form th:action="@{/searchResult}" method="get">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                             <div class="custom-input-group">
-                                <input type="text" class="form-control" placeholder="输入您想查询的关键字">
-                                <button class="appsLand-btn subscribe-btn"><a th:href="@{/searchResult}">开始探索</a></button>
+                                <input type="text" class="form-control"  name="search" placeholder="输入您想查询的关键字">
+                                <button class="appsLand-btn subscribe-btn" type="submit" >开始探索</button>
                                 <div class="clearfix"></div>
                                 <i class="icon ion-stats-bars"></i>
                             </div>

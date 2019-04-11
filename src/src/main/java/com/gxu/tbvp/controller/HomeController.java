@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import tk.mybatis.mapper.entity.Example;
@@ -167,10 +168,10 @@ public class HomeController {
 
     //搜索结果分析
     @RequestMapping(value="/searchResult", method = RequestMethod.GET)
-    public String searchResult(Model model){
+    public String searchResult(Model model,@RequestParam("search") String search){
         String city = managerName;
         //System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"+city);
-        List<Scenic> list = scenicService.getProduceByCity("南宁");
+        List<Scenic> list = scenicService.getProduceByCity(search);
         model.addAttribute("data",list);
 
 
