@@ -230,7 +230,7 @@ public class HomeController {
 //        System.out.println("111111111111111111111111111111111111111111111111"+sortedMap);
 
 
-        System.out.println("111111111111111111111111111111111111111111111111"+dic_list.get(0).getKey());
+        //System.out.println("111111111111111111111111111111111111111111111111"+dic_list.get(0).getKey());
         model.addAttribute("list",dic_list);
 
         return "searchResult";
@@ -271,6 +271,13 @@ public class HomeController {
     @RequestMapping(value="/tourismIndex", method = RequestMethod.GET)
     public String zhishu(){
         return "tourismIndex";
+
+    }
+
+
+    @RequestMapping(value="/routeMap", method = RequestMethod.GET)
+    public String routeMap(){
+        return "combine_route/routeMap";
 
     }
 
