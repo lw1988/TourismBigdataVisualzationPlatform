@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxu.tbvp.mapper.RecomendListMapper">
+    <resultMap id="BaseResultMap" type="com.gxu.tbvp.domain.RecomendList">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="user" jdbcType="VARCHAR" property="user" />
+        <result column="like1" jdbcType="VARCHAR" property="like1" />
+        <result column="like2" jdbcType="VARCHAR" property="like2" />
+        <result column="like3" jdbcType="VARCHAR" property="like3" />
+        <result column="like4" jdbcType="VARCHAR" property="like4" />
+        <result column="like5" jdbcType="VARCHAR" property="like5" />
+        <result column="like6" jdbcType="VARCHAR" property="like6" />
+
+    </resultMap>
+
+
+    <select id="selectByUsername" parameterType="java.lang.String" resultType="com.gxu.tbvp.domain.RecomendList">
+    SELECT * FROM recomend_list WHERE user =#{user}
+    </select>
+
+
+
+</mapper>

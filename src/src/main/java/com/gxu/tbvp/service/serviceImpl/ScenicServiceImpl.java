@@ -56,4 +56,14 @@ public class ScenicServiceImpl extends BaseService<Scenic> implements ScenicServ
         return new PageInfo<>(scenicList);
     }
 
+    @Override
+    public List<Scenic> getProduceByCity(String city){
+        //System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+        List<Scenic> prodece_list = scenicMapper.getProduceByCity(city);
+        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        System.out.println(prodece_list);
+        return prodece_list;
+    }
+
+
 }

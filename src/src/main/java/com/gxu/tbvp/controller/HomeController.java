@@ -2,23 +2,31 @@ package com.gxu.tbvp.controller;
 
 
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.github.pagehelper.util.StringUtil;
-import com.gxu.tbvp.domain.Manager;
-import com.gxu.tbvp.service.SearchRecordService;
+import com.gxu.tbvp.domain.*;
+import com.gxu.tbvp.service.*;
+import com.gxu.tbvp.service.serviceImpl.RecomendListServiceImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +41,17 @@ import java.util.*;
  */
 @Controller
 public class HomeController {
+    @Resource
+    RecomendListService recomendListService;
+    @Resource
+    ScenicService scenicService;
+    @Resource
+    BuyrecordService buyrecordService;
+
+    String managerName;
+
+//    @Autowired
+//    private RecomendListServiceImpl recomendListService;
 
 
     @RequestMapping(value="/login",method= RequestMethod.GET)
@@ -48,8 +67,11 @@ public class HomeController {
     //用户登陆
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(HttpServletRequest request, Manager manager, Model model){
+
+        managerName=manager.getUsername();
         if (StringUtils.isEmpty(manager.getUsername()) || StringUtils.isEmpty(manager.getPassword())) {
             request.setAttribute("msg", "用户名或密码不能为空！");
+
             return "login";
         }
         Subject subject = SecurityUtils.getSubject();
@@ -68,6 +90,9 @@ public class HomeController {
             return "login";
         }
     }
+
+
+
 
     //大数据平台首页
     @RequestMapping(value={"/managersPage",""})
@@ -88,10 +113,35 @@ public class HomeController {
     }
 
     //关键词分析
+//    @RequestMapping(value="/keywords", method = RequestMethod.GET)
+//    public ModelAndView keywords(){
+//
+//    //        String sql = "select * from items";
+////        List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+//        ModelAndView mav = new ModelAndView("keywords");
+//        List<ScenicBuyrecord> scenicBuyrecordList = scenicBuyrecordService.selectByscenicId(1);
+//        mav.addObject("list", scenicBuyrecordList);
+//        System.out.println(scenicBuyrecordList);
+//        //mav.addAttribute("data","123456");
+//        return mav;
+//    }
     @RequestMapping(value="/keywords", method = RequestMethod.GET)
-    public String keywords(){
+    public String  keywords( Model model) {
+//        Principal principal  = request.getUserPrincipal();
+        List<RecomendList> List = recomendListService.recommendByUser(managerName);
+        //Manager manager1=principal.getName();
+//        System.out.println("=================================================="+managerName);
+//        System.out.println("=================================================="+List.get(0));
+        model.addAttribute("data",List.get(0));
         return "keywords";
+
     }
+
+
+
+//    @RequestMapping(value="/keywords", method = RequestMethod.GET)
+//    public String keywords(){ return "keywords";}
+
 
     //组合路线推荐
     @RequestMapping("/allroutes")
@@ -113,7 +163,31 @@ public class HomeController {
 
     //搜索结果分析
     @RequestMapping(value="/searchResult", method = RequestMethod.GET)
-    public String searchResult(){
+    public String searchResult(Model model){
+        String city = managerName;
+        //System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"+city);
+        List<Scenic> list = scenicService.getProduceByCity("南宁");
+        model.addAttribute("data",list);
+
+
+//        int i;
+//        int count=0;
+//
+//        for(i=0;i<list.size();i++){
+//            int id = list.get(i).getId();
+//            List<Buyrecord> list_buyrecord = buyrecordService.getPropertyById(id);
+//            for(int j=0;j<list_buyrecord.size();j++){
+//                count = list_buyrecord.get(j).getBuytool();
+//            }
+//
+//        }
+
+
+
+
+
+
+        //System.out.println("#######################################################"+list.get(0));
         return "searchResult";
     }
 
@@ -187,6 +261,22 @@ public class HomeController {
             return "admin/adminLogin";
         }
     }
+
+//    @RequestMapping("/recomend_list")
+//    @ResponseBody
+//    public Object  itemsList() {
+//        Example example = new Example(RecomendList.class);
+//        Example.Criteria criteria = example.createCriteria();
+//        criteria.andEqualTo("user", "1234");
+//        return recomendListService.selectByExample(example);
+//    }
+
+//    @RequestMapping("/recomend_list")
+//    public String  itemsList(Model model) {
+//        model.addAttribute("data","123456");
+//        return "aaa/bbb";
+//    }
+
 
 
 

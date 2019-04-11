@@ -38,5 +38,7 @@ public interface BuyrecordService extends IService<Buyrecord> {
 
     PageInfo<Buyrecord> selectByPage(Buyrecord buyrecord, int start, int length);
 
+//    List<Buyrecord> getPropertyById(int id);
+
 
 }

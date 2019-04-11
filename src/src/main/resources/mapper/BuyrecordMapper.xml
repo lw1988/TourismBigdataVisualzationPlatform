@@ -62,5 +62,10 @@
   </select>
 
 
+  <select id="getPropertyById" parameterType="java.lang.String" resultType="com.gxu.tbvp.domain.Buyrecord">
+    SELECT * FROM buyrecord WHERE buyProduceId =#{id}
+  </select>
+
+
 
 </mapper>

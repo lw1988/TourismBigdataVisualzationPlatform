@@ -16,4 +16,8 @@
     SELECT ifnull(SUM(scenic_buyrecord.buy_count),0) as count FROM produceitem LEFT JOIN scenic_buyrecord ON produceitem.produceId=scenic_buyrecord.scenicId WHERE produceitem.produceId=#{produceId}
   </select>
 
+
+
+
+
 </mapper>
