@@ -158,7 +158,9 @@ public class HomeController {
     //组合路线推荐内景点分析
     @RequestMapping("/routeScenic")
     public String routeScenic(){
-        return "combine_route/routeScenic";
+       /* return "combine_route/routeScenic";*/
+        return "holidayRoutes";
+
     }
 
     //搜索结果分析
