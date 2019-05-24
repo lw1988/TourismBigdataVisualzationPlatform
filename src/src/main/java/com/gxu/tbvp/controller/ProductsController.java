@@ -73,8 +73,10 @@ public class ProductsController {
     public String  getPromoSale_Cus(HttpServletRequest request, Buyrecord buyrecord, Model model){
         ArrayList<List> li = new ArrayList();
         li.add(compute_3(1,1));//choose=1为日均销售，promo=1为做了促销，
+
         li.add(compute_3(1,0));
         li.add(compute_3(2,1));
+
         li.add(compute_3(2,0));//choose=2为日均客流，promo=0为没做促销，
         String data = JSON.toString(li);
 
