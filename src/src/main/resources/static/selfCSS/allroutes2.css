@@ -1,0 +1,60 @@
+.top{
+    margin-right: 20px;
+}
+
+#title{
+    text-align: center;
+}
+.search{
+    margin: 0 auto;
+}
+#selection{
+    border-right: 3px solid #3c8dbc;
+    border-radius: 25px;
+    height: 30px;
+    width: 140px;
+    text-align: center;
+    background-color: #CCCCCC;
+}
+#selection:hover{
+    color: #336666;
+    background-color: #CCFFFF;
+}
+#inpution{
+    height: 25px;
+    width: 360px;
+}
+
+#bt{
+    border-radius: 25px;
+    height: 25px;
+    width: 100px;
+    background-color: #3c8dbc;
+}
+.bod{
+    color: #0066cc;
+    border: 1px solid #e6f2f9;
+    background-color: #f4fbff;
+}
+
+.middle{
+    margin: 0 100px;
+    border: 3px solid #3c8dbc;
+}
+
+#item1{
+    margin: 50px;
+    height: 200px;
+}
+.picture{
+    height: 75px;
+    width: 135px;
+}
+.price{
+    float: right;
+    margin-right: 70px;
+}
+.text{
+    float: right;
+    width: 600px;
+}
